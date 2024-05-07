@@ -1,0 +1,614 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9072AFC52BE9C46E00DE6FEB /* FairShareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */; };
+		9072AFC72BE9C46E00DE6FEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFC62BE9C46E00DE6FEB /* ContentView.swift */; };
+		9072AFC92BE9C47000DE6FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9072AFC82BE9C47000DE6FEB /* Assets.xcassets */; };
+		9072AFCC2BE9C47000DE6FEB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9072AFCB2BE9C47000DE6FEB /* Preview Assets.xcassets */; };
+		9072AFCE2BE9C47000DE6FEB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFCD2BE9C47000DE6FEB /* Persistence.swift */; };
+		9072AFD12BE9C47000DE6FEB /* FairShare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFCF2BE9C47000DE6FEB /* FairShare.xcdatamodeld */; };
+		9072AFDB2BE9C47000DE6FEB /* FairShareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFDA2BE9C47000DE6FEB /* FairShareTests.swift */; };
+		9072AFE52BE9C47000DE6FEB /* FairShareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFE42BE9C47000DE6FEB /* FairShareUITests.swift */; };
+		9072AFE72BE9C47000DE6FEB /* FairShareUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFE62BE9C47000DE6FEB /* FairShareUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9072AFD72BE9C47000DE6FEB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9072AFB92BE9C46E00DE6FEB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9072AFC02BE9C46E00DE6FEB;
+			remoteInfo = FairShare;
+		};
+		9072AFE12BE9C47000DE6FEB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9072AFB92BE9C46E00DE6FEB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9072AFC02BE9C46E00DE6FEB;
+			remoteInfo = FairShare;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9072AFC12BE9C46E00DE6FEB /* FairShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FairShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairShareApp.swift; sourceTree = "<group>"; };
+		9072AFC62BE9C46E00DE6FEB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9072AFC82BE9C47000DE6FEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9072AFCB2BE9C47000DE6FEB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9072AFCD2BE9C47000DE6FEB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		9072AFD02BE9C47000DE6FEB /* FairShare.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FairShare.xcdatamodel; sourceTree = "<group>"; };
+		9072AFD62BE9C47000DE6FEB /* FairShareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FairShareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9072AFDA2BE9C47000DE6FEB /* FairShareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairShareTests.swift; sourceTree = "<group>"; };
+		9072AFE02BE9C47000DE6FEB /* FairShareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FairShareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9072AFE42BE9C47000DE6FEB /* FairShareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairShareUITests.swift; sourceTree = "<group>"; };
+		9072AFE62BE9C47000DE6FEB /* FairShareUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairShareUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9072AFBE2BE9C46E00DE6FEB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9072AFD32BE9C47000DE6FEB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9072AFDD2BE9C47000DE6FEB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9072AFB82BE9C46E00DE6FEB = {
+			isa = PBXGroup;
+			children = (
+				9072AFC32BE9C46E00DE6FEB /* FairShare */,
+				9072AFD92BE9C47000DE6FEB /* FairShareTests */,
+				9072AFE32BE9C47000DE6FEB /* FairShareUITests */,
+				9072AFC22BE9C46E00DE6FEB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9072AFC22BE9C46E00DE6FEB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9072AFC12BE9C46E00DE6FEB /* FairShare.app */,
+				9072AFD62BE9C47000DE6FEB /* FairShareTests.xctest */,
+				9072AFE02BE9C47000DE6FEB /* FairShareUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9072AFC32BE9C46E00DE6FEB /* FairShare */ = {
+			isa = PBXGroup;
+			children = (
+				9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */,
+				9072AFC62BE9C46E00DE6FEB /* ContentView.swift */,
+				9072AFC82BE9C47000DE6FEB /* Assets.xcassets */,
+				9072AFCD2BE9C47000DE6FEB /* Persistence.swift */,
+				9072AFCF2BE9C47000DE6FEB /* FairShare.xcdatamodeld */,
+				9072AFCA2BE9C47000DE6FEB /* Preview Content */,
+			);
+			path = FairShare;
+			sourceTree = "<group>";
+		};
+		9072AFCA2BE9C47000DE6FEB /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				9072AFCB2BE9C47000DE6FEB /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9072AFD92BE9C47000DE6FEB /* FairShareTests */ = {
+			isa = PBXGroup;
+			children = (
+				9072AFDA2BE9C47000DE6FEB /* FairShareTests.swift */,
+			);
+			path = FairShareTests;
+			sourceTree = "<group>";
+		};
+		9072AFE32BE9C47000DE6FEB /* FairShareUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9072AFE42BE9C47000DE6FEB /* FairShareUITests.swift */,
+				9072AFE62BE9C47000DE6FEB /* FairShareUITestsLaunchTests.swift */,
+			);
+			path = FairShareUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9072AFC02BE9C46E00DE6FEB /* FairShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9072AFEA2BE9C47000DE6FEB /* Build configuration list for PBXNativeTarget "FairShare" */;
+			buildPhases = (
+				9072AFBD2BE9C46E00DE6FEB /* Sources */,
+				9072AFBE2BE9C46E00DE6FEB /* Frameworks */,
+				9072AFBF2BE9C46E00DE6FEB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FairShare;
+			productName = FairShare;
+			productReference = 9072AFC12BE9C46E00DE6FEB /* FairShare.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9072AFD52BE9C47000DE6FEB /* FairShareTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9072AFED2BE9C47000DE6FEB /* Build configuration list for PBXNativeTarget "FairShareTests" */;
+			buildPhases = (
+				9072AFD22BE9C47000DE6FEB /* Sources */,
+				9072AFD32BE9C47000DE6FEB /* Frameworks */,
+				9072AFD42BE9C47000DE6FEB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9072AFD82BE9C47000DE6FEB /* PBXTargetDependency */,
+			);
+			name = FairShareTests;
+			productName = FairShareTests;
+			productReference = 9072AFD62BE9C47000DE6FEB /* FairShareTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9072AFDF2BE9C47000DE6FEB /* FairShareUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9072AFF02BE9C47000DE6FEB /* Build configuration list for PBXNativeTarget "FairShareUITests" */;
+			buildPhases = (
+				9072AFDC2BE9C47000DE6FEB /* Sources */,
+				9072AFDD2BE9C47000DE6FEB /* Frameworks */,
+				9072AFDE2BE9C47000DE6FEB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9072AFE22BE9C47000DE6FEB /* PBXTargetDependency */,
+			);
+			name = FairShareUITests;
+			productName = FairShareUITests;
+			productReference = 9072AFE02BE9C47000DE6FEB /* FairShareUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9072AFB92BE9C46E00DE6FEB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					9072AFC02BE9C46E00DE6FEB = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					9072AFD52BE9C47000DE6FEB = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 9072AFC02BE9C46E00DE6FEB;
+					};
+					9072AFDF2BE9C47000DE6FEB = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 9072AFC02BE9C46E00DE6FEB;
+					};
+				};
+			};
+			buildConfigurationList = 9072AFBC2BE9C46E00DE6FEB /* Build configuration list for PBXProject "FairShare" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9072AFB82BE9C46E00DE6FEB;
+			productRefGroup = 9072AFC22BE9C46E00DE6FEB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9072AFC02BE9C46E00DE6FEB /* FairShare */,
+				9072AFD52BE9C47000DE6FEB /* FairShareTests */,
+				9072AFDF2BE9C47000DE6FEB /* FairShareUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9072AFBF2BE9C46E00DE6FEB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9072AFCC2BE9C47000DE6FEB /* Preview Assets.xcassets in Resources */,
+				9072AFC92BE9C47000DE6FEB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9072AFD42BE9C47000DE6FEB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9072AFDE2BE9C47000DE6FEB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9072AFBD2BE9C46E00DE6FEB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9072AFCE2BE9C47000DE6FEB /* Persistence.swift in Sources */,
+				9072AFC72BE9C46E00DE6FEB /* ContentView.swift in Sources */,
+				9072AFC52BE9C46E00DE6FEB /* FairShareApp.swift in Sources */,
+				9072AFD12BE9C47000DE6FEB /* FairShare.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9072AFD22BE9C47000DE6FEB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9072AFDB2BE9C47000DE6FEB /* FairShareTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9072AFDC2BE9C47000DE6FEB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9072AFE72BE9C47000DE6FEB /* FairShareUITestsLaunchTests.swift in Sources */,
+				9072AFE52BE9C47000DE6FEB /* FairShareUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9072AFD82BE9C47000DE6FEB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9072AFC02BE9C46E00DE6FEB /* FairShare */;
+			targetProxy = 9072AFD72BE9C47000DE6FEB /* PBXContainerItemProxy */;
+		};
+		9072AFE22BE9C47000DE6FEB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9072AFC02BE9C46E00DE6FEB /* FairShare */;
+			targetProxy = 9072AFE12BE9C47000DE6FEB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		9072AFE82BE9C47000DE6FEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9072AFE92BE9C47000DE6FEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9072AFEB2BE9C47000DE6FEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FairShare/Preview Content\"";
+				DEVELOPMENT_TEAM = FSUP887MQU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Stephanie.FairShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9072AFEC2BE9C47000DE6FEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FairShare/Preview Content\"";
+				DEVELOPMENT_TEAM = FSUP887MQU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Stephanie.FairShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9072AFEE2BE9C47000DE6FEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FSUP887MQU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Stephanie.FairShareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FairShare.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FairShare";
+			};
+			name = Debug;
+		};
+		9072AFEF2BE9C47000DE6FEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FSUP887MQU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Stephanie.FairShareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FairShare.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FairShare";
+			};
+			name = Release;
+		};
+		9072AFF12BE9C47000DE6FEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FSUP887MQU;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Stephanie.FairShareUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FairShare;
+			};
+			name = Debug;
+		};
+		9072AFF22BE9C47000DE6FEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FSUP887MQU;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Stephanie.FairShareUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FairShare;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9072AFBC2BE9C46E00DE6FEB /* Build configuration list for PBXProject "FairShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9072AFE82BE9C47000DE6FEB /* Debug */,
+				9072AFE92BE9C47000DE6FEB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9072AFEA2BE9C47000DE6FEB /* Build configuration list for PBXNativeTarget "FairShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9072AFEB2BE9C47000DE6FEB /* Debug */,
+				9072AFEC2BE9C47000DE6FEB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9072AFED2BE9C47000DE6FEB /* Build configuration list for PBXNativeTarget "FairShareTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9072AFEE2BE9C47000DE6FEB /* Debug */,
+				9072AFEF2BE9C47000DE6FEB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9072AFF02BE9C47000DE6FEB /* Build configuration list for PBXNativeTarget "FairShareUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9072AFF12BE9C47000DE6FEB /* Debug */,
+				9072AFF22BE9C47000DE6FEB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9072AFCF2BE9C47000DE6FEB /* FairShare.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9072AFD02BE9C47000DE6FEB /* FairShare.xcdatamodel */,
+			);
+			currentVersion = 9072AFD02BE9C47000DE6FEB /* FairShare.xcdatamodel */;
+			path = FairShare.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 9072AFB92BE9C46E00DE6FEB /* Project object */;
+}
