@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>335864056902-fprlpds68okrabjqc7m335kd60odbnuv.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.335864056902-fprlpds68okrabjqc7m335kd60odbnuv</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBS67fssu4cfkdwd10DGLbBXTI4-0Nae1M</string>
+	<key>GCM_SENDER_ID</key>
+	<string>335864056902</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Stephanie.FairShare</string>
+	<key>PROJECT_ID</key>
+	<string>fairshare-f4787</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fairshare-f4787.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:335864056902:ios:46a9fc74d0f84e259c8e47</string>
+</dict>
+</plist>
