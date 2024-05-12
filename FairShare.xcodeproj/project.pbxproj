@@ -40,6 +40,8 @@
 		9072AFE72BE9C47000DE6FEB /* FairShareUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFE62BE9C47000DE6FEB /* FairShareUITestsLaunchTests.swift */; };
 		90FB96272BF030B20061E83D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB96262BF030B20061E83D /* LoginView.swift */; };
 		90FB96292BF0321C0061E83D /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB96282BF0321C0061E83D /* InputView.swift */; };
+		90FB962D2BF0753E0061E83D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB962C2BF0753E0061E83D /* ProfileView.swift */; };
+		90FB962F2BF0779B0061E83D /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB962E2BF0779B0061E83D /* SettingsRowView.swift */; };
 		90FB96312BF08C240061E83D /* FirebaseErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB96302BF08C240061E83D /* FirebaseErrors.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +80,8 @@
 		9072AFE62BE9C47000DE6FEB /* FairShareUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairShareUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		90FB96262BF030B20061E83D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		90FB96282BF0321C0061E83D /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		90FB962C2BF0753E0061E83D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		90FB962E2BF0779B0061E83D /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 		90FB96302BF08C240061E83D /* FirebaseErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseErrors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -194,6 +198,8 @@
 				9072AFC62BE9C46E00DE6FEB /* ContentView.swift */,
 				90FB96262BF030B20061E83D /* LoginView.swift */,
 				90FB96282BF0321C0061E83D /* InputView.swift */,
+				90FB962C2BF0753E0061E83D /* ProfileView.swift */,
+				90FB962E2BF0779B0061E83D /* SettingsRowView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -397,8 +403,10 @@
 				9072AFCE2BE9C47000DE6FEB /* Persistence.swift in Sources */,
 				90FB96292BF0321C0061E83D /* InputView.swift in Sources */,
 				902C01FE2BF019B60004B01A /* UserModel.swift in Sources */,
+				90FB962F2BF0779B0061E83D /* SettingsRowView.swift in Sources */,
 				902C01FC2BF019770004B01A /* AuthViewModel.swift in Sources */,
 				90FB96312BF08C240061E83D /* FirebaseErrors.swift in Sources */,
+				90FB962D2BF0753E0061E83D /* ProfileView.swift in Sources */,
 				9072AFC72BE9C46E00DE6FEB /* ContentView.swift in Sources */,
 				9072AFC52BE9C46E00DE6FEB /* FairShareApp.swift in Sources */,
 				90FB96272BF030B20061E83D /* LoginView.swift in Sources */,
