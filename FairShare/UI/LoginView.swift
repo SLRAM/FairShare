@@ -50,9 +50,7 @@ struct LoginView: View {
 		}
 	}
 
-	let backgroundGradient = LinearGradient(
-		colors: [.blue, .green],
-		startPoint: .topLeading, endPoint: .bottomTrailing)
+	@EnvironmentObject var viewModel: AuthViewModel
 
 	@State private var email = ""
 	@State private var password = ""
@@ -62,6 +60,9 @@ struct LoginView: View {
 	@State private var isRegistered = true
 	@State private var viewType = ViewType.login
 
+	let backgroundGradient = LinearGradient(
+		colors: [.blue, .green],
+		startPoint: .topLeading, endPoint: .bottomTrailing)
 
 	var body: some View {
 		NavigationStack {
@@ -89,12 +90,6 @@ struct LoginView: View {
 
 						if !isRegistered {
 							InputView(
-								text: $confirmPassword,
-								title: .confirmPassword,
-								isSecureField: true
-							)
-
-							InputView(
 								text: $firstName,
 								title: .firstName
 							)
@@ -110,11 +105,14 @@ struct LoginView: View {
 					.padding(.top, 15)
 
 					Button {
-						print("log user in")
 						if isRegistered {
-							login()
+							Task {
+								try await viewModel.signIn(with: email, password: password)
+							}
 						} else {
-							register()
+							Task {
+								try await viewModel.createUser(with: email, password: password, firstName: firstName, lastName: lastName)
+							}
 						}
 					} label: {
 						HStack {
@@ -147,9 +145,7 @@ struct LoginView: View {
 						}
 						.font(.system(size: 15))
 						.foregroundStyle(.white)
-
 					}
-
 				}
 			}
 			.background(backgroundGradient)
@@ -161,56 +157,9 @@ struct LoginView: View {
 				viewType = .login
 			}
 		}
-	}
-
-	func register() {
-		Auth.auth().createUser(withEmail: email, password: password) { (auth, error) in
-			if let maybeError = error { //if there was an error, handle it
-				let err = maybeError as NSError
-				switch err.code {
-				case AuthErrorCode.wrongPassword.rawValue:
-					print("wrong password")
-				case AuthErrorCode.invalidEmail.rawValue:
-					print("invalid email")
-				case AuthErrorCode.accountExistsWithDifferentCredential.rawValue:
-					print("accountExistsWithDifferentCredential")
-				case AuthErrorCode.weakPassword.rawValue:
-					print("weak password")
-				default:
-					print("unknown error: \(err.localizedDescription)")
+		.alert(viewModel.errorMessage, isPresented: $viewModel.showAlert) {
+			Button("OK", role: .cancel) { viewModel.showAlert = false }
 				}
-			} else { //there was no error so the user could be auth'd or maybe not!
-				if let _ = auth?.user {
-					print("user is authd")
-				} else {
-					print("no authd user")
-				}
-			}
-		}
-	}
-
-	func login() {
-		Auth.auth().signIn(withEmail: email, password: password) { (auth, error) in
-			if let maybeError = error { //if there was an error, handle it
-				let err = maybeError as NSError
-				switch err.code {
-				case AuthErrorCode.wrongPassword.rawValue:
-					print("wrong password")
-				case AuthErrorCode.invalidEmail.rawValue:
-					print("invalid email")
-				case AuthErrorCode.accountExistsWithDifferentCredential.rawValue:
-					print("accountExistsWithDifferentCredential")
-				default:
-					print("unknown error: \(err.localizedDescription)")
-				}
-			} else { //there was no error so the user could be auth'd or maybe not!
-				if let _ = auth?.user {
-					print("user is authd")
-				} else {
-					print("no authd user")
-				}
-			}
-		}
 	}
 }
 

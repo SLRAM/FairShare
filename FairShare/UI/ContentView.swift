@@ -10,29 +10,16 @@ import CoreData
 import Firebase
 
 struct ContentView: View {
-	@State private var userIsLoggedIn = false
-	@State private var isLoading = true
+	@EnvironmentObject var viewModel: AuthViewModel
 
 	var body: some View {
-		if isLoading {
-			ProgressView()
-				.onAppear {
-					Auth.auth().addStateDidChangeListener { auth, user in
-						if user != nil {
-							userIsLoggedIn.toggle()
-						}
-						isLoading.toggle()
-
-					}
-				}
-		} else {
-			if userIsLoggedIn {
-				ReceiptView().environmentObject(DataManager())
+		Group {
+			if viewModel.userSession != nil {
+				ProfileView()
 			} else {
 				LoginView()
 			}
 		}
-
 	}
 }
 

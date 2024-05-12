@@ -28,7 +28,7 @@
 		902C01F42BF00A790004B01A /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 902C01F32BF00A790004B01A /* GoogleSignInSwift */; };
 		902C01F62BF00B0E0004B01A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 902C01F52BF00B0E0004B01A /* GoogleService-Info.plist */; };
 		902C01FA2BF017660004B01A /* ReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C01F92BF017660004B01A /* ReceiptView.swift */; };
-		902C01FC2BF019770004B01A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C01FB2BF019770004B01A /* DataManager.swift */; };
+		902C01FC2BF019770004B01A /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C01FB2BF019770004B01A /* AuthViewModel.swift */; };
 		902C01FE2BF019B60004B01A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C01FD2BF019B60004B01A /* UserModel.swift */; };
 		9072AFC52BE9C46E00DE6FEB /* FairShareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */; };
 		9072AFC72BE9C46E00DE6FEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFC62BE9C46E00DE6FEB /* ContentView.swift */; };
@@ -42,10 +42,12 @@
 		90FB96152BF020490061E83D /* ReceiptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB96142BF020490061E83D /* ReceiptModel.swift */; };
 		90FB96172BF023340061E83D /* Date+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB96162BF023340061E83D /* Date+Helper.swift */; };
 		90FB96192BF029190061E83D /* NewReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB96182BF029190061E83D /* NewReceiptView.swift */; };
-		90FB961B2BF02BB10061E83D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB961A2BF02BB10061E83D /* Constants.swift */; };
 		90FB96252BF02DCE0061E83D /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB96242BF02DCE0061E83D /* View+Extensions.swift */; };
 		90FB96272BF030B20061E83D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB96262BF030B20061E83D /* LoginView.swift */; };
 		90FB96292BF0321C0061E83D /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB96282BF0321C0061E83D /* InputView.swift */; };
+		90FB962D2BF0753E0061E83D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB962C2BF0753E0061E83D /* ProfileView.swift */; };
+		90FB962F2BF0779B0061E83D /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB962E2BF0779B0061E83D /* SettingsRowView.swift */; };
+		90FB96312BF08C240061E83D /* FirebaseErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB96302BF08C240061E83D /* FirebaseErrors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +70,7 @@
 /* Begin PBXFileReference section */
 		902C01F52BF00B0E0004B01A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		902C01F92BF017660004B01A /* ReceiptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptView.swift; sourceTree = "<group>"; };
-		902C01FB2BF019770004B01A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		902C01FB2BF019770004B01A /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		902C01FD2BF019B60004B01A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		9072AFC12BE9C46E00DE6FEB /* FairShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FairShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairShareApp.swift; sourceTree = "<group>"; };
@@ -85,10 +87,12 @@
 		90FB96142BF020490061E83D /* ReceiptModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptModel.swift; sourceTree = "<group>"; };
 		90FB96162BF023340061E83D /* Date+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helper.swift"; sourceTree = "<group>"; };
 		90FB96182BF029190061E83D /* NewReceiptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiptView.swift; sourceTree = "<group>"; };
-		90FB961A2BF02BB10061E83D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		90FB96242BF02DCE0061E83D /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		90FB96262BF030B20061E83D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		90FB96282BF0321C0061E83D /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		90FB962C2BF0753E0061E83D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		90FB962E2BF0779B0061E83D /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
+		90FB96302BF08C240061E83D /* FirebaseErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseErrors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +210,8 @@
 				90FB96182BF029190061E83D /* NewReceiptView.swift */,
 				90FB96262BF030B20061E83D /* LoginView.swift */,
 				90FB96282BF0321C0061E83D /* InputView.swift */,
+				90FB962C2BF0753E0061E83D /* ProfileView.swift */,
+				90FB962E2BF0779B0061E83D /* SettingsRowView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -222,7 +228,6 @@
 		90FB961E2BF02C120061E83D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				90FB96232BF02DA50061E83D /* Objects */,
 				90FB96222BF02D9A0061E83D /* Extensions */,
 			);
 			path = Helpers;
@@ -231,6 +236,7 @@
 		90FB961F2BF02C470061E83D /* Errors */ = {
 			isa = PBXGroup;
 			children = (
+				90FB96302BF08C240061E83D /* FirebaseErrors.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -239,7 +245,6 @@
 			isa = PBXGroup;
 			children = (
 				9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */,
-				90FB961A2BF02BB10061E83D /* Constants.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -247,7 +252,7 @@
 		90FB96212BF02D010061E83D /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				902C01FB2BF019770004B01A /* DataManager.swift */,
+				902C01FB2BF019770004B01A /* AuthViewModel.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -255,17 +260,10 @@
 		90FB96222BF02D9A0061E83D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				90FB96162BF023340061E83D /* Date+Helper.swift */,
 				90FB96242BF02DCE0061E83D /* View+Extensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		90FB96232BF02DA50061E83D /* Objects */ = {
-			isa = PBXGroup;
-			children = (
-				90FB96162BF023340061E83D /* Date+Helper.swift */,
-			);
-			path = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -428,9 +426,11 @@
 				90FB96292BF0321C0061E83D /* InputView.swift in Sources */,
 				902C01FE2BF019B60004B01A /* UserModel.swift in Sources */,
 				90FB96152BF020490061E83D /* ReceiptModel.swift in Sources */,
-				902C01FC2BF019770004B01A /* DataManager.swift in Sources */,
+				90FB962F2BF0779B0061E83D /* SettingsRowView.swift in Sources */,
+				902C01FC2BF019770004B01A /* AuthViewModel.swift in Sources */,
+				90FB96312BF08C240061E83D /* FirebaseErrors.swift in Sources */,
 				90FB96192BF029190061E83D /* NewReceiptView.swift in Sources */,
-				90FB961B2BF02BB10061E83D /* Constants.swift in Sources */,
+				90FB962D2BF0753E0061E83D /* ProfileView.swift in Sources */,
 				9072AFC72BE9C46E00DE6FEB /* ContentView.swift in Sources */,
 				90FB96172BF023340061E83D /* Date+Helper.swift in Sources */,
 				9072AFC52BE9C46E00DE6FEB /* FairShareApp.swift in Sources */,

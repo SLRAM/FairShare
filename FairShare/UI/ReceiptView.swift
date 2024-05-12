@@ -9,11 +9,11 @@ import SwiftUI
 import Firebase
 
 struct ReceiptView: View {
-	@EnvironmentObject var dataManager: DataManager
+	@EnvironmentObject var viewModel: AuthViewModel
 
 	var body: some View {
 		NavigationStack {
-			List(dataManager.receipts, id: \.id) { receipt in
+			List(viewModel.receipts, id: \.id) { receipt in
 				Text(receipt.date)
 			}
 			.navigationTitle("Previous Receipts")
@@ -26,11 +26,6 @@ struct ReceiptView: View {
 						Button(action: {}, label: {
 							Text("Add from library")
 						})
-						Button(action: {
-							signOutAccount()
-						}, label: {
-							Text("Logout")
-						})
 					} label: {
 						Label(title: { Text("Label") }, icon: { Image(systemName: "plus") })
 					}
@@ -38,18 +33,8 @@ struct ReceiptView: View {
 			}
 		}
 	}
-
-	func signOutAccount() {
-		do {
-			try Auth.auth().signOut()
-//				authserviceSignOutDelegate?.didSignOut(self)
-		} catch {
-			print(error.localizedDescription)
-//				authserviceSignOutDelegate?.didSignOutWithError(self, error: error)
-		}
-	}
 }
 
 #Preview {
-	ReceiptView().environmentObject(DataManager())
+	ReceiptView().environmentObject(AuthViewModel())
 }

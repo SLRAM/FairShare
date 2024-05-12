@@ -8,26 +8,24 @@
 import SwiftUI
 import FirebaseCore
 
-
 class AppDelegate: NSObject, UIApplicationDelegate {
-  func application(_ application: UIApplication,
-				   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-	FirebaseApp.configure()
+	func application(_ application: UIApplication,
+					 didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+		FirebaseApp.configure()
 
-	return true
-  }
+		return true
+	}
 }
 
 @main
 struct FairShareApp: App {
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+	@StateObject var viewModel = AuthViewModel()
 
-//    let persistenceController = PersistenceController.shared
-
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-        }
-    }
+	var body: some Scene {
+		WindowGroup {
+			ContentView()
+				.environmentObject(viewModel)
+		}
+	}
 }
