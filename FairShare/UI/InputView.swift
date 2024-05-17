@@ -35,7 +35,7 @@ struct InputView: View {
 
 enum InputType: CustomStringConvertible {
 	case firstName
-	case LastName
+	case lastName
 	case email
 	case password
 	case confirmPassword
@@ -47,7 +47,7 @@ enum InputType: CustomStringConvertible {
 			return "name@example.com"
 		case .password:
 			return "Enter your password"
-		case .firstName, .LastName:
+		case .firstName, .lastName:
 			return "Enter your \(self.description.lowercased())"
 		case .confirmPassword:
 			return self.description
@@ -58,7 +58,7 @@ enum InputType: CustomStringConvertible {
 		switch self {
 		case .firstName:
 			return "First Name"
-		case .LastName:
+		case .lastName:
 			return "Last Name"
 		case .email:
 			return "Email Address"
