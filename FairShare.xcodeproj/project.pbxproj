@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9005BDC72BF9606B00039D00 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9005BDC62BF9606B00039D00 /* Launch Screen.storyboard */; };
 		902C01CD2BF008060004B01A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 902C01CC2BF008060004B01A /* FirebaseAnalytics */; };
 		902C01CF2BF008060004B01A /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 902C01CE2BF008060004B01A /* FirebaseAnalyticsSwift */; };
 		902C01D12BF008060004B01A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 902C01D02BF008060004B01A /* FirebaseAuth */; };
@@ -39,6 +40,7 @@
 		9072AFDB2BE9C47000DE6FEB /* FairShareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFDA2BE9C47000DE6FEB /* FairShareTests.swift */; };
 		9072AFE52BE9C47000DE6FEB /* FairShareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFE42BE9C47000DE6FEB /* FairShareUITests.swift */; };
 		9072AFE72BE9C47000DE6FEB /* FairShareUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFE62BE9C47000DE6FEB /* FairShareUITestsLaunchTests.swift */; };
+		90F5749F2BF93BCC005A9A2E /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F5749E2BF93BCC005A9A2E /* MainTabView.swift */; };
 		90FB96152BF020490061E83D /* ReceiptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB96142BF020490061E83D /* ReceiptModel.swift */; };
 		90FB96172BF023340061E83D /* Date+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB96162BF023340061E83D /* Date+Helper.swift */; };
 		90FB96192BF029190061E83D /* NewReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB96182BF029190061E83D /* NewReceiptView.swift */; };
@@ -67,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9005BDC62BF9606B00039D00 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		902C01F52BF00B0E0004B01A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		902C01F92BF017660004B01A /* ReceiptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptView.swift; sourceTree = "<group>"; };
 		902C01FB2BF019770004B01A /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -83,6 +86,7 @@
 		9072AFE02BE9C47000DE6FEB /* FairShareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FairShareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9072AFE42BE9C47000DE6FEB /* FairShareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairShareUITests.swift; sourceTree = "<group>"; };
 		9072AFE62BE9C47000DE6FEB /* FairShareUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairShareUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		90F5749E2BF93BCC005A9A2E /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		90FB96142BF020490061E83D /* ReceiptModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptModel.swift; sourceTree = "<group>"; };
 		90FB96162BF023340061E83D /* Date+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helper.swift"; sourceTree = "<group>"; };
 		90FB96182BF029190061E83D /* NewReceiptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiptView.swift; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 				902C01F92BF017660004B01A /* ReceiptView.swift */,
 				90FB96182BF029190061E83D /* NewReceiptView.swift */,
 				90FB96262BF030B20061E83D /* LoginView.swift */,
+				90F5749E2BF93BCC005A9A2E /* MainTabView.swift */,
 				90FB96282BF0321C0061E83D /* InputView.swift */,
 				90FB962C2BF0753E0061E83D /* ProfileView.swift */,
 				90FB962E2BF0779B0061E83D /* SettingsRowView.swift */,
@@ -243,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */,
+				9005BDC62BF9606B00039D00 /* Launch Screen.storyboard */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -394,6 +400,7 @@
 			files = (
 				9072AFCC2BE9C47000DE6FEB /* Preview Assets.xcassets in Resources */,
 				9072AFC92BE9C47000DE6FEB /* Assets.xcassets in Resources */,
+				9005BDC72BF9606B00039D00 /* Launch Screen.storyboard in Resources */,
 				902C01F62BF00B0E0004B01A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,6 +429,7 @@
 				9072AFCE2BE9C47000DE6FEB /* Persistence.swift in Sources */,
 				90FB96292BF0321C0061E83D /* InputView.swift in Sources */,
 				902C01FE2BF019B60004B01A /* UserModel.swift in Sources */,
+				90F5749F2BF93BCC005A9A2E /* MainTabView.swift in Sources */,
 				90FB96152BF020490061E83D /* ReceiptModel.swift in Sources */,
 				90FB962F2BF0779B0061E83D /* SettingsRowView.swift in Sources */,
 				902C01FC2BF019770004B01A /* AuthViewModel.swift in Sources */,
@@ -603,6 +611,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -632,6 +641,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

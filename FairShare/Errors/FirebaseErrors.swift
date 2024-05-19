@@ -26,7 +26,7 @@ extension AuthErrorCode {
 		case .wrongPassword:
 			return "Your password is incorrect. Please try again."
 		default:
-			return "Unknown error occurred"
+			return "Unknown error occurred. Error code: \(self.errorCode)"
 		}
 	}
 }

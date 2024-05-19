@@ -9,47 +9,7 @@ import SwiftUI
 import Firebase
 
 struct LoginView: View {
-	enum ViewType {
-		case login
-		case register
-
-		var titleString: String {
-			switch self {
-			case .login:
-				"Welcome Back"
-			case .register:
-				"Register"
-			}
-		}
-
-		var buttonTitleString: String {
-			switch self {
-			case .login:
-				return "Sign In"
-			case .register:
-				return "Sign Up"
-			}
-		}
-
-		var buttonSwitchString: String {
-			switch self {
-			case .login:
-				return "Don't have an account?"
-			case .register:
-				return "Already have an account?"
-			}
-		}
-
-		var buttonSwitchSubString: String {
-			switch self {
-			case .login:
-				return "Sign up"
-			case .register:
-				return "Sign in"
-			}
-		}
-	}
-
+	///TODO: correct keyboard contraints
 	@EnvironmentObject var viewModel: AuthViewModel
 
 	@State private var email = ""
@@ -96,7 +56,7 @@ struct LoginView: View {
 
 							InputView(
 								text: $lastName,
-								title: .LastName
+								title: .lastName
 							)
 						}
 
@@ -163,6 +123,49 @@ struct LoginView: View {
 	}
 }
 
+extension LoginView {
+	enum ViewType {
+		case login
+		case register
+
+		var titleString: String {
+			switch self {
+			case .login:
+				"Welcome Back"
+			case .register:
+				"Register"
+			}
+		}
+
+		var buttonTitleString: String {
+			switch self {
+			case .login:
+				return "Sign In"
+			case .register:
+				return "Sign Up"
+			}
+		}
+
+		var buttonSwitchString: String {
+			switch self {
+			case .login:
+				return "Don't have an account?"
+			case .register:
+				return "Already have an account?"
+			}
+		}
+
+		var buttonSwitchSubString: String {
+			switch self {
+			case .login:
+				return "Sign up"
+			case .register:
+				return "Sign in"
+			}
+		}
+	}
+}
+
 #Preview {
-    LoginView()
+    LoginView().environmentObject(AuthViewModel())
 }

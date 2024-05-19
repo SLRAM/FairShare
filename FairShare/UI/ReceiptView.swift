@@ -10,6 +10,7 @@ import Firebase
 
 struct ReceiptView: View {
 	@EnvironmentObject var viewModel: AuthViewModel
+	@State var showActionSheet = false
 
 	var body: some View {
 		NavigationStack {
@@ -19,17 +20,19 @@ struct ReceiptView: View {
 			.navigationTitle("Previous Receipts")
 			.toolbar {
 				ToolbarItem(placement: .topBarTrailing) {
-					Menu {
-						Button(action: {}, label: {
-							Text("Take a photo")
-						})
-						Button(action: {}, label: {
-							Text("Add from library")
-						})
+					Button {
+						showActionSheet = true
 					} label: {
 						Label(title: { Text("Label") }, icon: { Image(systemName: "plus") })
 					}
 				}
+			}
+			.confirmationDialog("New Receipt", isPresented: $showActionSheet) {
+				Button("Camera") { print("Camera") }
+				Button("Photo Gallery") { print("Photo Gallery") }
+				Button("Cancel", role: .cancel) { }
+			} message: {
+				Text("Please take a new photo or select an image from the image gallery")
 			}
 		}
 	}
