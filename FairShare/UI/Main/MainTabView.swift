@@ -9,16 +9,22 @@ import SwiftUI
 
 struct MainTabView: View {
 	@EnvironmentObject var viewModel: AuthViewModel
-
+	
 	var body: some View {
 		TabView {
 			ReceiptView()
 				.tabItem {
-					Label("Receipts", systemImage: "list.dash")
+					Label(
+						title: { ConstantStrings.MainTabView.receiptsTab.text },
+						icon: { ConstantImages.System.listDash.image }
+					)
 				}
 			ProfileView()
 				.tabItem {
-					Label("Profile", systemImage: "person.crop.circle")
+					Label(
+						title: { ConstantStrings.MainTabView.profileTab.text },
+						icon: { ConstantImages.System.personCropCircle.image }
+					)
 				}
 		}
 	}

@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  EntryView.swift
 //  FairShare
 //
 //  Created by Stephanie Ramirez on 5/6/24.
@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 import Firebase
 
-struct ContentView: View {
+struct EntryView: View {
 	@EnvironmentObject var viewModel: AuthViewModel
 
 	var body: some View {
@@ -24,5 +24,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+	EntryView()
 }

@@ -44,11 +44,11 @@ enum InputType: CustomStringConvertible {
 	var placeholder: String {
 		switch self {
 		case .email:
-			return "name@example.com"
+			return ConstantStrings.LoginView.emailPlaceholder
 		case .password:
-			return "Enter your password"
+			return ConstantStrings.LoginView.passwordPlaceholder
 		case .firstName, .lastName:
-			return "Enter your \(self.description.lowercased())"
+			return ConstantStrings.LoginView.namePlaceholder + self.description.lowercased()
 		case .confirmPassword:
 			return self.description
 		}
@@ -57,15 +57,15 @@ enum InputType: CustomStringConvertible {
 	var description: String {
 		switch self {
 		case .firstName:
-			return "First Name"
+			return ConstantStrings.LoginView.firstName
 		case .lastName:
-			return "Last Name"
+			return ConstantStrings.LoginView.LastName
 		case .email:
-			return "Email Address"
+			return ConstantStrings.LoginView.email
 		case .password:
-			return "Password"
+			return ConstantStrings.LoginView.password
 		case .confirmPassword:
-			return "Confirm Password"
+			return ConstantStrings.LoginView.confirmPassword
 		}
 	}
 

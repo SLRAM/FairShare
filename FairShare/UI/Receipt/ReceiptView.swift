@@ -29,22 +29,22 @@ struct ReceiptView: View {
 			List(authViewModel.receipts, id: \.id) { receipt in
 				Text(receipt.date)
 			}
-			.navigationTitle("Previous Receipts")
+			.navigationTitle(ConstantStrings.ReceiptView.navigationTitle)
 			.toolbar {
 				ToolbarItem(placement: .topBarTrailing) {
 					Button {
 						showActionSheet.toggle()
 					} label: {
-						Label(title: {}, icon: { Image(systemName: "plus") })
+						ConstantImages.System.plus.image
 					}
 				}
 			}
-			.confirmationDialog("New Receipt", isPresented: $showActionSheet) {
-				Button("Camera") { showCamera.toggle()}
-				Button("Photo Gallery") { showGallery.toggle()}
-				Button("Cancel", role: .cancel) { }
+			.confirmationDialog("", isPresented: $showActionSheet) {
+				Button(ConstantStrings.ReceiptView.cameraButton) { showCamera.toggle()}
+				Button(ConstantStrings.ReceiptView.galleryButton) { showGallery.toggle()}
+				Button(ConstantStrings.ReceiptView.cancelButton, role: .cancel) { }
 			} message: {
-				Text("Please take a new photo or select an image from the image gallery")
+				ConstantStrings.ReceiptView.confirmationMessage.text
 			}
 		}
 		.photosPicker(
