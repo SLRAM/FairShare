@@ -37,6 +37,8 @@ enum ConstantColors {
 enum ConstantImages {
 	enum System {
 		static let arrowRight = ImageAsset(name: "arrow.right", isSystem: true)
+		static let listDash = ImageAsset(name: "list.dash", isSystem: true)
+		static let personCropCircle = ImageAsset(name: "person.crop.circle", isSystem: true)
 	}
 }
 
@@ -62,6 +64,8 @@ enum ConstantStrings {
 	}
 
 	enum MainTabView {
+		static let receiptsTab = TextAsset(string: "Receipts")
+		static let profileTab = TextAsset(string: "Profile")
 	}
 
 	enum ReceiptView {
