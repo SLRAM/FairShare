@@ -39,6 +39,7 @@ enum ConstantImages {
 		static let arrowRight = ImageAsset(name: "arrow.right", isSystem: true)
 		static let listDash = ImageAsset(name: "list.dash", isSystem: true)
 		static let personCropCircle = ImageAsset(name: "person.crop.circle", isSystem: true)
+		static let plus = ImageAsset(name: "plus", isSystem: true)
 	}
 }
 
@@ -69,6 +70,12 @@ enum ConstantStrings {
 	}
 
 	enum ReceiptView {
+		static let navigationTitle = "Receipt History"
+		static let cameraButton = "Camera"
+		static let galleryButton = "Photo Gallery"
+		static let cancelButton = "Cancel"
+
+		static let confirmationMessage = TextAsset(string: "Take a new photo or select one from the photo gallery")
 	}
 
 	enum ProfileView {
