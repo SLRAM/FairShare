@@ -35,7 +35,7 @@ struct ProfileView: View {
 					}
 				}
 
-				Section("Account") {
+				Section(ConstantStrings.ProfileView.account) {
 					Button {
 						viewModel.signOut()
 					} label: {
@@ -43,7 +43,7 @@ struct ProfileView: View {
 					}
 
 					Button {
-						print("Delete account")
+						print(ConstantStrings.ProfileView.delete)
 					} label: {
 						SettingsRowView(rowType: .delete)
 					}

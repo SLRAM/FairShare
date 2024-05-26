@@ -36,10 +36,12 @@ enum ConstantColors {
 
 enum ConstantImages {
 	enum System {
+		static let arrowLeftCircleFill = ImageAsset(name: "arrow.left.circle.fill", isSystem: true)
 		static let arrowRight = ImageAsset(name: "arrow.right", isSystem: true)
 		static let listDash = ImageAsset(name: "list.dash", isSystem: true)
 		static let personCropCircle = ImageAsset(name: "person.crop.circle", isSystem: true)
 		static let plus = ImageAsset(name: "plus", isSystem: true)
+		static let xMarkCircleFill = ImageAsset(name: "xmark.circle.fill", isSystem: true)
 	}
 }
 
@@ -79,5 +81,8 @@ enum ConstantStrings {
 	}
 
 	enum ProfileView {
+		static let account = "Account"
+		static let delete = "Delete Account"
+		static let signOut = "Sign Out"
 	}
 }

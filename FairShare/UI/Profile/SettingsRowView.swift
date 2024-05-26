@@ -12,21 +12,21 @@ struct SettingsRowView: View {
 		case signOut
 		case delete
 
-		var imageName: String {
+		var image: Image {
 			switch self {
 			case .signOut:
-				return "arrow.left.circle.fill"
+				return ConstantImages.System.arrowLeftCircleFill.image
 			case .delete:
-				return "xmark.circle.fill"
+				return ConstantImages.System.xMarkCircleFill.image
 			}
 		}
 
 		var title: String {
 			switch self {
 			case .signOut:
-				return "Sign out"
+				return ConstantStrings.ProfileView.signOut
 			case .delete:
-				return "Delete account"
+				return ConstantStrings.ProfileView.delete
 			}
 		}
 
@@ -42,7 +42,7 @@ struct SettingsRowView: View {
 
 	var body: some View {
 		HStack(spacing: 22) {
-			Image(systemName: rowType.imageName)
+			rowType.image
 				.imageScale(.small)
 				.font(.title)
 				.foregroundStyle(rowType.tintColor)
