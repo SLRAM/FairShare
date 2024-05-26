@@ -40,6 +40,7 @@
 		9072AFDB2BE9C47000DE6FEB /* FairShareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFDA2BE9C47000DE6FEB /* FairShareTests.swift */; };
 		9072AFE52BE9C47000DE6FEB /* FairShareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFE42BE9C47000DE6FEB /* FairShareUITests.swift */; };
 		9072AFE72BE9C47000DE6FEB /* FairShareUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFE62BE9C47000DE6FEB /* FairShareUITestsLaunchTests.swift */; };
+		909E69942C02A5C7009D00D6 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E69932C02A5C7009D00D6 /* CameraView.swift */; };
 		90F5749F2BF93BCC005A9A2E /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F5749E2BF93BCC005A9A2E /* MainTabView.swift */; };
 		90FB96152BF020490061E83D /* ReceiptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB96142BF020490061E83D /* ReceiptModel.swift */; };
 		90FB96172BF023340061E83D /* Date+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB96162BF023340061E83D /* Date+Helper.swift */; };
@@ -86,6 +87,7 @@
 		9072AFE02BE9C47000DE6FEB /* FairShareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FairShareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9072AFE42BE9C47000DE6FEB /* FairShareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairShareUITests.swift; sourceTree = "<group>"; };
 		9072AFE62BE9C47000DE6FEB /* FairShareUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairShareUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		909E69932C02A5C7009D00D6 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		90F5749E2BF93BCC005A9A2E /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		90FB96142BF020490061E83D /* ReceiptModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptModel.swift; sourceTree = "<group>"; };
 		90FB96162BF023340061E83D /* Date+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helper.swift"; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				9072AFC62BE9C46E00DE6FEB /* ContentView.swift */,
 				902C01F92BF017660004B01A /* ReceiptView.swift */,
 				90FB96182BF029190061E83D /* NewReceiptView.swift */,
+				909E69932C02A5C7009D00D6 /* CameraView.swift */,
 				90FB96262BF030B20061E83D /* LoginView.swift */,
 				90F5749E2BF93BCC005A9A2E /* MainTabView.swift */,
 				90FB96282BF0321C0061E83D /* InputView.swift */,
@@ -438,6 +441,7 @@
 				90FB962D2BF0753E0061E83D /* ProfileView.swift in Sources */,
 				9072AFC72BE9C46E00DE6FEB /* ContentView.swift in Sources */,
 				90FB96172BF023340061E83D /* Date+Helper.swift in Sources */,
+				909E69942C02A5C7009D00D6 /* CameraView.swift in Sources */,
 				9072AFC52BE9C46E00DE6FEB /* FairShareApp.swift in Sources */,
 				902C01FA2BF017660004B01A /* ReceiptView.swift in Sources */,
 				90FB96272BF030B20061E83D /* LoginView.swift in Sources */,
@@ -608,6 +612,7 @@
 				DEVELOPMENT_TEAM = FSUP887MQU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs to capture images of your receipt";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -638,6 +643,7 @@
 				DEVELOPMENT_TEAM = FSUP887MQU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs to capture images of your receipt";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
