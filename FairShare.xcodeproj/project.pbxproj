@@ -32,7 +32,7 @@
 		902C01FC2BF019770004B01A /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C01FB2BF019770004B01A /* AuthViewModel.swift */; };
 		902C01FE2BF019B60004B01A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C01FD2BF019B60004B01A /* UserModel.swift */; };
 		9072AFC52BE9C46E00DE6FEB /* FairShareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */; };
-		9072AFC72BE9C46E00DE6FEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFC62BE9C46E00DE6FEB /* ContentView.swift */; };
+		9072AFC72BE9C46E00DE6FEB /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFC62BE9C46E00DE6FEB /* EntryView.swift */; };
 		9072AFC92BE9C47000DE6FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9072AFC82BE9C47000DE6FEB /* Assets.xcassets */; };
 		9072AFCC2BE9C47000DE6FEB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9072AFCB2BE9C47000DE6FEB /* Preview Assets.xcassets */; };
 		9072AFCE2BE9C47000DE6FEB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFCD2BE9C47000DE6FEB /* Persistence.swift */; };
@@ -77,7 +77,7 @@
 		902C01FD2BF019B60004B01A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		9072AFC12BE9C46E00DE6FEB /* FairShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FairShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairShareApp.swift; sourceTree = "<group>"; };
-		9072AFC62BE9C46E00DE6FEB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9072AFC62BE9C46E00DE6FEB /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		9072AFC82BE9C47000DE6FEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9072AFCB2BE9C47000DE6FEB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9072AFCD2BE9C47000DE6FEB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -206,18 +206,50 @@
 			path = FairShareUITests;
 			sourceTree = "<group>";
 		};
+		909E69972C02C5B9009D00D6 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				90FB962C2BF0753E0061E83D /* ProfileView.swift */,
+				90FB962E2BF0779B0061E83D /* SettingsRowView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		909E69982C02C5C7009D00D6 /* Receipt */ = {
+			isa = PBXGroup;
+			children = (
+				902C01F92BF017660004B01A /* ReceiptView.swift */,
+				909E69932C02A5C7009D00D6 /* CameraView.swift */,
+				90FB96182BF029190061E83D /* NewReceiptView.swift */,
+			);
+			path = Receipt;
+			sourceTree = "<group>";
+		};
+		909E69992C02C5F7009D00D6 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				90FB96262BF030B20061E83D /* LoginView.swift */,
+				90FB96282BF0321C0061E83D /* InputView.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		909E699A2C02C645009D00D6 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9072AFC62BE9C46E00DE6FEB /* EntryView.swift */,
+				90F5749E2BF93BCC005A9A2E /* MainTabView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		90FB961C2BF02BC30061E83D /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				9072AFC62BE9C46E00DE6FEB /* ContentView.swift */,
-				902C01F92BF017660004B01A /* ReceiptView.swift */,
-				90FB96182BF029190061E83D /* NewReceiptView.swift */,
-				909E69932C02A5C7009D00D6 /* CameraView.swift */,
-				90FB96262BF030B20061E83D /* LoginView.swift */,
-				90F5749E2BF93BCC005A9A2E /* MainTabView.swift */,
-				90FB96282BF0321C0061E83D /* InputView.swift */,
-				90FB962C2BF0753E0061E83D /* ProfileView.swift */,
-				90FB962E2BF0779B0061E83D /* SettingsRowView.swift */,
+				909E699A2C02C645009D00D6 /* Main */,
+				909E69992C02C5F7009D00D6 /* Authentication */,
+				909E69982C02C5C7009D00D6 /* Receipt */,
+				909E69972C02C5B9009D00D6 /* Profile */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -439,7 +471,7 @@
 				90FB96312BF08C240061E83D /* FirebaseErrors.swift in Sources */,
 				90FB96192BF029190061E83D /* NewReceiptView.swift in Sources */,
 				90FB962D2BF0753E0061E83D /* ProfileView.swift in Sources */,
-				9072AFC72BE9C46E00DE6FEB /* ContentView.swift in Sources */,
+				9072AFC72BE9C46E00DE6FEB /* EntryView.swift in Sources */,
 				90FB96172BF023340061E83D /* Date+Helper.swift in Sources */,
 				909E69942C02A5C7009D00D6 /* CameraView.swift in Sources */,
 				9072AFC52BE9C46E00DE6FEB /* FairShareApp.swift in Sources */,

@@ -24,7 +24,7 @@ struct FairShareApp: App {
 
 	var body: some Scene {
 		WindowGroup {
-			ContentView()
+			EntryView()
 				.environmentObject(viewModel)
 		}
 	}
