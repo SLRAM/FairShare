@@ -31,10 +31,10 @@ internal final class TextAsset {
 
 }
 
-enum ConstantColors {
+enum Colors {
 }
 
-enum ConstantImages {
+enum Images {
 	enum System {
 		static let arrowLeftCircleFill = ImageAsset(name: "arrow.left.circle.fill", isSystem: true)
 		static let arrowRight = ImageAsset(name: "arrow.right", isSystem: true)
@@ -45,7 +45,7 @@ enum ConstantImages {
 	}
 }
 
-enum ConstantStrings {
+enum Strings {
 	enum LoginView {
 		static let confirmString = "OK"
 		static let welcome = "Welcome Back"
@@ -72,7 +72,15 @@ enum ConstantStrings {
 	}
 
 	enum ReceiptView {
-		static let navigationTitle = "Receipt History"
+		static let navigationTitle = TextAsset(string: "Receipt History")
+		static let emptyState = TextAsset(string: "Click the + to add a new receipt")
+	}
+
+	enum NewReceiptView {
+		static let navigationTitle = TextAsset(string: "New Receipt")
+		static let editButton = TextAsset(string: "Edit")
+		static let saveButton = TextAsset(string: "Save")
+
 		static let cameraButton = "Camera"
 		static let galleryButton = "Photo Gallery"
 		static let cancelButton = "Cancel"

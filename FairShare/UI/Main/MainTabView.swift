@@ -15,15 +15,15 @@ struct MainTabView: View {
 			ReceiptView()
 				.tabItem {
 					Label(
-						title: { ConstantStrings.MainTabView.receiptsTab.text },
-						icon: { ConstantImages.System.listDash.image }
+						title: { Strings.MainTabView.receiptsTab.text },
+						icon: { Images.System.listDash.image }
 					)
 				}
 			ProfileView()
 				.tabItem {
 					Label(
-						title: { ConstantStrings.MainTabView.profileTab.text },
-						icon: { ConstantImages.System.personCropCircle.image }
+						title: { Strings.MainTabView.profileTab.text },
+						icon: { Images.System.personCropCircle.image }
 					)
 				}
 		}
