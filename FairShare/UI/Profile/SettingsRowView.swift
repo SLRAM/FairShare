@@ -15,18 +15,18 @@ struct SettingsRowView: View {
 		var image: Image {
 			switch self {
 			case .signOut:
-				return ConstantImages.System.arrowLeftCircleFill.image
+				return Images.System.arrowLeftCircleFill.image
 			case .delete:
-				return ConstantImages.System.xMarkCircleFill.image
+				return Images.System.xMarkCircleFill.image
 			}
 		}
 
 		var title: String {
 			switch self {
 			case .signOut:
-				return ConstantStrings.ProfileView.signOut
+				return Strings.ProfileView.signOut
 			case .delete:
-				return ConstantStrings.ProfileView.delete
+				return Strings.ProfileView.delete
 			}
 		}
 

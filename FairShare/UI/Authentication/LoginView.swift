@@ -78,7 +78,7 @@ struct LoginView: View {
 						HStack {
 							Text(viewType.buttonTitleString.uppercased())
 								.fontWeight(.semibold)
-							ConstantImages.System.arrowRight.image
+							Images.System.arrowRight.image
 
 						}
 						.foregroundStyle(.white)
@@ -118,7 +118,7 @@ struct LoginView: View {
 			}
 		}
 		.alert(viewModel.errorMessage, isPresented: $viewModel.showAlert) {
-			Button(ConstantStrings.LoginView.confirmString, role: .cancel) { viewModel.showAlert = false }
+			Button(Strings.LoginView.confirmString, role: .cancel) { viewModel.showAlert = false }
 				}
 	}
 }
@@ -131,36 +131,36 @@ extension LoginView {
 		var titleString: String {
 			switch self {
 			case .login:
-				ConstantStrings.LoginView.welcome
+				Strings.LoginView.welcome
 			case .register:
-				ConstantStrings.LoginView.register
+				Strings.LoginView.register
 			}
 		}
 
 		var buttonTitleString: String {
 			switch self {
 			case .login:
-				return ConstantStrings.LoginView.signIn
+				return Strings.LoginView.signIn
 			case .register:
-				return ConstantStrings.LoginView.signUp
+				return Strings.LoginView.signUp
 			}
 		}
 
 		var buttonSwitchString: String {
 			switch self {
 			case .login:
-				return ConstantStrings.LoginView.doesNotHaveAccount
+				return Strings.LoginView.doesNotHaveAccount
 			case .register:
-				return ConstantStrings.LoginView.hasAccount
+				return Strings.LoginView.hasAccount
 			}
 		}
 
 		var buttonSwitchSubString: String {
 			switch self {
 			case .login:
-				return ConstantStrings.LoginView.signUp
+				return Strings.LoginView.signUp
 			case .register:
-				return ConstantStrings.LoginView.signIn
+				return Strings.LoginView.signIn
 			}
 		}
 	}
