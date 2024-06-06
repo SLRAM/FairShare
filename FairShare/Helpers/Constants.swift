@@ -31,11 +31,11 @@ internal final class TextAsset {
 
 }
 
-enum Colors {
+struct Colors {
 }
 
-enum Images {
-	enum System {
+struct Images {
+	struct System {
 		static let arrowLeftCircleFill = ImageAsset(name: "arrow.left.circle.fill", isSystem: true)
 		static let arrowRight = ImageAsset(name: "arrow.right", isSystem: true)
 		static let listDash = ImageAsset(name: "list.dash", isSystem: true)
@@ -45,8 +45,8 @@ enum Images {
 	}
 }
 
-enum Strings {
-	enum LoginView {
+struct Strings {
+	struct LoginView {
 		static let confirmString = "OK"
 		static let welcome = "Welcome Back"
 		static let register = "Register"
@@ -66,17 +66,17 @@ enum Strings {
 		static let confirmPassword = "Confirm Password"
 	}
 
-	enum MainTabView {
+	struct MainTabView {
 		static let receiptsTab = TextAsset(string: "Receipts")
 		static let profileTab = TextAsset(string: "Profile")
 	}
 
-	enum ReceiptView {
+	struct ReceiptView {
 		static let navigationTitle = TextAsset(string: "Receipt History")
 		static let emptyState = TextAsset(string: "Click the + to add a new receipt")
 	}
 
-	enum NewReceiptView {
+	struct NewReceiptView {
 		static let navigationTitle = TextAsset(string: "New Receipt")
 		static let editButton = TextAsset(string: "Edit")
 		static let saveButton = TextAsset(string: "Save")
@@ -88,9 +88,31 @@ enum Strings {
 		static let confirmationMessage = TextAsset(string: "Take a new photo or select one from the photo gallery")
 	}
 
-	enum ProfileView {
+	struct ProfileView {
 		static let account = "Account"
 		static let delete = "Delete Account"
 		static let signOut = "Sign Out"
+	}
+}
+
+struct Constants {
+	static let ProfileImagePath = "profileImages/"
+	static let ReceiptImagePath = "receiptImages/"
+
+	struct UserCollectionKeys {
+		static let CollectionKey = "users"
+		static let UserIdKey = "userId"
+		static let FirstNameKey = "firstName"
+		static let LastNameKey = "lastName"
+		static let EmailKey = "email"
+		static let PhotoURLKey = "photoURL"
+	}
+
+	struct ReceiptCollectionKeys {
+		static let CollectionKey = "receipts"
+		static let DocumentIdKey = "id"
+		static let CreatorIDKey = "creatorID"
+		static let DateKey = "date"
+		static let ImageURLKey = "imageURL"
 	}
 }
