@@ -48,6 +48,7 @@
 		90BD783C2C0C051E00C6A889 /* EditableReceiptItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD783B2C0C051E00C6A889 /* EditableReceiptItemView.swift */; };
 		90F4761D2C14F6510075B36B /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F4761C2C14F6510075B36B /* DBService.swift */; };
 		90F4761F2C154FE20075B36B /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F4761E2C154FE20075B36B /* AuthService.swift */; };
+		90F476212C1581950075B36B /* ReceiptCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F476202C1581950075B36B /* ReceiptCardView.swift */; };
 		90F5749F2BF93BCC005A9A2E /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F5749E2BF93BCC005A9A2E /* MainTabView.swift */; };
 		90FB96152BF020490061E83D /* ReceiptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB96142BF020490061E83D /* ReceiptModel.swift */; };
 		90FB96172BF023340061E83D /* Date+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB96162BF023340061E83D /* Date+Helper.swift */; };
@@ -102,6 +103,7 @@
 		90BD783B2C0C051E00C6A889 /* EditableReceiptItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableReceiptItemView.swift; sourceTree = "<group>"; };
 		90F4761C2C14F6510075B36B /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
 		90F4761E2C154FE20075B36B /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		90F476202C1581950075B36B /* ReceiptCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptCardView.swift; sourceTree = "<group>"; };
 		90F5749E2BF93BCC005A9A2E /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		90FB96142BF020490061E83D /* ReceiptModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptModel.swift; sourceTree = "<group>"; };
 		90FB96162BF023340061E83D /* Date+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helper.swift"; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				902C01F92BF017660004B01A /* ReceiptView.swift */,
+				90F476202C1581950075B36B /* ReceiptCardView.swift */,
 				90FB96182BF029190061E83D /* NewReceiptView.swift */,
 				909E69932C02A5C7009D00D6 /* CameraView.swift */,
 				90BD78392C0AEEB300C6A889 /* ReceiptItemsView.swift */,
@@ -275,6 +278,7 @@
 			children = (
 				90FB96142BF020490061E83D /* ReceiptModel.swift */,
 				902C01FD2BF019B60004B01A /* UserModel.swift */,
+				902C01FB2BF019770004B01A /* AuthViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -308,7 +312,6 @@
 		90FB96212BF02D010061E83D /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				902C01FB2BF019770004B01A /* AuthViewModel.swift */,
 				90F4761E2C154FE20075B36B /* AuthService.swift */,
 				90F4761C2C14F6510075B36B /* DBService.swift */,
 			);
@@ -484,6 +487,7 @@
 			files = (
 				9072AFCE2BE9C47000DE6FEB /* Persistence.swift in Sources */,
 				90FB96292BF0321C0061E83D /* InputView.swift in Sources */,
+				90F476212C1581950075B36B /* ReceiptCardView.swift in Sources */,
 				902C01FE2BF019B60004B01A /* UserModel.swift in Sources */,
 				90F5749F2BF93BCC005A9A2E /* MainTabView.swift in Sources */,
 				90FB96152BF020490061E83D /* ReceiptModel.swift in Sources */,

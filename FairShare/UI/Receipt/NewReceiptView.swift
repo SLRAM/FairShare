@@ -58,6 +58,10 @@ struct NewReceiptView: View {
 			
 			if !receiptTexts.isEmpty {
 				Button {
+					Task {
+						try await authViewModel.createReceipt(from: receiptTexts)
+					}
+
 					dismiss()
 				} label: {
 					Strings.NewReceiptView.saveButton.text

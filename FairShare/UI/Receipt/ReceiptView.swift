@@ -17,19 +17,29 @@ struct ReceiptView: View {
 
 	var body: some View {
 		NavigationStack {
-			List(authViewModel.receipts, id: \.id) { receipt in
-				Text(receipt.date)
-					.onTapGesture {
-						selectedReceipt = receipt
+			ZStack {
+				if authViewModel.isLoading {
+					ProgressView()
+						.progressViewStyle(CircularProgressViewStyle())
+						.scaleEffect(1.5, anchor: .center)
+				} else {
+					//TODO: Update to ScrollView+LazyVStack to handle larger lists and account for spacing.
+					List(authViewModel.receipts, id: \.id) { receipt in
+						ReceiptCardView(receipt: receipt)
+							.listRowSeparator(.hidden)
+							.onTapGesture {
+								selectedReceipt = receipt
+							}
 					}
-			}
-			.overlay(
-				Group {
-					if authViewModel.receipts.isEmpty {
-						Strings.ReceiptView.emptyState.text
-					}
+					.overlay(
+						Group {
+							if authViewModel.receipts.isEmpty {
+								Strings.ReceiptView.emptyState.text
+							}
+						}
+					)
 				}
-			)
+			}
 			.toolbar {
 				ToolbarItem(placement: .principal) {
 					Strings.ReceiptView.navigationTitle.text.font(.headline)
