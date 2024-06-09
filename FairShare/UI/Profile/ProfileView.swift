@@ -37,7 +37,9 @@ struct ProfileView: View {
 
 				Section(Strings.ProfileView.account) {
 					Button {
-						viewModel.signOut()
+						Task {
+							try await viewModel.signOut()
+						}
 					} label: {
 						SettingsRowView(rowType: .signOut)
 					}

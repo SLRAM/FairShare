@@ -7,13 +7,12 @@
 
 import Foundation
 
-struct ReceiptModel: Identifiable {
-	var id: String
-	var date: String
-	var subtotal: Double
-	var tax: Double
-	var tip: Double
-	var total: Double
+struct ReceiptModel: Identifiable, Codable {
+	var id: UUID
+	var creatorID: String
+	var date: Date
+//	var image: String
+	//TODO: add guest IDs to display receipt for all guests as well
 }
 
 protocol ReceiptText: Identifiable, Comparable {
@@ -23,6 +22,7 @@ protocol ReceiptText: Identifiable, Comparable {
 }
 
 class ReceiptItem: ReceiptText {
+	//TODO: add user IDs [String] for people responsible for item
 	let id: UUID
 	var title: String
 	var cost: Double

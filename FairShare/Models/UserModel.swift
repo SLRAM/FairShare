@@ -12,6 +12,7 @@ struct UserModel: Identifiable, Codable {
 	var firstName: String
 	var lastName: String
 	var email: String
+	//TODO: active user can create "guest" user by phone number. If this guest makes an account later, they can be linked to their guest account and updated via matching phone number.
 
 	var initials: String {
 		let formatter = PersonNameComponentsFormatter()
