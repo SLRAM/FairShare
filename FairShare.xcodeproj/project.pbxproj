@@ -46,6 +46,7 @@
 		909E69A02C02C865009D00D6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E699F2C02C865009D00D6 /* Constants.swift */; };
 		90BD783A2C0AEEB300C6A889 /* ReceiptItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD78392C0AEEB300C6A889 /* ReceiptItemsView.swift */; };
 		90BD783C2C0C051E00C6A889 /* EditableReceiptItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD783B2C0C051E00C6A889 /* EditableReceiptItemView.swift */; };
+		90F329842C1DB90D003AA887 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F329832C1DB90D003AA887 /* StorageService.swift */; };
 		90F4761D2C14F6510075B36B /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F4761C2C14F6510075B36B /* DBService.swift */; };
 		90F4761F2C154FE20075B36B /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F4761E2C154FE20075B36B /* AuthService.swift */; };
 		90F476212C1581950075B36B /* ReceiptCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F476202C1581950075B36B /* ReceiptCardView.swift */; };
@@ -101,6 +102,7 @@
 		909E699F2C02C865009D00D6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		90BD78392C0AEEB300C6A889 /* ReceiptItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptItemsView.swift; sourceTree = "<group>"; };
 		90BD783B2C0C051E00C6A889 /* EditableReceiptItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableReceiptItemView.swift; sourceTree = "<group>"; };
+		90F329832C1DB90D003AA887 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		90F4761C2C14F6510075B36B /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
 		90F4761E2C154FE20075B36B /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		90F476202C1581950075B36B /* ReceiptCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptCardView.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 			children = (
 				90F4761E2C154FE20075B36B /* AuthService.swift */,
 				90F4761C2C14F6510075B36B /* DBService.swift */,
+				90F329832C1DB90D003AA887 /* StorageService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				90F5749F2BF93BCC005A9A2E /* MainTabView.swift in Sources */,
 				90FB96152BF020490061E83D /* ReceiptModel.swift in Sources */,
 				90FB962F2BF0779B0061E83D /* SettingsRowView.swift in Sources */,
+				90F329842C1DB90D003AA887 /* StorageService.swift in Sources */,
 				902C01FC2BF019770004B01A /* AuthViewModel.swift in Sources */,
 				909E699C2C02C820009D00D6 /* Image+Helper.swift in Sources */,
 				90FB96312BF08C240061E83D /* FirebaseErrors.swift in Sources */,

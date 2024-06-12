@@ -98,6 +98,7 @@ struct Strings {
 struct Constants {
 	static let ProfileImagePath = "profileImages/"
 	static let ReceiptImagePath = "receiptImages/"
+	static let StorageContentType = "image/jpg"
 
 	struct UserCollectionKeys {
 		static let CollectionKey = "users"
@@ -114,5 +115,9 @@ struct Constants {
 		static let CreatorIDKey = "creatorID"
 		static let DateKey = "date"
 		static let ImageURLKey = "imageURL"
+	}
+
+	struct StorageKeys {
+		static let ImagesKey = "images"
 	}
 }
