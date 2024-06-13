@@ -38,5 +38,5 @@ struct ReceiptCardView: View {
 }
 
 #Preview {
-	ReceiptCardView(receipt: ReceiptModel(id: UUID(), creatorID: UUID().uuidString, date: Date()))
+	ReceiptCardView(receipt: ReceiptModel.dummyData)
 }

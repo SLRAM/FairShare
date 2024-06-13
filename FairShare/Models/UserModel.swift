@@ -27,4 +27,7 @@ struct UserModel: Identifiable, Codable {
 	var fullName: String {
 		return "\(firstName) \(lastName)"
 	}
+
+	static let dummyData: UserModel = UserModel(id: UUID().uuidString, firstName: "Jane", lastName: "Smith", email: "janesmith@gmail.com")
+
 }

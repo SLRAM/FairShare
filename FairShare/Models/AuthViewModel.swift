@@ -105,9 +105,9 @@ class AuthViewModel: ObservableObject {
 		isLoading = false
 	}
 
-	func createReceipt(from receiptTexts: [any ReceiptText]) async throws {
+	func createReceipt(from receiptTexts: [any ReceiptText], image: UIImage) async throws {
 		do {
-			try await DBService.createReceipt(from: receiptTexts, creatorID: self.currentUser!.id)
+			try await DBService.createReceipt(from: receiptTexts, image: image, creatorID: self.currentUser!.id)
 			try await self.fetchUserReceipts()
 		} catch {
 			print("Error writing document: \(error)")

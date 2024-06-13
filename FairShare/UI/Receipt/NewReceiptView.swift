@@ -59,7 +59,9 @@ struct NewReceiptView: View {
 			if !receiptTexts.isEmpty {
 				Button {
 					Task {
-						try await authViewModel.createReceipt(from: receiptTexts)
+						if let image = selectedImage {
+							try await authViewModel.createReceipt(from: receiptTexts, image: image)
+						}
 					}
 
 					dismiss()

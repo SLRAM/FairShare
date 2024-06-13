@@ -42,9 +42,7 @@ extension DBService {
 					.document(userId)
 					.getDocument()
 
-				guard let user = try? snapshot.data(as: UserModel.self) else {
-					throw NSError(domain: "User model error", code: 404, userInfo: nil)
-				}
+				let user = try snapshot.data(as: UserModel.self)
 
 				return user
 			} catch {
@@ -57,7 +55,7 @@ extension DBService {
 
 ///Receipts
 extension DBService {
-	static func createReceipt(from receiptTexts: [any ReceiptText], creatorID: String) async throws {
+	static func createReceipt(from receiptTexts: [any ReceiptText], image: UIImage, creatorID: String) async throws {
 		//TODO: Add receiptTexts to ReceiptModel
 		let docID = UUID()
 
@@ -66,12 +64,22 @@ extension DBService {
 		let userReceiptsRef = userRef.collection(Constants.ReceiptCollectionKeys.CollectionKey)
 
 		do {
-			try await receiptsRef.document(docID.uuidString).setData([
+			guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+				throw ReceiptError.invalidData
+			}
+
+			let imageURL = try await StorageService.postImage(imageData: imageData, imageName: Constants.ReceiptImagePath + docID.uuidString)
+
+			let receiptData: [String: Any] = [
 				Constants.ReceiptCollectionKeys.DocumentIdKey: docID.uuidString,
 				Constants.ReceiptCollectionKeys.CreatorIDKey: creatorID,
-				Constants.ReceiptCollectionKeys.DateKey: Timestamp(date: Date())
-			])
+				Constants.ReceiptCollectionKeys.DateKey: Date(),
+				Constants.ReceiptCollectionKeys.ImageURLKey: imageURL.absoluteString
+			]
 
+			// TODO: Add receiptTexts to receiptData
+
+			try await receiptsRef.document(docID.uuidString).setData(receiptData)
 			print("Receipt Document successfully written.")
 
 			try await userReceiptsRef.document(docID.uuidString).setData([
@@ -92,14 +100,17 @@ extension DBService {
 
 		do {
 			let userReceiptsSnapshot = try await userReceiptsRef.getDocuments()
+
 			for document in userReceiptsSnapshot.documents {
 				let data = document.data()
+
 				guard let receiptID = data[Constants.ReceiptCollectionKeys.DocumentIdKey] as? String else {
 					print("Error: Receipt ID is nil.")
 					continue
 				}
 
 				let receiptSnapshot = try await firestoreDB.collection(Constants.ReceiptCollectionKeys.CollectionKey).document(receiptID).getDocument()
+
 				if let receiptData = receiptSnapshot.data() {
 					guard let idString = receiptData[Constants.ReceiptCollectionKeys.DocumentIdKey] as? String,
 						  let id = UUID(uuidString: idString) else {
@@ -107,16 +118,24 @@ extension DBService {
 						continue
 					}
 
-					//					let date = receiptData[Constants.ReceiptCollectionKeys.DateKey] as? Date ?? Date()
 					guard let timestamp = receiptData[Constants.ReceiptCollectionKeys.DateKey] as? Timestamp else {
 						print("Error: Invalid Timestamp.")
 						continue
 					}
-					
+
 					let date = timestamp.dateValue()
 
-					let creatorID = receiptData[Constants.ReceiptCollectionKeys.CreatorIDKey] as? String ?? ""
-					let receiptModel = ReceiptModel(id: id, creatorID: creatorID, date: date)
+					guard let creatorID = receiptData[Constants.ReceiptCollectionKeys.CreatorIDKey] as? String else {
+						print("Error: Invalid Creator ID.")
+						continue
+					}
+
+					guard let imageUrlString = receiptData[Constants.ReceiptCollectionKeys.ImageURLKey] as? String else {
+						print("Error: Invalid image URL.")
+						continue
+					}
+
+					let receiptModel = ReceiptModel(id: id, creatorID: creatorID, date: date, imageURL: imageUrlString)
 
 					receipts.append(receiptModel)
 				}
