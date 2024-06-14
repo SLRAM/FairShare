@@ -135,7 +135,10 @@ extension DBService {
 						continue
 					}
 
-					let receiptModel = ReceiptModel(id: id, creatorID: creatorID, date: date, imageURL: imageUrlString)
+					let creatorSnapshot = try await firestoreDB.collection(Constants.UserCollectionKeys.CollectionKey).document(creatorID).getDocument()
+					let creator = try creatorSnapshot.data(as: UserModel.self)
+
+					let receiptModel = ReceiptModel(id: id, creator: creator, date: date, imageURL: imageUrlString)
 
 					receipts.append(receiptModel)
 				}

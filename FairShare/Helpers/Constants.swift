@@ -76,6 +76,11 @@ struct Strings {
 		static let emptyState = TextAsset(string: "Click the + to add a new receipt")
 	}
 
+	struct ReceiptCardView {
+		static let dateTitle = TextAsset(string: "Date:")
+		static let creatorTitle = TextAsset(string: "Created by:")
+	}
+
 	struct NewReceiptView {
 		static let navigationTitle = TextAsset(string: "New Receipt")
 		static let editButton = TextAsset(string: "Edit")

@@ -9,19 +9,19 @@ import Foundation
 
 struct ReceiptModel: Identifiable, Codable {
 	var id: UUID
-	var creatorID: String
+	var creator: UserModel
 	var date: Date
 	var imageURL: String
 	//TODO: add guest IDs to display receipt for all guests as well
 
-	init(id: UUID, creatorID: String, date: Date, imageURL: String) {
+	init(id: UUID, creator: UserModel, date: Date, imageURL: String) {
 		self.id = id
-		self.creatorID = creatorID
+		self.creator = creator
 		self.date = date
 		self.imageURL = imageURL
 	}
 
-	static let dummyData: ReceiptModel = ReceiptModel(id: UUID(), creatorID: UUID().uuidString, date: Date(), imageURL: "https://picsum.photos/200/300")
+	static let dummyData: ReceiptModel = ReceiptModel(id: UUID(), creator: UserModel.dummyData, date: Date(), imageURL: "https://picsum.photos/200/300")
 }
 
 protocol ReceiptText: Identifiable, Comparable {

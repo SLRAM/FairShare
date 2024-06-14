@@ -28,6 +28,10 @@ struct UserModel: Identifiable, Codable {
 		return "\(firstName) \(lastName)"
 	}
 
+	var abbreviatedName: String {
+		return "\(firstName) \(lastName.prefix(1))."
+	}
+
 	static let dummyData: UserModel = UserModel(id: UUID().uuidString, firstName: "Jane", lastName: "Smith", email: "janesmith@gmail.com")
 
 }
