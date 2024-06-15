@@ -31,10 +31,8 @@ class AuthViewModel: ObservableObject {
 			let result = try await AuthService.signIn(with: email, password: password)
 			self.userSession = result
 			try await self.fetchUser()
-		} catch let error as NSError {
-			print(AuthErrorCode(_nsError: error).errorMessage)
-			errorMessage = AuthErrorCode(_nsError: error).errorMessage
-			showAlert = true
+		} catch let error as FirebaseAuthError {
+			self.showError(for: error.errorMessage)
 		}
 	}
 
@@ -113,5 +111,10 @@ class AuthViewModel: ObservableObject {
 			print("Error writing document: \(error)")
 			throw error
 		}
+	}
+
+	private func showError(for message: String) {
+		errorMessage = message
+		showAlert = true
 	}
 }

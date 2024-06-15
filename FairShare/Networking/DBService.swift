@@ -65,7 +65,7 @@ extension DBService {
 
 		do {
 			guard let imageData = image.jpegData(compressionQuality: 1.0) else {
-				throw ReceiptError.invalidData
+				throw FirestoreDBError.invalidData
 			}
 
 			let imageURL = try await StorageService.postImage(imageData: imageData, imageName: Constants.ReceiptImagePath + docID.uuidString)
