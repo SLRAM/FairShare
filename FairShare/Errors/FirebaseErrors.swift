@@ -19,6 +19,7 @@ enum FirebaseAuthError: DBError {
 	case weakPassword
 	case wrongPassword
 	case operationNotAllowed
+	case keychainError
 	case unknownError(String)
 
 	init(_ error: NSError) {
@@ -41,6 +42,8 @@ enum FirebaseAuthError: DBError {
 			self = .wrongPassword
 		case .operationNotAllowed:
 			self = .operationNotAllowed
+		case .keychainError:
+			self = .keychainError
 		default:
 			self = .unknownError("\(authErrorCode)")
 		}
@@ -64,6 +67,8 @@ enum FirebaseAuthError: DBError {
 			return "Your password is incorrect. Please try again."
 		case .operationNotAllowed:
 			return "Sign in with this method is currently disabled. Please contact support for further assistance."
+		case .keychainError:
+			return "An error occurred while trying to access secure information. Please try again or contact support if the problem persists."
 		case .unknownError(let code):
 			return "Unknown error occurred. Error code: \(code)"
 		}

@@ -35,9 +35,9 @@ extension AuthService {
 	static func signOut() async throws {
 		do {
 			try Authentication.signOut()
-		} catch let error {
-			print("Error signing out user: \(error)")
-			throw error
+		} catch let error as NSError {
+			print("Error signing out user: \(FirebaseAuthError(error).errorMessage)")
+			throw FirebaseAuthError(error)
 		}
 	}
 

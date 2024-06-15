@@ -41,9 +41,8 @@ class AuthViewModel: ObservableObject {
 			try await AuthService.signOut()
 			self.userSession = nil
 			self.currentUser = nil
-		} catch let error {
-			print("Error signing out user: \(error)")
-			throw error
+		} catch let error as FirebaseAuthError {
+			self.showError(for: error.errorMessage)
 		}
 	}
 
