@@ -76,6 +76,11 @@ struct Strings {
 		static let emptyState = TextAsset(string: "Click the + to add a new receipt")
 	}
 
+	struct ReceiptCardView {
+		static let dateTitle = TextAsset(string: "Date:")
+		static let creatorTitle = TextAsset(string: "Created by:")
+	}
+
 	struct NewReceiptView {
 		static let navigationTitle = TextAsset(string: "New Receipt")
 		static let editButton = TextAsset(string: "Edit")
@@ -98,6 +103,7 @@ struct Strings {
 struct Constants {
 	static let ProfileImagePath = "profileImages/"
 	static let ReceiptImagePath = "receiptImages/"
+	static let StorageContentType = "image/jpg"
 
 	struct UserCollectionKeys {
 		static let CollectionKey = "users"
@@ -114,5 +120,9 @@ struct Constants {
 		static let CreatorIDKey = "creatorID"
 		static let DateKey = "date"
 		static let ImageURLKey = "imageURL"
+	}
+
+	struct StorageKeys {
+		static let ImagesKey = "images"
 	}
 }

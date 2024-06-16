@@ -31,10 +31,8 @@ class AuthViewModel: ObservableObject {
 			let result = try await AuthService.signIn(with: email, password: password)
 			self.userSession = result
 			try await self.fetchUser()
-		} catch let error as NSError {
-			print(AuthErrorCode(_nsError: error).errorMessage)
-			errorMessage = AuthErrorCode(_nsError: error).errorMessage
-			showAlert = true
+		} catch let error as FirebaseAuthError {
+			self.showError(for: error.errorMessage)
 		}
 	}
 
@@ -43,9 +41,8 @@ class AuthViewModel: ObservableObject {
 			try await AuthService.signOut()
 			self.userSession = nil
 			self.currentUser = nil
-		} catch let error {
-			print("Error signing out user: \(error)")
-			throw error
+		} catch let error as FirebaseAuthError {
+			self.showError(for: error.errorMessage)
 		}
 	}
 
@@ -105,13 +102,18 @@ class AuthViewModel: ObservableObject {
 		isLoading = false
 	}
 
-	func createReceipt(from receiptTexts: [any ReceiptText]) async throws {
+	func createReceipt(from receiptTexts: [any ReceiptText], image: UIImage) async throws {
 		do {
-			try await DBService.createReceipt(from: receiptTexts, creatorID: self.currentUser!.id)
+			try await DBService.createReceipt(from: receiptTexts, image: image, creatorID: self.currentUser!.id)
 			try await self.fetchUserReceipts()
 		} catch {
 			print("Error writing document: \(error)")
 			throw error
 		}
+	}
+
+	private func showError(for message: String) {
+		errorMessage = message
+		showAlert = true
 	}
 }

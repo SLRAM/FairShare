@@ -13,30 +13,29 @@ struct ReceiptCardView: View {
 	var body: some View {
 		VStack(alignment: .leading) {
 			HStack {
-				Text("Date:")
+				Strings.ReceiptCardView.dateTitle.text
 					.font(.headline)
 				Spacer()
 				Text(receipt.date, style: .date)
 					.font(.subheadline)
 			}
+
 			HStack {
-				Text("Created by:")
+				Strings.ReceiptCardView.creatorTitle.text
 					.font(.headline)
 				Spacer()
-				Text(receipt.creatorID)
+				Text(receipt.creator.abbreviatedName)
 					.font(.subheadline)
 					.lineLimit(1)
 			}
 		}
-		.padding()
+		.padding(.all, 10)
 		.background(Color(.systemGray6))
 		.cornerRadius(8)
 		.shadow(radius: 2)
-		.padding(.horizontal)
-		.padding(.vertical, 4)
 	}
 }
 
 #Preview {
-	ReceiptCardView(receipt: ReceiptModel(id: UUID(), creatorID: UUID().uuidString, date: Date()))
+	ReceiptCardView(receipt: ReceiptModel.dummyData)
 }

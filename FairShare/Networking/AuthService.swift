@@ -8,7 +8,6 @@
 import Foundation
 import FirebaseAuth
 
-
 final class AuthService {
 	private init() {}
 
@@ -28,17 +27,17 @@ extension AuthService {
 			let result = try await Authentication.signIn(withEmail: email, password: password)
 			return result.user
 		} catch let error as NSError {
-			print(AuthErrorCode(_nsError: error).errorMessage)
-			throw error
+			print("Error signing in user: \(FirebaseAuthError(error).errorMessage)")
+			throw FirebaseAuthError(error)
 		}
 	}
 
 	static func signOut() async throws {
 		do {
 			try Authentication.signOut()
-		} catch let error {
-			print("Error signing out user: \(error)")
-			throw error
+		} catch let error as NSError {
+			print("Error signing out user: \(FirebaseAuthError(error).errorMessage)")
+			throw FirebaseAuthError(error)
 		}
 	}
 
