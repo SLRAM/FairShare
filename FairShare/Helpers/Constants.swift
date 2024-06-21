@@ -71,16 +71,6 @@ struct Strings {
 		static let profileTab = TextAsset(string: "Profile")
 	}
 
-	struct ReceiptView {
-		static let navigationTitle = TextAsset(string: "Receipt History")
-		static let emptyState = TextAsset(string: "Click the + to add a new receipt")
-	}
-
-	struct ReceiptCardView {
-		static let dateTitle = TextAsset(string: "Date:")
-		static let creatorTitle = TextAsset(string: "Created by:")
-	}
-
 	struct NewReceiptView {
 		static let navigationTitle = TextAsset(string: "New Receipt")
 		static let editButton = TextAsset(string: "Edit")
@@ -97,6 +87,16 @@ struct Strings {
 		static let account = "Account"
 		static let delete = "Delete Account"
 		static let signOut = "Sign Out"
+	}
+
+	struct ReceiptCardView {
+		static let dateTitle = TextAsset(string: "Date:")
+		static let creatorTitle = TextAsset(string: "Created by:")
+	}
+
+	struct ReceiptView {
+		static let navigationTitle = TextAsset(string: "Receipt History")
+		static let emptyState = TextAsset(string: "Click the + to add a new receipt")
 	}
 }
 
