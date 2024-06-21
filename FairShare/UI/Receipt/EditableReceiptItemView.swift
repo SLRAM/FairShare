@@ -36,5 +36,5 @@ struct EditableReceiptItemView: View {
 }
 
 #Preview {
-	EditableReceiptItemView(item: .constant(ReceiptItem(title: "Apple", cost: 1.99)))
+	EditableReceiptItemView(item: .constant(ReceiptItem.dummyData))
 }

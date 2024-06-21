@@ -7,13 +7,15 @@
 
 import Foundation
 
-struct UserModel: Identifiable, Codable {
+struct UserModel: Identifiable, Codable, Hashable {
 	var id: String
 	var firstName: String
 	var lastName: String
 	var email: String
 	//TODO: active user can create "guest" user by phone number. If this guest makes an account later, they can be linked to their guest account and updated via matching phone number.
+}
 
+extension UserModel {
 	var initials: String {
 		let formatter = PersonNameComponentsFormatter()
 		if let components = formatter.personNameComponents(from: "\(firstName) \(lastName)") {
@@ -32,6 +34,19 @@ struct UserModel: Identifiable, Codable {
 		return "\(firstName) \(lastName.prefix(1))."
 	}
 
-	static let dummyData: UserModel = UserModel(id: UUID().uuidString, firstName: "Jane", lastName: "Smith", email: "janesmith@gmail.com")
-
+	static let dummyData: UserModel = dummyArrayData[0]
+	static let dummyArrayData: [UserModel] = [
+		UserModel(
+			id: UUID().uuidString,
+			firstName: "Jane",
+			lastName: "Smith",
+			email: "janesmith@gmail.com"
+		),
+		UserModel(
+			id: UUID().uuidString,
+			firstName: "John",
+			lastName: "Williams",
+			email: "jwill@gmail.com"
+		)
+	]
 }

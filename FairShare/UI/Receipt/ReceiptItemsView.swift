@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-//TODO rename ReceiptTextView
+//TODO: rename ReceiptTextView
 struct ReceiptItemsView: View {
 	@Binding var receiptTexts: [any ReceiptText]
 	@Binding var isEditing: Bool
@@ -40,9 +40,6 @@ struct ReceiptItemsView: View {
 
 #Preview {
 	ReceiptItemsView(receiptTexts: .constant([
-		ReceiptInformation(title: "Fruit Shop"),
-		ReceiptItem(title: "Apple", cost: 1.99),
-		ReceiptItem(title: "Banana", cost: 0.99),
-		ReceiptItem(title: "Orange", cost: 1.49)
-	]), isEditing: .constant(false))
+		ReceiptInformation(title: "Fruit Shop")] + ReceiptItem.dummyArrayData
+	), isEditing: .constant(true))
 }

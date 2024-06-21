@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ReceiptModel: Identifiable, Codable {
+struct ReceiptModel: Identifiable, Codable, Hashable {
 	var id: UUID
 	var creator: UserModel
 	var date: Date
@@ -21,7 +21,31 @@ struct ReceiptModel: Identifiable, Codable {
 		self.imageURL = imageURL
 	}
 
-	static let dummyData: ReceiptModel = ReceiptModel(id: UUID(), creator: UserModel.dummyData, date: Date(), imageURL: "https://picsum.photos/200/300")
+	static func == (lhs: ReceiptModel, rhs: ReceiptModel) -> Bool {
+		lhs.id == rhs.id
+	}
+
+	func hash(into hasher: inout Hasher) {
+			hasher.combine(id)
+		}
+}
+
+extension ReceiptModel {
+	static let dummyData: ReceiptModel = dummyArrayData[0]
+	static let dummyArrayData: [ReceiptModel] = [
+		ReceiptModel(
+			id: UUID(),
+			creator: UserModel.dummyData,
+			date: Date(),
+			imageURL: "https://picsum.photos/200/300"
+		),
+		ReceiptModel(
+			id: UUID(),
+			creator: UserModel.dummyArrayData[1],
+			date: Date(),
+			imageURL: "https://picsum.photos/200/300"
+		)
+	]
 }
 
 protocol ReceiptText: Identifiable, Comparable {
@@ -41,10 +65,9 @@ class ReceiptItem: ReceiptText {
 		self.cost = cost
 	}
 
-	var costAsCurrency: String {
-		return String(format: "$%.02f", self.cost)
-
-	}
+	func hash(into hasher: inout Hasher) {
+			hasher.combine(id)
+		}
 
 	static func == (lhs: ReceiptItem, rhs: ReceiptItem) -> Bool {
 		return lhs.id == rhs.id && lhs.title == rhs.title && lhs.cost == rhs.cost
@@ -54,6 +77,39 @@ class ReceiptItem: ReceiptText {
 	static func < (lhs: ReceiptItem, rhs: ReceiptItem) -> Bool {
 		return lhs.id < rhs.id
 	}
+}
+
+extension ReceiptItem {
+	var costAsCurrency: String {
+		return String(format: "$%.02f", self.cost)
+
+	}
+
+	static let dummyData: ReceiptItem = dummyArrayData[0]
+	static let dummyArrayData: [ReceiptItem] = [
+		ReceiptItem(
+			title: "Apple",
+			cost: 1.99
+		),
+		ReceiptItem(
+			title: "Banana",
+			cost: 0.99
+		),
+		ReceiptItem(
+			title: "Orange",
+			cost: 1.49
+		),
+		ReceiptItem(
+			title: "Tax",
+			cost: 0.40,
+			type: .tax
+		),
+		ReceiptItem(
+			title: "Total",
+			cost: 4.87,
+			type: .total
+		)
+	]
 }
 
 class ReceiptInformation: ReceiptText {
