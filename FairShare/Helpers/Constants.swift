@@ -120,6 +120,8 @@ struct Constants {
 		static let CreatorIDKey = "creatorID"
 		static let DateKey = "date"
 		static let ImageURLKey = "imageURL"
+		static let ItemsKey = "items"
+
 	}
 
 	struct StorageKeys {

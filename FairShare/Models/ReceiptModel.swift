@@ -12,6 +12,8 @@ struct ReceiptModel: Identifiable, Codable, Hashable {
 	var creator: UserModel
 	var date: Date
 	var imageURL: String
+	//TODO: update items to [any ReceiptText]
+//	var items: [ReceiptItem]
 	//TODO: add guest IDs to display receipt for all guests as well
 
 	init(id: UUID, creator: UserModel, date: Date, imageURL: String) {
@@ -51,18 +53,30 @@ extension ReceiptModel {
 protocol ReceiptText: Identifiable, Comparable {
 	var id: UUID { get }
 	var title: String { get set }
+
+	func toDictionary() -> [String: Any]
 }
 
-class ReceiptItem: ReceiptText {
+enum ReceiptItemType: String, CaseIterable {
+	case item
+	case tax
+	case tip
+	case total
+	case subTotal
+}
+
+class ReceiptItem: ReceiptText, Hashable {
 	//TODO: add user IDs [String] for people responsible for item
 	let id: UUID
 	var title: String
 	var cost: Double
+	var type: ReceiptItemType
 
-	init(id: UUID = UUID(), title: String, cost: Double) {
+	init(id: UUID = UUID(), title: String, cost: Double, type: ReceiptItemType = .item) {
 		self.id = id
 		self.title = title
 		self.cost = cost
+		self.type = type
 	}
 
 	func hash(into hasher: inout Hasher) {
@@ -84,6 +98,15 @@ extension ReceiptItem {
 		return String(format: "$%.02f", self.cost)
 
 	}
+
+	func toDictionary() -> [String: Any] {
+			return [
+				"id": id.uuidString,
+				"title": title,
+				"cost": cost,
+				"type": type.rawValue
+			]
+		}
 
 	static let dummyData: ReceiptItem = dummyArrayData[0]
 	static let dummyArrayData: [ReceiptItem] = [
@@ -128,5 +151,13 @@ class ReceiptInformation: ReceiptText {
 	static func < (lhs: ReceiptInformation, rhs: ReceiptInformation) -> Bool {
 		return lhs.id < rhs.id
 	}
+}
 
+extension ReceiptInformation {
+	func toDictionary() -> [String : Any] {
+		return [
+			"id": id.uuidString,
+			"title": title
+		]
+	}
 }
