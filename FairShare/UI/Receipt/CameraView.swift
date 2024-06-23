@@ -205,13 +205,28 @@ enum Processor {
 				let valueString = current.boundingBox.minX < next.boundingBox.minX ? candidateTwo.string : candidateOne.string
 
 				if let value = Double(valueString) {
-					receiptText.append(ReceiptItem(title: key, cost: value))
+					let type: ReceiptItemType = {
+						if key.lowercased() == "tax" {
+							return .tax
+						} else if key.lowercased() == "tip" {
+							return .tip
+						} else if key.lowercased() == "sub total" {
+							return .subTotal
+						} else if key.lowercased() == "total" {
+							return .total
+						} else {
+							return .item
+						}
+					}()
+
+					receiptText.append(ReceiptItem(title: key, cost: value, type: type))
 				}
 				index += 2
 			} else {
-				let title = candidateOne.string
-				receiptText.append(ReceiptInformation(title: title))
-
+				//TODO: reintroduce ReceiptInformation
+//				let title = candidateOne.string
+//				receiptText.append(ReceiptInformation(title: title))
+//
 				index += 1
 			}
 		}

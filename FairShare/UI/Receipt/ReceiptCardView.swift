@@ -30,9 +30,13 @@ struct ReceiptCardView: View {
 			}
 		}
 		.padding(.all, 10)
-		.background(Color(.systemGray6))
 		.cornerRadius(8)
-		.shadow(radius: 2)
+		.background(Color(.systemGray6))
+		.background(
+			RoundedRectangle(cornerRadius: 8)
+				.shadow(radius: 2)
+				.padding(1)
+		)
 	}
 }
 

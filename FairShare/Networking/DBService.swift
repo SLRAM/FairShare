@@ -70,15 +70,15 @@ extension DBService {
 			}
 
 			let imageURL = try await StorageService.postImage(imageData: imageData, imageName: Constants.ReceiptImagePath + docID.uuidString)
+			let receiptTextsData = receiptTexts.map { $0.toDictionary() }
 
 			let receiptData: [String: Any] = [
 				Constants.ReceiptCollectionKeys.DocumentIdKey: docID.uuidString,
 				Constants.ReceiptCollectionKeys.CreatorIDKey: creatorID,
 				Constants.ReceiptCollectionKeys.DateKey: Date(),
-				Constants.ReceiptCollectionKeys.ImageURLKey: imageURL.absoluteString
+				Constants.ReceiptCollectionKeys.ImageURLKey: imageURL.absoluteString,
+				Constants.ReceiptCollectionKeys.ItemsKey: receiptTextsData
 			]
-
-			// TODO: Add receiptTexts to receiptData
 
 			try await receiptsRef.document(docID.uuidString).setData(receiptData)
 			print("Receipt Document successfully written.")
@@ -136,6 +136,7 @@ extension DBService {
 						continue
 					}
 
+					//TODO: add items from firebase to ReceiptModel
 					let creatorSnapshot = try await firestoreDB.collection(Constants.UserCollectionKeys.CollectionKey).document(creatorID).getDocument()
 					let creator = try creatorSnapshot.data(as: UserModel.self)
 

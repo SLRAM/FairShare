@@ -6,13 +6,11 @@
 //
 
 import Firebase
-import PhotosUI
 import SwiftUI
 
 struct ReceiptView: View {
 	@EnvironmentObject var authViewModel: AuthViewModel
-	
-	@State private var selectedReceipt: ReceiptModel? = nil
+
 	@State private var isPresented = false
 
 	var body: some View {
@@ -23,13 +21,16 @@ struct ReceiptView: View {
 						.progressViewStyle(CircularProgressViewStyle())
 						.scaleEffect(1.5, anchor: .center)
 				} else {
-					//TODO: Update to ScrollView+LazyVStack to handle larger lists and account for spacing.
-					List(authViewModel.receipts, id: \.id) { receipt in
-						ReceiptCardView(receipt: receipt)
-							.listRowSeparator(.hidden)
-							.onTapGesture {
-								selectedReceipt = receipt
+					ScrollView {
+						LazyVStack(spacing: 10) {
+							ForEach(authViewModel.receipts, id: \.id) { receipt in
+								NavigationLink(value: receipt) {
+									ReceiptCardView(receipt: receipt)
+								}
+								.foregroundColor(.black)
 							}
+						}
+						.padding()
 					}
 					.overlay(
 						Group {
@@ -40,10 +41,9 @@ struct ReceiptView: View {
 					)
 				}
 			}
+			.navigationTitle(Strings.ReceiptView.navigationTitle.text)
+			.navigationBarTitleDisplayMode(.inline)
 			.toolbar {
-				ToolbarItem(placement: .principal) {
-					Strings.ReceiptView.navigationTitle.text.font(.headline)
-				}
 				ToolbarItem(placement: .topBarTrailing) {
 					Button {
 						isPresented.toggle()
@@ -52,9 +52,12 @@ struct ReceiptView: View {
 					}
 				}
 			}
-		}
-		.fullScreenCover(isPresented: $isPresented) {
-			NewReceiptView()
+			.fullScreenCover(isPresented: $isPresented) {
+				NewReceiptView()
+			}
+			.navigationDestination(for: ReceiptModel.self) { receipt in
+				ReceiptDetailView(receipt: receipt)
+			}
 		}
 	}
 }
