@@ -94,6 +94,12 @@ struct Strings {
 		static let creatorTitle = TextAsset(string: "Created by:")
 	}
 
+	struct ReceiptDetailView {
+		static let defaultToggleTitle = TextAsset(string: "Full Receipt")
+		static let onToggleTitle = TextAsset(string: "Self Only")
+		static let imagesSectionTitle = TextAsset(string: "Images")
+	}
+
 	struct ReceiptView {
 		static let navigationTitle = TextAsset(string: "Receipt History")
 		static let emptyState = TextAsset(string: "Click the + to add a new receipt")

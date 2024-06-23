@@ -9,8 +9,10 @@ import Foundation
 
 extension Date {
 	enum DateFormatType: String {
-		case full = "MMMM dd hh:mm a"
+		case dateTime = "MMMM dd hh:mm a"
 		case standard = "MMMM dd"
+		case full = "MMMM d, yyyy"
+
 	}
 
 	static func getISOTimestamp() -> String {
@@ -19,7 +21,7 @@ extension Date {
 		return timestamp
 	}
 
-	func toString(format: DateFormatType = .standard) -> String {
+	func toString(_ format: DateFormatType = .standard) -> String {
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = format.rawValue
 		return dateFormatter.string(from: self)

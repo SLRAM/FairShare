@@ -31,6 +31,7 @@
 		902C01FA2BF017660004B01A /* ReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C01F92BF017660004B01A /* ReceiptView.swift */; };
 		902C01FC2BF019770004B01A /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C01FB2BF019770004B01A /* AuthViewModel.swift */; };
 		902C01FE2BF019B60004B01A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C01FD2BF019B60004B01A /* UserModel.swift */; };
+		902D77022C27766800F7B462 /* ReceiptDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902D77012C27766800F7B462 /* ReceiptDetailView.swift */; };
 		902D77042C278D9400F7B462 /* CustomToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902D77032C278D9400F7B462 /* CustomToggleStyle.swift */; };
 		9072AFC52BE9C46E00DE6FEB /* FairShareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */; };
 		9072AFC72BE9C46E00DE6FEB /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFC62BE9C46E00DE6FEB /* EntryView.swift */; };
@@ -85,6 +86,7 @@
 		902C01F92BF017660004B01A /* ReceiptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptView.swift; sourceTree = "<group>"; };
 		902C01FB2BF019770004B01A /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		902C01FD2BF019B60004B01A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		902D77012C27766800F7B462 /* ReceiptDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptDetailView.swift; sourceTree = "<group>"; };
 		902D77032C278D9400F7B462 /* CustomToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggleStyle.swift; sourceTree = "<group>"; };
 		9072AFC12BE9C46E00DE6FEB /* FairShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FairShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairShareApp.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				902C01F92BF017660004B01A /* ReceiptView.swift */,
+				902D77012C27766800F7B462 /* ReceiptDetailView.swift */,
 				90F476202C1581950075B36B /* ReceiptCardView.swift */,
 				90FB96182BF029190061E83D /* NewReceiptView.swift */,
 				909E69932C02A5C7009D00D6 /* CameraView.swift */,
@@ -523,6 +526,7 @@
 				909E69A02C02C865009D00D6 /* Constants.swift in Sources */,
 				9072AFC52BE9C46E00DE6FEB /* FairShareApp.swift in Sources */,
 				902C01FA2BF017660004B01A /* ReceiptView.swift in Sources */,
+				902D77022C27766800F7B462 /* ReceiptDetailView.swift in Sources */,
 				90FB96272BF030B20061E83D /* LoginView.swift in Sources */,
 				9072AFD12BE9C47000DE6FEB /* FairShare.xcdatamodeld in Sources */,
 				90F4761D2C14F6510075B36B /* DBService.swift in Sources */,
