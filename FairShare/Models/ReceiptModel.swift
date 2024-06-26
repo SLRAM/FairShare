@@ -13,14 +13,15 @@ struct ReceiptModel: Identifiable, Codable, Hashable {
 	var date: Date
 	var imageURL: String
 	//TODO: update items to [any ReceiptText]
-//	var items: [ReceiptItem]
+	var items: [ReceiptItem]
 	//TODO: add guest IDs to display receipt for all guests as well
 
-	init(id: UUID, creator: UserModel, date: Date, imageURL: String) {
+	init(id: UUID, creator: UserModel, date: Date, imageURL: String, items: [ReceiptItem]) {
 		self.id = id
 		self.creator = creator
 		self.date = date
 		self.imageURL = imageURL
+		self.items = items
 	}
 
 	static func == (lhs: ReceiptModel, rhs: ReceiptModel) -> Bool {
@@ -39,13 +40,15 @@ extension ReceiptModel {
 			id: UUID(),
 			creator: UserModel.dummyData,
 			date: Date(),
-			imageURL: "https://picsum.photos/200/300"
+			imageURL: "https://picsum.photos/200/300",
+			items: ReceiptItem.dummyArrayData
 		),
 		ReceiptModel(
 			id: UUID(),
 			creator: UserModel.dummyArrayData[1],
 			date: Date(),
-			imageURL: "https://picsum.photos/200/300"
+			imageURL: "https://picsum.photos/200/300",
+			items: ReceiptItem.dummyArrayData
 		)
 	]
 }
@@ -57,25 +60,27 @@ protocol ReceiptText: Identifiable, Comparable {
 	func toDictionary() -> [String: Any]
 }
 
-enum ReceiptItemType: String, CaseIterable {
+enum ReceiptItemType: String, CaseIterable, Decodable {
 	case item
+	case subTotal
 	case tax
 	case tip
 	case total
-	case subTotal
 }
 
-class ReceiptItem: ReceiptText, Hashable {
-	//TODO: add user IDs [String] for people responsible for item
+class ReceiptItem: ReceiptText, Identifiable, Codable, Hashable {
+	//TODO: add user IDs [String] for people responsible for item. If payerIDs is empty then assume everyone shared the cost. If more than one payerIDs then divide cost by count.
 	let id: UUID
 	var title: String
 	var cost: Double
+	var payerIDs: [String]?
 	var type: ReceiptItemType
 
-	init(id: UUID = UUID(), title: String, cost: Double, type: ReceiptItemType = .item) {
+	init(id: UUID = UUID(), title: String, cost: Double, payerIDs: [String] = [], type: ReceiptItemType = .item) {
 		self.id = id
 		self.title = title
 		self.cost = cost
+		self.payerIDs = payerIDs
 		self.type = type
 	}
 
@@ -90,6 +95,32 @@ class ReceiptItem: ReceiptText, Hashable {
 
 	static func < (lhs: ReceiptItem, rhs: ReceiptItem) -> Bool {
 		return lhs.id < rhs.id
+	}
+
+	enum CodingKeys: String, CodingKey {
+		case id
+		case title
+		case cost
+		case payerIDs
+		case type
+	}
+
+	required init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		id = try container.decode(UUID.self, forKey: .id)
+		title = try container.decode(String.self, forKey: .title)
+		cost = try container.decode(Double.self, forKey: .cost)
+		payerIDs = try container.decodeIfPresent([String].self, forKey: .payerIDs)
+		type = try container.decode(ReceiptItemType.self, forKey: .type)
+	}
+
+	func encode(to encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		try container.encode(id, forKey: .id)
+		try container.encode(title, forKey: .title)
+		try container.encode(cost, forKey: .cost)
+		try container.encodeIfPresent(payerIDs, forKey: .payerIDs)
+		try container.encode(type.rawValue, forKey: .type)
 	}
 }
 

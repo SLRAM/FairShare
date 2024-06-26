@@ -26,6 +26,14 @@ class AuthViewModel: ObservableObject {
 		}
 	}
 
+	private func showError(for message: String) {
+		errorMessage = message
+		showAlert = true
+	}
+}
+
+///Authentication
+extension AuthViewModel {
 	func signIn(with email: String, password: String) async throws {
 		do {
 			let result = try await AuthService.signIn(with: email, password: password)
@@ -84,7 +92,10 @@ class AuthViewModel: ObservableObject {
 			throw error
 		}
 	}
+}
 
+///Receipt
+extension AuthViewModel {
 	func fetchUserReceipts() async throws {
 		guard let userID = self.currentUser?.id else {
 			print("Error: Current user ID is nil.")
@@ -111,9 +122,7 @@ class AuthViewModel: ObservableObject {
 			throw error
 		}
 	}
+}
 
-	private func showError(for message: String) {
-		errorMessage = message
-		showAlert = true
 	}
 }

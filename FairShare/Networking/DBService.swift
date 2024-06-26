@@ -35,19 +35,24 @@ extension DBService {
 			throw error
 		}
 	}
+
 	static func fetchUser(userId: String) async throws -> UserModel {
-			do {
-				let snapshot = try await Firestore.firestore()
-					.collection(Constants.UserCollectionKeys.CollectionKey)
-					.document(userId)
-					.getDocument()
+		do {
+			let snapshot = try await Firestore.firestore()
+				.collection(Constants.UserCollectionKeys.CollectionKey)
+				.document(userId)
+				.getDocument()
 
-				let user = try snapshot.data(as: UserModel.self)
+			let user = try snapshot.data(as: UserModel.self)
 
-				return user
-			} catch {
-				print("Error fetching user: \(error)")
-				throw error
+			return user
+		} catch {
+			print("Error fetching user: \(error)")
+			throw error
+		}
+	}
+}
+
 			}
 		}
 
@@ -56,7 +61,6 @@ extension DBService {
 ///Receipts
 extension DBService {
 	static func createReceipt(from receiptTexts: [any ReceiptText], image: UIImage, creatorID: String) async throws {
-		//TODO: Add receiptTexts to ReceiptModel
 		let docID = UUID()
 
 		let receiptsRef = firestoreDB.collection(Constants.ReceiptCollectionKeys.CollectionKey)
@@ -136,11 +140,20 @@ extension DBService {
 						continue
 					}
 
-					//TODO: add items from firebase to ReceiptModel
+					guard let itemsArray = receiptData[Constants.ReceiptCollectionKeys.ItemsKey] as? [[String: Any]] else {
+						print("Error: Invalid items array.")
+						continue
+					}
+
+					let jsonData = try JSONSerialization.data(withJSONObject: itemsArray, options: [])
+					let decoder = JSONDecoder()
+					decoder.keyDecodingStrategy = .convertFromSnakeCase
+					let items = try decoder.decode([ReceiptItem].self, from: jsonData)
+
 					let creatorSnapshot = try await firestoreDB.collection(Constants.UserCollectionKeys.CollectionKey).document(creatorID).getDocument()
 					let creator = try creatorSnapshot.data(as: UserModel.self)
 
-					let receiptModel = ReceiptModel(id: id, creator: creator, date: date, imageURL: imageUrlString)
+					let receiptModel = ReceiptModel(id: id, creator: creator, date: date, imageURL: imageUrlString, items: items)
 
 					receipts.append(receiptModel)
 				}
