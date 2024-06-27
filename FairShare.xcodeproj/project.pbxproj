@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9005BDC72BF9606B00039D00 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9005BDC62BF9606B00039D00 /* Launch Screen.storyboard */; };
+		9029DF162C31422B008586E6 /* NewReceiptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9029DF152C31422B008586E6 /* NewReceiptViewModel.swift */; };
 		902C01CD2BF008060004B01A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 902C01CC2BF008060004B01A /* FirebaseAnalytics */; };
 		902C01CF2BF008060004B01A /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 902C01CE2BF008060004B01A /* FirebaseAnalyticsSwift */; };
 		902C01D12BF008060004B01A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 902C01D02BF008060004B01A /* FirebaseAuth */; };
@@ -82,6 +83,7 @@
 
 /* Begin PBXFileReference section */
 		9005BDC62BF9606B00039D00 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		9029DF152C31422B008586E6 /* NewReceiptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiptViewModel.swift; sourceTree = "<group>"; };
 		902C01F52BF00B0E0004B01A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		902C01F92BF017660004B01A /* ReceiptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptView.swift; sourceTree = "<group>"; };
 		902C01FB2BF019770004B01A /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				902D77012C27766800F7B462 /* ReceiptDetailView.swift */,
 				90F476202C1581950075B36B /* ReceiptCardView.swift */,
 				90FB96182BF029190061E83D /* NewReceiptView.swift */,
+				9029DF152C31422B008586E6 /* NewReceiptViewModel.swift */,
 				909E69932C02A5C7009D00D6 /* CameraView.swift */,
 				90BD78392C0AEEB300C6A889 /* ReceiptItemsView.swift */,
 				90BD783B2C0C051E00C6A889 /* EditableReceiptItemView.swift */,
@@ -528,6 +531,7 @@
 				902C01FA2BF017660004B01A /* ReceiptView.swift in Sources */,
 				902D77022C27766800F7B462 /* ReceiptDetailView.swift in Sources */,
 				90FB96272BF030B20061E83D /* LoginView.swift in Sources */,
+				9029DF162C31422B008586E6 /* NewReceiptViewModel.swift in Sources */,
 				9072AFD12BE9C47000DE6FEB /* FairShare.xcdatamodeld in Sources */,
 				90F4761D2C14F6510075B36B /* DBService.swift in Sources */,
 			);
