@@ -127,10 +127,17 @@ struct Constants {
 		static let DateKey = "date"
 		static let ImageURLKey = "imageURL"
 		static let ItemsKey = "items"
-
 	}
 
 	struct StorageKeys {
 		static let ImagesKey = "images"
+	}
+
+	struct ContactCollectionKeys {
+		static let CollectionKey = "contacts"
+		static let DocumentIdKey = "id"
+		static let FirstNameKey = "firstName"
+		static let LastNameKey = "lastName"
+		static let PhoneNumberKey = "phoneNumber"
 	}
 }

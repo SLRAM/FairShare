@@ -53,6 +53,43 @@ extension DBService {
 	}
 }
 
+///Contacts
+extension DBService {
+	static func addContact(contact: ContactModel, creatorID: String) async throws {
+		//TODO: encrypt phone numbers for safety.
+		let contactsRef = firestoreDB.collection(Constants.ContactCollectionKeys.CollectionKey)
+		let userRef = firestoreDB.collection(Constants.UserCollectionKeys.CollectionKey).document(creatorID)
+		let userContactsRef = userRef.collection(Constants.ContactCollectionKeys.CollectionKey)
+
+		do {
+			let querySnapshot = try await contactsRef
+				.whereField(Constants.ContactCollectionKeys.PhoneNumberKey, isEqualTo: contact.phoneNumber)
+				.getDocuments()
+
+			if !querySnapshot.isEmpty {
+				print("Contact with phone number \(contact.phoneNumber) already exists.")
+				return
+			}
+
+			let docID = UUID()
+			let contactData: [String: Any] = [
+				Constants.ContactCollectionKeys.DocumentIdKey: docID.uuidString,
+				Constants.ContactCollectionKeys.FirstNameKey: contact.firstName,
+				Constants.ContactCollectionKeys.LastNameKey: contact.lastName,
+				Constants.ContactCollectionKeys.PhoneNumberKey: contact.phoneNumber
+			]
+
+			try await contactsRef.document(docID.uuidString).setData(contactData)
+			print("Contact Document successfully written.")
+
+			try await userContactsRef.document(docID.uuidString).setData([
+				Constants.ContactCollectionKeys.DocumentIdKey: docID.uuidString
+			])
+		} catch {
+			print("Error writing contact document: \(error)")
+			throw error
+		}
+	}
 			}
 		}
 

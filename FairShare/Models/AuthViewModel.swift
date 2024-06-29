@@ -124,5 +124,17 @@ extension AuthViewModel {
 	}
 }
 
+///Contacts
+extension AuthViewModel {
+	func addContacts(contacts: [ContactModel]) async throws {
+		do {
+			for contact in contacts {
+				try await DBService.addContact(contact: contact, creatorID: self.currentUser!.id)
+			}
+		} catch {
+			print("Error writing document: \(error)")
+			throw error
+		}
+	}
 	}
 }
