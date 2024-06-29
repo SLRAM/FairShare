@@ -42,6 +42,7 @@ struct Images {
 		static let personCropCircle = ImageAsset(name: "person.crop.circle", isSystem: true)
 		static let plus = ImageAsset(name: "plus", isSystem: true)
 		static let xMarkCircleFill = ImageAsset(name: "xmark.circle.fill", isSystem: true)
+		static let listBulletCircleFill = ImageAsset(name: "list.bullet.circle.fill", isSystem: true)
 	}
 }
 
@@ -85,8 +86,11 @@ struct Strings {
 
 	struct ProfileView {
 		static let account = "Account"
+		static let contacts = "Contacts"
 		static let delete = "Delete Account"
 		static let signOut = "Sign Out"
+		static let addContacts = "Add Contacts"
+		static let viewContacts = "View Contacts"
 	}
 
 	struct ReceiptCardView {

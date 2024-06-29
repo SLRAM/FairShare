@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ProfileView: View {
 	@EnvironmentObject var viewModel: AuthViewModel
+	@State private var showContactPicker = false
+	@State private var selectedContacts: [ContactModel] = []
+
 	var body: some View {
 		if let user = viewModel.currentUser {
 			List {
@@ -49,6 +52,26 @@ struct ProfileView: View {
 					} label: {
 						SettingsRowView(rowType: .delete)
 					}
+				}
+
+				Section(Strings.ProfileView.contacts) {
+					//TODO: add view Contacts to allow for edits.
+					Button {
+						showContactPicker.toggle()
+					} label: {
+						SettingsRowView(rowType: .contacts)
+					}
+				}
+			}
+			.fullScreenCover(
+				isPresented: $showContactPicker,
+				content: {
+					ContactPickerView(selectedContacts: $selectedContacts)
+				}
+			)
+			.onChange(of: selectedContacts) {
+				Task {
+					try await viewModel.addContacts(contacts: selectedContacts)
 				}
 			}
 		}

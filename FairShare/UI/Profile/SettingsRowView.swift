@@ -11,6 +11,7 @@ struct SettingsRowView: View {
 	enum RowType {
 		case signOut
 		case delete
+		case contacts
 
 		var image: Image {
 			switch self {
@@ -18,6 +19,8 @@ struct SettingsRowView: View {
 				return Images.System.arrowLeftCircleFill.image
 			case .delete:
 				return Images.System.xMarkCircleFill.image
+			case .contacts:
+				return Images.System.listBulletCircleFill.image
 			}
 		}
 
@@ -27,6 +30,8 @@ struct SettingsRowView: View {
 				return Strings.ProfileView.signOut
 			case .delete:
 				return Strings.ProfileView.delete
+			case .contacts:
+				return Strings.ProfileView.addContacts
 			}
 		}
 
@@ -34,6 +39,8 @@ struct SettingsRowView: View {
 			switch self {
 			case .signOut, .delete:
 				return Color.red
+			case .contacts:
+				return Color.green
 			}
 		}
 	}
