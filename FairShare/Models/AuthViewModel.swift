@@ -14,6 +14,7 @@ class AuthViewModel: ObservableObject {
 	@Published var userSession: FirebaseAuth.User?
 	@Published var currentUser: UserModel?
 	@Published var receipts: [ReceiptModel] = []
+	@Published var contacts: [ContactModel] = []
 	@Published var showAlert = false
 	@Published var errorMessage: String = ""
 	@Published var isLoading: Bool = true
@@ -87,6 +88,7 @@ extension AuthViewModel {
 			let fetchedUser = try await DBService.fetchUser(userId: userId)
 			self.currentUser = fetchedUser
 			try await self.fetchUserReceipts()
+			try await self.fetchContacts()
 		} catch {
 			print("Error fetching user: \(error)")
 			throw error
@@ -136,5 +138,19 @@ extension AuthViewModel {
 			throw error
 		}
 	}
+
+	func fetchContacts() async throws {
+		guard let userID = self.currentUser?.id else {
+			print("Error: Current user ID is nil.")
+			return
+		}
+
+		do {
+			let fetchedContacts = try await DBService.fetchUserContacts(userID: userID)
+			self.contacts = fetchedContacts.sorted { $0.firstName > $1.firstName }
+		} catch {
+			print("Error fetching user contacts: \(error)")
+			throw error
+		}
 	}
 }

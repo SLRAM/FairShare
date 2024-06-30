@@ -90,8 +90,48 @@ extension DBService {
 			throw error
 		}
 	}
+
+	static func fetchUserContacts(userID: String) async throws -> [ContactModel] {
+		var contacts: [ContactModel] = []
+
+		let userRef = firestoreDB.collection(Constants.UserCollectionKeys.CollectionKey).document(userID)
+		let userContactsRef = userRef.collection(Constants.ContactCollectionKeys.CollectionKey)
+
+		do {
+			let userContactsSnapshot = try await userContactsRef.getDocuments()
+
+			for document in userContactsSnapshot.documents {
+				let data = document.data()
+
+				guard let contactID = data[Constants.ContactCollectionKeys.DocumentIdKey] as? String else {
+					print("Error: Contact ID is nil for document \(document.documentID)")
+					continue
+				}
+
+				let contactSnapshot = try await firestoreDB.collection(Constants.ContactCollectionKeys.CollectionKey).document(contactID).getDocument()
+
+				if let contactData = contactSnapshot.data() {
+					guard let id = contactData[Constants.ContactCollectionKeys.DocumentIdKey] as? String,
+						  let firstName = contactData[Constants.ContactCollectionKeys.FirstNameKey] as? String,
+						  let lastName = contactData[Constants.ContactCollectionKeys.LastNameKey] as? String,
+						  let phoneNumber = contactData[Constants.ContactCollectionKeys.PhoneNumberKey] as? String else {
+
+						print("Error: Required fields are missing for contact \(contactID)")
+						continue
+					}
+
+					let contact = ContactModel(id: id, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
+					contacts.append(contact)
+
+				}
 			}
+		} catch {
+			print("Error fetching user contacts: \(error)")
+			throw error
 		}
+
+		return contacts
+	}
 
 }
 
