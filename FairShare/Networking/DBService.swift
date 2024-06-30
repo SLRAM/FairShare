@@ -35,28 +35,109 @@ extension DBService {
 			throw error
 		}
 	}
+
 	static func fetchUser(userId: String) async throws -> UserModel {
-			do {
-				let snapshot = try await Firestore.firestore()
-					.collection(Constants.UserCollectionKeys.CollectionKey)
-					.document(userId)
-					.getDocument()
+		do {
+			let snapshot = try await Firestore.firestore()
+				.collection(Constants.UserCollectionKeys.CollectionKey)
+				.document(userId)
+				.getDocument()
 
-				let user = try snapshot.data(as: UserModel.self)
+			let user = try snapshot.data(as: UserModel.self)
 
-				return user
-			} catch {
-				print("Error fetching user: \(error)")
-				throw error
-			}
+			return user
+		} catch {
+			print("Error fetching user: \(error)")
+			throw error
 		}
+	}
+}
+
+///Contacts
+extension DBService {
+	static func addContact(contact: ContactModel, creatorID: String) async throws {
+		//TODO: encrypt phone numbers for safety.
+		let contactsRef = firestoreDB.collection(Constants.ContactCollectionKeys.CollectionKey)
+		let userRef = firestoreDB.collection(Constants.UserCollectionKeys.CollectionKey).document(creatorID)
+		let userContactsRef = userRef.collection(Constants.ContactCollectionKeys.CollectionKey)
+
+		do {
+			let querySnapshot = try await contactsRef
+				.whereField(Constants.ContactCollectionKeys.PhoneNumberKey, isEqualTo: contact.phoneNumber)
+				.getDocuments()
+
+			if !querySnapshot.isEmpty {
+				print("Contact with phone number \(contact.phoneNumber) already exists.")
+				return
+			}
+
+			let docID = UUID()
+			let contactData: [String: Any] = [
+				Constants.ContactCollectionKeys.DocumentIdKey: docID.uuidString,
+				Constants.ContactCollectionKeys.FirstNameKey: contact.firstName,
+				Constants.ContactCollectionKeys.LastNameKey: contact.lastName,
+				Constants.ContactCollectionKeys.PhoneNumberKey: contact.phoneNumber
+			]
+
+			try await contactsRef.document(docID.uuidString).setData(contactData)
+			print("Contact Document successfully written.")
+
+			try await userContactsRef.document(docID.uuidString).setData([
+				Constants.ContactCollectionKeys.DocumentIdKey: docID.uuidString
+			])
+		} catch {
+			print("Error writing contact document: \(error)")
+			throw error
+		}
+	}
+
+	static func fetchUserContacts(userID: String) async throws -> [ContactModel] {
+		var contacts: [ContactModel] = []
+
+		let userRef = firestoreDB.collection(Constants.UserCollectionKeys.CollectionKey).document(userID)
+		let userContactsRef = userRef.collection(Constants.ContactCollectionKeys.CollectionKey)
+
+		do {
+			let userContactsSnapshot = try await userContactsRef.getDocuments()
+
+			for document in userContactsSnapshot.documents {
+				let data = document.data()
+
+				guard let contactID = data[Constants.ContactCollectionKeys.DocumentIdKey] as? String else {
+					print("Error: Contact ID is nil for document \(document.documentID)")
+					continue
+				}
+
+				let contactSnapshot = try await firestoreDB.collection(Constants.ContactCollectionKeys.CollectionKey).document(contactID).getDocument()
+
+				if let contactData = contactSnapshot.data() {
+					guard let id = contactData[Constants.ContactCollectionKeys.DocumentIdKey] as? String,
+						  let firstName = contactData[Constants.ContactCollectionKeys.FirstNameKey] as? String,
+						  let lastName = contactData[Constants.ContactCollectionKeys.LastNameKey] as? String,
+						  let phoneNumber = contactData[Constants.ContactCollectionKeys.PhoneNumberKey] as? String else {
+
+						print("Error: Required fields are missing for contact \(contactID)")
+						continue
+					}
+
+					let contact = ContactModel(id: id, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
+					contacts.append(contact)
+
+				}
+			}
+		} catch {
+			print("Error fetching user contacts: \(error)")
+			throw error
+		}
+
+		return contacts
+	}
 
 }
 
 ///Receipts
 extension DBService {
 	static func createReceipt(from receiptTexts: [any ReceiptText], image: UIImage, creatorID: String) async throws {
-		//TODO: Add receiptTexts to ReceiptModel
 		let docID = UUID()
 
 		let receiptsRef = firestoreDB.collection(Constants.ReceiptCollectionKeys.CollectionKey)
@@ -136,11 +217,20 @@ extension DBService {
 						continue
 					}
 
-					//TODO: add items from firebase to ReceiptModel
+					guard let itemsArray = receiptData[Constants.ReceiptCollectionKeys.ItemsKey] as? [[String: Any]] else {
+						print("Error: Invalid items array.")
+						continue
+					}
+
+					let jsonData = try JSONSerialization.data(withJSONObject: itemsArray, options: [])
+					let decoder = JSONDecoder()
+					decoder.keyDecodingStrategy = .convertFromSnakeCase
+					let items = try decoder.decode([ReceiptItem].self, from: jsonData)
+
 					let creatorSnapshot = try await firestoreDB.collection(Constants.UserCollectionKeys.CollectionKey).document(creatorID).getDocument()
 					let creator = try creatorSnapshot.data(as: UserModel.self)
 
-					let receiptModel = ReceiptModel(id: id, creator: creator, date: date, imageURL: imageUrlString)
+					let receiptModel = ReceiptModel(id: id, creator: creator, date: date, imageURL: imageUrlString, items: items)
 
 					receipts.append(receiptModel)
 				}

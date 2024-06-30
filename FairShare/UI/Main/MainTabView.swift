@@ -19,6 +19,7 @@ struct MainTabView: View {
 						icon: { Images.System.listDash.image }
 					)
 				}
+			
 			ProfileView()
 				.tabItem {
 					Label(

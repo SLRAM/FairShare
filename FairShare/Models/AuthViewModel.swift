@@ -14,6 +14,7 @@ class AuthViewModel: ObservableObject {
 	@Published var userSession: FirebaseAuth.User?
 	@Published var currentUser: UserModel?
 	@Published var receipts: [ReceiptModel] = []
+	@Published var contacts: [ContactModel] = []
 	@Published var showAlert = false
 	@Published var errorMessage: String = ""
 	@Published var isLoading: Bool = true
@@ -26,6 +27,14 @@ class AuthViewModel: ObservableObject {
 		}
 	}
 
+	private func showError(for message: String) {
+		errorMessage = message
+		showAlert = true
+	}
+}
+
+///Authentication
+extension AuthViewModel {
 	func signIn(with email: String, password: String) async throws {
 		do {
 			let result = try await AuthService.signIn(with: email, password: password)
@@ -79,12 +88,16 @@ class AuthViewModel: ObservableObject {
 			let fetchedUser = try await DBService.fetchUser(userId: userId)
 			self.currentUser = fetchedUser
 			try await self.fetchUserReceipts()
+			try await self.fetchContacts()
 		} catch {
 			print("Error fetching user: \(error)")
 			throw error
 		}
 	}
+}
 
+///Receipt
+extension AuthViewModel {
 	func fetchUserReceipts() async throws {
 		guard let userID = self.currentUser?.id else {
 			print("Error: Current user ID is nil.")
@@ -111,9 +124,33 @@ class AuthViewModel: ObservableObject {
 			throw error
 		}
 	}
+}
 
-	private func showError(for message: String) {
-		errorMessage = message
-		showAlert = true
+///Contacts
+extension AuthViewModel {
+	func addContacts(contacts: [ContactModel]) async throws {
+		do {
+			for contact in contacts {
+				try await DBService.addContact(contact: contact, creatorID: self.currentUser!.id)
+			}
+		} catch {
+			print("Error writing document: \(error)")
+			throw error
+		}
+	}
+
+	func fetchContacts() async throws {
+		guard let userID = self.currentUser?.id else {
+			print("Error: Current user ID is nil.")
+			return
+		}
+
+		do {
+			let fetchedContacts = try await DBService.fetchUserContacts(userID: userID)
+			self.contacts = fetchedContacts.sorted { $0.firstName > $1.firstName }
+		} catch {
+			print("Error fetching user contacts: \(error)")
+			throw error
+		}
 	}
 }
