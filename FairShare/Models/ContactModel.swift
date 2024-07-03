@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ContactModel: Identifiable, Codable, Hashable {
+struct ContactModel: PayerProtocol {
 	var id: String
 	var firstName: String
 	var lastName: String
