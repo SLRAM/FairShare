@@ -43,6 +43,7 @@ struct Images {
 		static let plus = ImageAsset(name: "plus", isSystem: true)
 		static let xMarkCircleFill = ImageAsset(name: "xmark.circle.fill", isSystem: true)
 		static let listBulletCircleFill = ImageAsset(name: "list.bullet.circle.fill", isSystem: true)
+		static let checkmarkCircle = ImageAsset(name: "checkmark.circle", isSystem: true)
 	}
 }
 
@@ -107,6 +108,11 @@ struct Strings {
 	struct ReceiptView {
 		static let navigationTitle = TextAsset(string: "Receipt History")
 		static let emptyState = TextAsset(string: "Click the + to add a new receipt")
+	}
+
+	struct SideMenuView {
+		static let viewTitle = TextAsset(string: "Select Sharers")
+		static let doneButton = TextAsset(string: "Done")
 	}
 }
 
