@@ -36,6 +36,8 @@
 		902C01FE2BF019B60004B01A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C01FD2BF019B60004B01A /* UserModel.swift */; };
 		902D77022C27766800F7B462 /* ReceiptDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902D77012C27766800F7B462 /* ReceiptDetailView.swift */; };
 		902D77042C278D9400F7B462 /* CustomToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902D77032C278D9400F7B462 /* CustomToggleStyle.swift */; };
+		90676E962C3A5C2600828276 /* ReceiptDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90676E952C3A5C2600828276 /* ReceiptDetailViewModel.swift */; };
+		90676E982C3A5CDA00828276 /* Double+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90676E972C3A5CDA00828276 /* Double+Helper.swift */; };
 		9072AFC52BE9C46E00DE6FEB /* FairShareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */; };
 		9072AFC72BE9C46E00DE6FEB /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFC62BE9C46E00DE6FEB /* EntryView.swift */; };
 		9072AFC92BE9C47000DE6FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9072AFC82BE9C47000DE6FEB /* Assets.xcassets */; };
@@ -95,6 +97,8 @@
 		902C01FD2BF019B60004B01A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		902D77012C27766800F7B462 /* ReceiptDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptDetailView.swift; sourceTree = "<group>"; };
 		902D77032C278D9400F7B462 /* CustomToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggleStyle.swift; sourceTree = "<group>"; };
+		90676E952C3A5C2600828276 /* ReceiptDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptDetailViewModel.swift; sourceTree = "<group>"; };
+		90676E972C3A5CDA00828276 /* Double+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Helper.swift"; sourceTree = "<group>"; };
 		9072AFC12BE9C46E00DE6FEB /* FairShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FairShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairShareApp.swift; sourceTree = "<group>"; };
 		9072AFC62BE9C46E00DE6FEB /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
@@ -260,6 +264,7 @@
 			children = (
 				902C01F92BF017660004B01A /* ReceiptView.swift */,
 				902D77012C27766800F7B462 /* ReceiptDetailView.swift */,
+				90676E952C3A5C2600828276 /* ReceiptDetailViewModel.swift */,
 				90F476202C1581950075B36B /* ReceiptCardView.swift */,
 				90FB96182BF029190061E83D /* NewReceiptView.swift */,
 				9029DF152C31422B008586E6 /* NewReceiptViewModel.swift */,
@@ -351,6 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				90FB96162BF023340061E83D /* Date+Helper.swift */,
+				90676E972C3A5CDA00828276 /* Double+Helper.swift */,
 				909E699B2C02C820009D00D6 /* Image+Helper.swift */,
 				909E699D2C02C82A009D00D6 /* Color+Helper.swift */,
 			);
@@ -538,9 +544,11 @@
 				90FB96172BF023340061E83D /* Date+Helper.swift in Sources */,
 				909E69942C02A5C7009D00D6 /* CameraView.swift in Sources */,
 				909E69A02C02C865009D00D6 /* Constants.swift in Sources */,
+				90676E982C3A5CDA00828276 /* Double+Helper.swift in Sources */,
 				9072AFC52BE9C46E00DE6FEB /* FairShareApp.swift in Sources */,
 				902C01FA2BF017660004B01A /* ReceiptView.swift in Sources */,
 				902D77022C27766800F7B462 /* ReceiptDetailView.swift in Sources */,
+				90676E962C3A5C2600828276 /* ReceiptDetailViewModel.swift in Sources */,
 				90FB96272BF030B20061E83D /* LoginView.swift in Sources */,
 				9029DF162C31422B008586E6 /* NewReceiptViewModel.swift in Sources */,
 				9072AFD12BE9C47000DE6FEB /* FairShare.xcdatamodeld in Sources */,
