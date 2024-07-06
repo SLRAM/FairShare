@@ -8,20 +8,21 @@
 import Foundation
 
 struct ReceiptModel: Identifiable, Codable, Hashable {
+	//TODO: creator will not always be the current User. Add ReceiptModel to creator account and to any user listed in guestIDs.
 	var id: UUID
 	var creator: UserModel
 	var date: Date
 	var imageURL: String
-	//TODO: update items to [any ReceiptText]
 	var items: [ReceiptItem]
-	//TODO: add guest IDs to display receipt for all guests as well
+	var guestIDs: [String]
 
-	init(id: UUID, creator: UserModel, date: Date, imageURL: String, items: [ReceiptItem]) {
+	init(id: UUID, creator: UserModel, date: Date, imageURL: String, items: [ReceiptItem], guestIDs: [String]) {
 		self.id = id
 		self.creator = creator
 		self.date = date
 		self.imageURL = imageURL
 		self.items = items
+		self.guestIDs = guestIDs
 	}
 
 	static func == (lhs: ReceiptModel, rhs: ReceiptModel) -> Bool {
@@ -29,8 +30,70 @@ struct ReceiptModel: Identifiable, Codable, Hashable {
 	}
 
 	func hash(into hasher: inout Hasher) {
-			hasher.combine(id)
+		hasher.combine(id)
+	}
+}
+
+extension ReceiptModel {
+	func currentUserReceipt(userID: String) -> [ReceiptItem] {
+		let filteredItems = items.filter { item in
+			switch item.type {
+			case .item:
+				guard let payerIDs = item.payerIDs else {
+					return true
+				}
+				return payerIDs.contains(userID) || payerIDs.isEmpty
+			case .subTotal, .tax, .tip, .total:
+				return true
+			}
 		}
+		
+		return filteredItems
+	}
+
+	func userSubtotal(userID: String) -> Double {
+		let filteredItems = items.filter { item in
+			guard let payerIDs = item.payerIDs else {
+				return true
+			}
+
+			return item.type == .item &&
+			(payerIDs.contains(userID) || payerIDs.isEmpty)
+		}
+
+		let totalItemsCost = filteredItems.reduce(0.0) { (result, item) -> Double in
+			return result + item.costPerPayer(guestCount: guestIDs.count)
+		}
+
+		return totalItemsCost.roundToDecimal(2)
+	}
+
+	func userTaxTotal(userID: String) -> Double {
+		let value = userSubtotal(userID: userID) * (calculatedTaxPercentage() / 100.0)
+		return value.roundToDecimal(2)
+	}
+
+	func userTotal(userID: String) -> Double {
+		return userSubtotal(userID: userID) + userTaxTotal(userID: userID)
+	}
+
+	func calculatedTaxPercentage() -> Double {
+		let subtotal = items.first(where: { $0.type == .subTotal })?.cost
+		let tax = items.first(where: { $0.type == .tax })?.cost
+
+		guard let subtotal = subtotal, subtotal > 0 else {
+			print("Error: Subtotal must be greater than zero.")
+			return 0.0
+		}
+
+		guard let tax = tax, tax > 0 else {
+			print("Error: Subtotal must be greater than zero.")
+			return 0.0
+		}
+
+		let taxPercentage = (tax / subtotal) * 100
+		return taxPercentage
+	}
 }
 
 extension ReceiptModel {
@@ -41,154 +104,16 @@ extension ReceiptModel {
 			creator: UserModel.dummyData,
 			date: Date(),
 			imageURL: "https://picsum.photos/200/300",
-			items: ReceiptItem.dummyArrayData
+			items: ReceiptItem.dummyArrayData, 
+			guestIDs: UserModel.dummyArrayData.map { $0.id }
 		),
 		ReceiptModel(
 			id: UUID(),
 			creator: UserModel.dummyArrayData[1],
 			date: Date(),
 			imageURL: "https://picsum.photos/200/300",
-			items: ReceiptItem.dummyArrayData
+			items: ReceiptItem.dummyArrayData, 
+			guestIDs: UserModel.dummyArrayData.map { $0.id }
 		)
 	]
-}
-
-protocol ReceiptText: Identifiable, Comparable {
-	var id: UUID { get }
-	var title: String { get set }
-
-	func toDictionary() -> [String: Any]
-}
-
-enum ReceiptItemType: String, CaseIterable, Decodable {
-	case item
-	case subTotal
-	case tax
-	case tip
-	case total
-}
-
-class ReceiptItem: ReceiptText, Identifiable, Codable, Hashable {
-	//TODO: add user IDs [String] for people responsible for item. If payerIDs is empty then assume everyone shared the cost. If more than one payerIDs then divide cost by count.
-	let id: UUID
-	var title: String
-	var cost: Double
-	var payerIDs: [String]?
-	var type: ReceiptItemType
-
-	init(id: UUID = UUID(), title: String, cost: Double, payerIDs: [String] = [], type: ReceiptItemType = .item) {
-		self.id = id
-		self.title = title
-		self.cost = cost
-		self.payerIDs = payerIDs
-		self.type = type
-	}
-
-	func hash(into hasher: inout Hasher) {
-			hasher.combine(id)
-		}
-
-	static func == (lhs: ReceiptItem, rhs: ReceiptItem) -> Bool {
-		return lhs.id == rhs.id && lhs.title == rhs.title && lhs.cost == rhs.cost
-	}
-
-
-	static func < (lhs: ReceiptItem, rhs: ReceiptItem) -> Bool {
-		return lhs.id < rhs.id
-	}
-
-	enum CodingKeys: String, CodingKey {
-		case id
-		case title
-		case cost
-		case payerIDs
-		case type
-	}
-
-	required init(from decoder: Decoder) throws {
-		let container = try decoder.container(keyedBy: CodingKeys.self)
-		id = try container.decode(UUID.self, forKey: .id)
-		title = try container.decode(String.self, forKey: .title)
-		cost = try container.decode(Double.self, forKey: .cost)
-		payerIDs = try container.decodeIfPresent([String].self, forKey: .payerIDs)
-		type = try container.decode(ReceiptItemType.self, forKey: .type)
-	}
-
-	func encode(to encoder: Encoder) throws {
-		var container = encoder.container(keyedBy: CodingKeys.self)
-		try container.encode(id, forKey: .id)
-		try container.encode(title, forKey: .title)
-		try container.encode(cost, forKey: .cost)
-		try container.encodeIfPresent(payerIDs, forKey: .payerIDs)
-		try container.encode(type.rawValue, forKey: .type)
-	}
-}
-
-extension ReceiptItem {
-	var costAsCurrency: String {
-		return String(format: "$%.02f", self.cost)
-
-	}
-
-	func toDictionary() -> [String: Any] {
-			return [
-				"id": id.uuidString,
-				"title": title,
-				"cost": cost,
-				"type": type.rawValue
-			]
-		}
-
-	static let dummyData: ReceiptItem = dummyArrayData[0]
-	static let dummyArrayData: [ReceiptItem] = [
-		ReceiptItem(
-			title: "Apple",
-			cost: 1.99
-		),
-		ReceiptItem(
-			title: "Banana",
-			cost: 0.99
-		),
-		ReceiptItem(
-			title: "Orange",
-			cost: 1.49
-		),
-		ReceiptItem(
-			title: "Tax",
-			cost: 0.40,
-			type: .tax
-		),
-		ReceiptItem(
-			title: "Total",
-			cost: 4.87,
-			type: .total
-		)
-	]
-}
-
-class ReceiptInformation: ReceiptText {
-	let id: UUID
-	var title: String
-
-	init(id: UUID = UUID(), title: String) {
-		self.id = id
-		self.title = title
-	}
-
-	static func == (lhs: ReceiptInformation, rhs: ReceiptInformation) -> Bool {
-		return lhs.id == rhs.id && lhs.title == rhs.title
-	}
-
-	static func < (lhs: ReceiptInformation, rhs: ReceiptInformation) -> Bool {
-		return lhs.id < rhs.id
-	}
-}
-
-extension ReceiptInformation {
-	func toDictionary() -> [String : Any] {
-		return [
-			"id": id.uuidString,
-			"title": title
-		]
-	}
 }

@@ -38,6 +38,7 @@
 		902D77042C278D9400F7B462 /* CustomToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902D77032C278D9400F7B462 /* CustomToggleStyle.swift */; };
 		90676E962C3A5C2600828276 /* ReceiptDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90676E952C3A5C2600828276 /* ReceiptDetailViewModel.swift */; };
 		90676E982C3A5CDA00828276 /* Double+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90676E972C3A5CDA00828276 /* Double+Helper.swift */; };
+		90676E9A2C3A66ED00828276 /* ReceiptTextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90676E992C3A66ED00828276 /* ReceiptTextModel.swift */; };
 		9072AFC52BE9C46E00DE6FEB /* FairShareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */; };
 		9072AFC72BE9C46E00DE6FEB /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFC62BE9C46E00DE6FEB /* EntryView.swift */; };
 		9072AFC92BE9C47000DE6FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9072AFC82BE9C47000DE6FEB /* Assets.xcassets */; };
@@ -99,6 +100,7 @@
 		902D77032C278D9400F7B462 /* CustomToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggleStyle.swift; sourceTree = "<group>"; };
 		90676E952C3A5C2600828276 /* ReceiptDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptDetailViewModel.swift; sourceTree = "<group>"; };
 		90676E972C3A5CDA00828276 /* Double+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Helper.swift"; sourceTree = "<group>"; };
+		90676E992C3A66ED00828276 /* ReceiptTextModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptTextModel.swift; sourceTree = "<group>"; };
 		9072AFC12BE9C46E00DE6FEB /* FairShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FairShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairShareApp.swift; sourceTree = "<group>"; };
 		9072AFC62BE9C46E00DE6FEB /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				90FB96142BF020490061E83D /* ReceiptModel.swift */,
+				90676E992C3A66ED00828276 /* ReceiptTextModel.swift */,
 				902C01FD2BF019B60004B01A /* UserModel.swift */,
 				9029DF172C314475008586E6 /* ContactModel.swift */,
 				902C01FB2BF019770004B01A /* AuthViewModel.swift */,
@@ -529,6 +532,7 @@
 				9029DF142C3140A2008586E6 /* ContactPickerView.swift in Sources */,
 				90F5749F2BF93BCC005A9A2E /* MainTabView.swift in Sources */,
 				90FB96152BF020490061E83D /* ReceiptModel.swift in Sources */,
+				90676E9A2C3A66ED00828276 /* ReceiptTextModel.swift in Sources */,
 				90FB962F2BF0779B0061E83D /* SettingsRowView.swift in Sources */,
 				90F329842C1DB90D003AA887 /* StorageService.swift in Sources */,
 				902C01FC2BF019770004B01A /* AuthViewModel.swift in Sources */,
