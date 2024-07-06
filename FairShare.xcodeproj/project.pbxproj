@@ -310,11 +310,11 @@
 		90FB961D2BF02BF60061E83D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				902C01FB2BF019770004B01A /* AuthViewModel.swift */,
+				9029DF172C314475008586E6 /* ContactModel.swift */,
 				90FB96142BF020490061E83D /* ReceiptModel.swift */,
 				90676E992C3A66ED00828276 /* ReceiptTextModel.swift */,
 				902C01FD2BF019B60004B01A /* UserModel.swift */,
-				9029DF172C314475008586E6 /* ContactModel.swift */,
-				902C01FB2BF019770004B01A /* AuthViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -358,10 +358,10 @@
 		90FB96222BF02D9A0061E83D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				909E699D2C02C82A009D00D6 /* Color+Helper.swift */,
 				90FB96162BF023340061E83D /* Date+Helper.swift */,
 				90676E972C3A5CDA00828276 /* Double+Helper.swift */,
 				909E699B2C02C820009D00D6 /* Image+Helper.swift */,
-				909E699D2C02C82A009D00D6 /* Color+Helper.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
