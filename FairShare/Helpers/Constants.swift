@@ -137,6 +137,7 @@ struct Constants {
 		static let DateKey = "date"
 		static let ImageURLKey = "imageURL"
 		static let ItemsKey = "items"
+		static let GuestIDsKey = "guestIDs"
 	}
 
 	struct StorageKeys {

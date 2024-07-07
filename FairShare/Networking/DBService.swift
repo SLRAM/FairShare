@@ -137,7 +137,7 @@ extension DBService {
 
 ///Receipts
 extension DBService {
-	static func createReceipt(from receiptTexts: [any ReceiptText], image: UIImage, creatorID: String) async throws {
+	static func createReceipt(from receiptTexts: [any ReceiptText], image: UIImage, creatorID: String, guestIDs: [String]) async throws {
 		let docID = UUID()
 
 		let receiptsRef = firestoreDB.collection(Constants.ReceiptCollectionKeys.CollectionKey)
@@ -158,7 +158,8 @@ extension DBService {
 				Constants.ReceiptCollectionKeys.CreatorIDKey: creatorID,
 				Constants.ReceiptCollectionKeys.DateKey: Date(),
 				Constants.ReceiptCollectionKeys.ImageURLKey: imageURL.absoluteString,
-				Constants.ReceiptCollectionKeys.ItemsKey: receiptTextsData
+				Constants.ReceiptCollectionKeys.ItemsKey: receiptTextsData,
+				Constants.ReceiptCollectionKeys.GuestIDsKey: guestIDs,
 			]
 
 			try await receiptsRef.document(docID.uuidString).setData(receiptData)
@@ -222,6 +223,11 @@ extension DBService {
 						continue
 					}
 
+					guard let guestIDs = receiptData[Constants.ReceiptCollectionKeys.GuestIDsKey] as? [String] else {
+						print("Error: Invalid guest IDs.")
+						continue
+					}
+
 					let jsonData = try JSONSerialization.data(withJSONObject: itemsArray, options: [])
 					let decoder = JSONDecoder()
 					decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -230,7 +236,7 @@ extension DBService {
 					let creatorSnapshot = try await firestoreDB.collection(Constants.UserCollectionKeys.CollectionKey).document(creatorID).getDocument()
 					let creator = try creatorSnapshot.data(as: UserModel.self)
 
-					let receiptModel = ReceiptModel(id: id, creator: creator, date: date, imageURL: imageUrlString, items: items)
+					let receiptModel = ReceiptModel(id: id, creator: creator, date: date, imageURL: imageUrlString, items: items, guestIDs: guestIDs)
 
 					receipts.append(receiptModel)
 				}
