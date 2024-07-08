@@ -1,3 +1,5 @@
+ <img src="https://github.com/SLRAM/FairShare/assets/28938900/7f376694-daa8-4ad7-8c37-034810d41126">
+
 # FairShare
 FairShare is an iOS app designed to simplify the management and sharing of receipts among users. The app leverages technologies such as SwiftUI, Firebase Firestore, and VisionKit to provide a seamless user experience for capturing, organizing, and sharing receipts.
 
