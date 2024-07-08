@@ -14,10 +14,11 @@ class AuthViewModel: ObservableObject {
 	@Published var userSession: FirebaseAuth.User?
 	@Published var currentUser: UserModel?
 	@Published var receipts: [ReceiptModel] = []
-	@Published var contacts: [ContactModel] = []
 	@Published var showAlert = false
 	@Published var errorMessage: String = ""
 	@Published var isLoading: Bool = true
+	@Published var availablePayers: [any PayerProtocol] = []
+	@Published var currentGuestIDs: Set<String> = []
 
 	init() {
 		self.userSession = AuthService.CurrentUser
@@ -30,6 +31,17 @@ class AuthViewModel: ObservableObject {
 	private func showError(for message: String) {
 		errorMessage = message
 		showAlert = true
+	}
+}
+
+extension AuthViewModel {
+	func currentUserID() -> String {
+		guard let userID = self.currentUser?.id else {
+			print("Error: Current user ID is nil.")
+			return ""
+		}
+
+		return userID
 	}
 }
 
@@ -116,8 +128,9 @@ extension AuthViewModel {
 	}
 
 	func createReceipt(from receiptTexts: [any ReceiptText], image: UIImage) async throws {
+		let filteredGuests = currentGuestIDs.filter { $0 != currentUserID() }.compactMap { $0 }
 		do {
-			try await DBService.createReceipt(from: receiptTexts, image: image, creatorID: self.currentUser!.id)
+			try await DBService.createReceipt(from: receiptTexts, image: image, creatorID: currentUserID(), guestIDs: filteredGuests)
 			try await self.fetchUserReceipts()
 		} catch {
 			print("Error writing document: \(error)")
@@ -140,14 +153,19 @@ extension AuthViewModel {
 	}
 
 	func fetchContacts() async throws {
-		guard let userID = self.currentUser?.id else {
-			print("Error: Current user ID is nil.")
+		guard let currentUser = self.currentUser else {
+			print("Error: Current user is nil.")
 			return
 		}
 
 		do {
-			let fetchedContacts = try await DBService.fetchUserContacts(userID: userID)
-			self.contacts = fetchedContacts.sorted { $0.firstName > $1.firstName }
+			var payerList: [any PayerProtocol] = []
+			let fetchedContacts = try await DBService.fetchUserContacts(userID: currentUser.id)
+			payerList = fetchedContacts
+			payerList.append(currentUser)
+
+			availablePayers = payerList.sorted { $0.firstName < $1.firstName }
+
 		} catch {
 			print("Error fetching user contacts: \(error)")
 			throw error

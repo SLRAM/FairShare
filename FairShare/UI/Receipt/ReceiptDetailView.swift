@@ -8,45 +8,39 @@
 import SwiftUI
 
 struct ReceiptDetailView: View {
-	var receipt: ReceiptModel
-	@State private var isEnabled = false
-
-	private func itemsByType() -> [[ReceiptItem]] {
-		guard !receipt.items.isEmpty else { return [] }
-		let dictionaryByType = Dictionary(grouping: receipt.items, by: { $0.type })
-		let itemTypes = ReceiptItemType.allCases
-		return itemTypes.compactMap({ dictionaryByType[$0] })
-	}
+	@ObservedObject var viewModel: ReceiptDetailViewModel
 
 	var body: some View {
 		VStack(spacing: 0) {
-			Toggle(isOn: $isEnabled) {
-				Text(isEnabled ? Strings.ReceiptDetailView.onToggleTitle.string : Strings.ReceiptDetailView.defaultToggleTitle.string)
+			Toggle(isOn: $viewModel.isEnabled) {
+				Text(viewModel.isEnabled ? Strings.ReceiptDetailView.onToggleTitle.string : Strings.ReceiptDetailView.defaultToggleTitle.string)
 					.font(.headline)
 			}
-			.toggleStyle(CustomToggleStyle())
+			.toggleStyle(SwitchToggleStyle())
 			.padding(.horizontal)
 			.padding(.bottom, 5)
+			.onChange(of: viewModel.isEnabled) {
+				viewModel.toggleEnabled()
+			}
 
 			GeometryReader { geometry in
 				List {
-					ForEach(itemsByType(), id: \.self) { itemInType in
+					ForEach(viewModel.displayedGroupedItems, id: \.self) { itemInType in
 						Section(header: Text(itemInType[0].type.rawValue)) {
 							ForEach(itemInType) { item in
 								HStack {
 									Text(item.title)
 									Spacer()
-									Text(item.costAsCurrency)
+									Text(viewModel.formattedCost(for: item))
 								}
 							}
 						}
 					}
+
 					Section(header: Strings.ReceiptDetailView.imagesSectionTitle.text) {
 						HStack {
-							//TODO: add download option for images or whole breakdown
-							//TODO: convert to carousel for multiple images
 							Spacer()
-							AsyncImage(url: URL(string: receipt.imageURL)) { phase in
+							AsyncImage(url: URL(string: viewModel.receipt.imageURL)) { phase in
 								switch phase {
 								case .empty:
 									ProgressView()
@@ -68,13 +62,14 @@ struct ReceiptDetailView: View {
 					}
 				}
 				.listSectionSpacing(0)
-				.navigationTitle(receipt.date.toString(.full))
+				.navigationTitle(viewModel.receipt.date.toString(.full))
 				.navigationBarTitleDisplayMode(.inline)
 			}
 		}
 	}
 }
 
+
 #Preview {
-	ReceiptDetailView(receipt: ReceiptModel.dummyData)
+	ReceiptDetailView(viewModel: ReceiptDetailViewModel(receipt: ReceiptModel.dummyData, userID: UserModel.dummyData.id))
 }

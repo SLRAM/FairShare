@@ -16,37 +16,42 @@ struct NewReceiptView: View {
 
 	var body: some View {
 		NavigationStack {
-			VStack {
-				ReceiptItemsView(
-					itemsByType: viewModel.itemsByType(),
-					isEditing: $viewModel.isEditing,
-					receiptTexts: $viewModel.receiptTexts,
-					itemTapped: viewModel.itemTapped,
-					imageToDisplay: viewModel.imageToDisplay
-				)
-				.toolbar {
-					if !viewModel.receiptTexts.isEmpty {
-						ToolbarItem(placement: .topBarTrailing) {
-							Button { viewModel.isEditing.toggle()
-							} label: {
-								Strings.NewReceiptView.editButton.text
+			ZStack {
+				VStack {
+					ReceiptItemsView(
+						itemsByType: viewModel.itemsByType(),
+						isEditing: $viewModel.isEditing,
+						receiptTexts: $viewModel.receiptTexts,
+						itemTapped: viewModel.itemTapped,
+						imageToDisplay: viewModel.imageToDisplay
+					)
+					.toolbar {
+						if !viewModel.receiptTexts.isEmpty {
+							ToolbarItem(placement: .topBarTrailing) {
+								Button { 
+									viewModel.isEditing.toggle()
+								} label: {
+									viewModel.isEditing ? Strings.NewReceiptView.editDoneButton.text : Strings.NewReceiptView.editButton.text
+								}
 							}
+						}
+					}
+
+					if !viewModel.receiptTexts.isEmpty {
+						Button {
+							Task {
+								if let image = viewModel.selectedImage {
+									try await authViewModel.createReceipt(from: viewModel.receiptTexts, image: image)
+								}
+							}
+							dismiss()
+						} label: {
+							Strings.NewReceiptView.saveButton.text
 						}
 					}
 				}
 
-				if !viewModel.receiptTexts.isEmpty {
-					Button {
-						Task {
-							if let image = viewModel.selectedImage {
-								try await authViewModel.createReceipt(from: viewModel.receiptTexts, image: image)
-							}
-						}
-						dismiss()
-					} label: {
-						Strings.NewReceiptView.saveButton.text
-					}
-				}
+				SideMenuView(isShowing: $viewModel.isSideMenuShowing, currentItem: $viewModel.selectedReceiptItem, availablePayers: $authViewModel.availablePayers, currentGuestIDs: $authViewModel.currentGuestIDs)
 			}
 		}
 		.confirmationDialog("", isPresented: $viewModel.showActionSheet) {
@@ -78,6 +83,11 @@ struct NewReceiptView: View {
 				let image = await Processor.extractImage(from: viewModel.selectedItem)
 				viewModel.selectedImage = image
 				viewModel.receiptTexts = Processor.recognizeText(from: image)
+			}
+		}
+		.onChange(of: viewModel.selectedReceiptItem) {
+			withAnimation(.bouncy) {
+				viewModel.isSideMenuShowing.toggle()
 			}
 		}
 	}

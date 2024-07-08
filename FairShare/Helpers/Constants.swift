@@ -43,6 +43,7 @@ struct Images {
 		static let plus = ImageAsset(name: "plus", isSystem: true)
 		static let xMarkCircleFill = ImageAsset(name: "xmark.circle.fill", isSystem: true)
 		static let listBulletCircleFill = ImageAsset(name: "list.bullet.circle.fill", isSystem: true)
+		static let checkmarkCircle = ImageAsset(name: "checkmark.circle", isSystem: true)
 	}
 }
 
@@ -75,6 +76,7 @@ struct Strings {
 	struct NewReceiptView {
 		static let navigationTitle = TextAsset(string: "New Receipt")
 		static let editButton = TextAsset(string: "Edit")
+		static let editDoneButton = TextAsset(string: "Edit Done")
 		static let saveButton = TextAsset(string: "Save")
 
 		static let cameraButton = "Camera"
@@ -108,6 +110,11 @@ struct Strings {
 		static let navigationTitle = TextAsset(string: "Receipt History")
 		static let emptyState = TextAsset(string: "Click the + to add a new receipt")
 	}
+
+	struct SideMenuView {
+		static let viewTitle = TextAsset(string: "Select Sharers")
+		static let doneButton = TextAsset(string: "Done")
+	}
 }
 
 struct Constants {
@@ -131,6 +138,7 @@ struct Constants {
 		static let DateKey = "date"
 		static let ImageURLKey = "imageURL"
 		static let ItemsKey = "items"
+		static let GuestIDsKey = "guestIDs"
 	}
 
 	struct StorageKeys {

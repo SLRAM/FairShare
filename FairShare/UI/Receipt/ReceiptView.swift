@@ -56,7 +56,13 @@ struct ReceiptView: View {
 				NewReceiptView()
 			}
 			.navigationDestination(for: ReceiptModel.self) { receipt in
-				ReceiptDetailView(receipt: receipt)
+				ReceiptDetailView(
+					viewModel:
+						ReceiptDetailViewModel(
+							receipt: receipt,
+							userID: authViewModel.currentUserID()
+						)
+				)
 			}
 		}
 	}

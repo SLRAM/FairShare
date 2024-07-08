@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ReceiptItemsView: View {
+	//TODO: convert to viewModel
 	let itemsByType: [[ReceiptItem]]
 	@Binding var isEditing: Bool
 	@Binding var receiptTexts: [any ReceiptText]
@@ -35,7 +36,7 @@ struct ReceiptItemsView: View {
 										HStack {
 											Text(item.title)
 											Spacer()
-											Text(item.costAsCurrency)
+											Text(item.cost.currencyFormat())
 										}
 									}
 								}

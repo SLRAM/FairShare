@@ -7,15 +7,21 @@
 
 import Foundation
 
-struct UserModel: Identifiable, Codable, Hashable {
-	var id: String
-	var firstName: String
-	var lastName: String
-	var email: String
-	//TODO: add phone number.
+protocol PayerProtocol: Identifiable, Codable, Hashable {
+	var id: String { get }
+	var firstName: String { get }
+	var lastName: String { get }
 }
 
-extension UserModel {
+extension PayerProtocol {
+	var fullName: String {
+		"\(firstName) \(lastName)"
+	}
+
+	var abbreviatedName: String {
+		return "\(firstName) \(lastName.prefix(1))."
+	}
+
 	var initials: String {
 		let formatter = PersonNameComponentsFormatter()
 		if let components = formatter.personNameComponents(from: "\(firstName) \(lastName)") {
@@ -25,15 +31,17 @@ extension UserModel {
 
 		return ""
 	}
+}
 
-	var fullName: String {
-		return "\(firstName) \(lastName)"
-	}
+struct UserModel: PayerProtocol {
+	var id: String
+	var firstName: String
+	var lastName: String
+	var email: String
+	//TODO: add phone number.
+}
 
-	var abbreviatedName: String {
-		return "\(firstName) \(lastName.prefix(1))."
-	}
-
+extension UserModel {
 	static let dummyData: UserModel = dummyArrayData[0]
 	static let dummyArrayData: [UserModel] = [
 		UserModel(

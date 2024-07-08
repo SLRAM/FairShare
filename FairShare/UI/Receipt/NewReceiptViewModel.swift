@@ -23,6 +23,8 @@ class NewReceiptViewModel: ObservableObject {
 	@Published var visualizedImage: UIImage?
 
 	@Published var isEnabled = false
+	@Published var selectedReceiptItem: ReceiptItem?
+	@Published var isSideMenuShowing = false
 
 	func itemsByType() -> [[ReceiptItem]] {
 		let receiptItems = receiptTexts.compactMap { $0 as? ReceiptItem }
@@ -49,7 +51,12 @@ class NewReceiptViewModel: ObservableObject {
 	}
 
 	func itemTapped(item: ReceiptItem) {
-		//TODO: select contact to add as payer.
-		print("Item tapped: \(item.title)")
+		if item.type == .item {
+			selectedReceiptItem = item
+		}
+	}
+
+	func contactsTapped(contactIds: [String]) {
+		selectedReceiptItem?.payerIDs = contactIds
 	}
 }
