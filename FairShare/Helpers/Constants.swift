@@ -76,6 +76,7 @@ struct Strings {
 	struct NewReceiptView {
 		static let navigationTitle = TextAsset(string: "New Receipt")
 		static let editButton = TextAsset(string: "Edit")
+		static let editDoneButton = TextAsset(string: "Edit Done")
 		static let saveButton = TextAsset(string: "Save")
 
 		static let cameraButton = "Camera"
