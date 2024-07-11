@@ -115,6 +115,12 @@ struct Strings {
 		static let viewTitle = TextAsset(string: "Select Sharers")
 		static let doneButton = TextAsset(string: "Done")
 	}
+
+	struct MessageView {
+		static let typeIdentifier = TextAsset(string: "public.data")
+		static let fileName = TextAsset(string: "image")
+		static let fileType = TextAsset(string: ".jpg")
+	}
 }
 
 struct Constants {

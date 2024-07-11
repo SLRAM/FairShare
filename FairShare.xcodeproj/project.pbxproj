@@ -52,6 +52,8 @@
 		909E699C2C02C820009D00D6 /* Image+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E699B2C02C820009D00D6 /* Image+Helper.swift */; };
 		909E699E2C02C82A009D00D6 /* Color+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E699D2C02C82A009D00D6 /* Color+Helper.swift */; };
 		909E69A02C02C865009D00D6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E699F2C02C865009D00D6 /* Constants.swift */; };
+		90B98CC32C437B94006B6B83 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B98CC22C437B94006B6B83 /* MessageView.swift */; };
+		90B98CC52C439451006B6B83 /* String+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B98CC42C439451006B6B83 /* String+Helper.swift */; };
 		90BD783A2C0AEEB300C6A889 /* ReceiptItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD78392C0AEEB300C6A889 /* ReceiptItemsView.swift */; };
 		90BD783C2C0C051E00C6A889 /* EditableReceiptItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD783B2C0C051E00C6A889 /* EditableReceiptItemView.swift */; };
 		90CA9FB92C396E11009F1251 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CA9FB82C396E11009F1251 /* SideMenuView.swift */; };
@@ -117,6 +119,8 @@
 		909E699B2C02C820009D00D6 /* Image+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Helper.swift"; sourceTree = "<group>"; };
 		909E699D2C02C82A009D00D6 /* Color+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Helper.swift"; sourceTree = "<group>"; };
 		909E699F2C02C865009D00D6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		90B98CC22C437B94006B6B83 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		90B98CC42C439451006B6B83 /* String+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helper.swift"; sourceTree = "<group>"; };
 		90BD78392C0AEEB300C6A889 /* ReceiptItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptItemsView.swift; sourceTree = "<group>"; };
 		90BD783B2C0C051E00C6A889 /* EditableReceiptItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableReceiptItemView.swift; sourceTree = "<group>"; };
 		90CA9FB82C396E11009F1251 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 			children = (
 				902D77032C278D9400F7B462 /* CustomToggleStyle.swift */,
 				90CA9FB82C396E11009F1251 /* SideMenuView.swift */,
+				90B98CC22C437B94006B6B83 /* MessageView.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -362,6 +367,7 @@
 				90FB96162BF023340061E83D /* Date+Helper.swift */,
 				90676E972C3A5CDA00828276 /* Double+Helper.swift */,
 				909E699B2C02C820009D00D6 /* Image+Helper.swift */,
+				90B98CC42C439451006B6B83 /* String+Helper.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -536,6 +542,7 @@
 				90FB962F2BF0779B0061E83D /* SettingsRowView.swift in Sources */,
 				90F329842C1DB90D003AA887 /* StorageService.swift in Sources */,
 				902C01FC2BF019770004B01A /* AuthViewModel.swift in Sources */,
+				90B98CC32C437B94006B6B83 /* MessageView.swift in Sources */,
 				909E699C2C02C820009D00D6 /* Image+Helper.swift in Sources */,
 				90FB96312BF08C240061E83D /* FirebaseErrors.swift in Sources */,
 				90FB96192BF029190061E83D /* NewReceiptView.swift in Sources */,
@@ -547,6 +554,7 @@
 				90F4761F2C154FE20075B36B /* AuthService.swift in Sources */,
 				90FB96172BF023340061E83D /* Date+Helper.swift in Sources */,
 				909E69942C02A5C7009D00D6 /* CameraView.swift in Sources */,
+				90B98CC52C439451006B6B83 /* String+Helper.swift in Sources */,
 				909E69A02C02C865009D00D6 /* Constants.swift in Sources */,
 				90676E982C3A5CDA00828276 /* Double+Helper.swift in Sources */,
 				9072AFC52BE9C46E00DE6FEB /* FairShareApp.swift in Sources */,
