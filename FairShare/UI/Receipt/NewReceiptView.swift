@@ -10,6 +10,7 @@ import PhotosUI
 import SwiftUI
 
 struct NewReceiptView: View {
+	//TODO: create a add guests option for receipts where everything is split.
 	@Environment(\.dismiss) var dismiss
 	@EnvironmentObject var authViewModel: AuthViewModel
 	@StateObject private var viewModel = NewReceiptViewModel()

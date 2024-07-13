@@ -10,6 +10,7 @@ import ContactsUI
 import SwiftUI
 
 struct ContactPickerView: UIViewControllerRepresentable {
+	//TODO: add searchbar and guard for adding self.
 	@Binding var selectedContacts: [ContactModel]
 
 	func makeUIViewController(context: Context) -> CNContactPickerViewController {
