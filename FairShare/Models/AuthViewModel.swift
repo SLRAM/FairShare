@@ -19,6 +19,7 @@ class AuthViewModel: ObservableObject {
 	@Published var isLoading: Bool = true
 	@Published var availablePayers: [any PayerProtocol] = []
 	@Published var currentGuestIDs: Set<String> = []
+	@Published var fetchedReceiptGuests: [ContactModel] = []
 
 	init() {
 		self.userSession = AuthService.CurrentUser
@@ -37,6 +38,7 @@ class AuthViewModel: ObservableObject {
 extension AuthViewModel {
 	func currentUserID() -> String {
 		guard let userID = self.currentUser?.id else {
+			//TODO: signout user?
 			print("Error: Current user ID is nil.")
 			return ""
 		}
@@ -166,6 +168,17 @@ extension AuthViewModel {
 
 			availablePayers = payerList.sorted { $0.firstName < $1.firstName }
 
+		} catch {
+			print("Error fetching user contacts: \(error)")
+			throw error
+		}
+	}
+
+	func fetchCurrentReceiptGuests(for receipt: ReceiptModel) async throws {
+		do {
+			let fetchedGuests = try await DBService.fetchReceiptGuests(userID: currentUserID(), contactIDs: receipt.guestIDs)
+
+			fetchedReceiptGuests = fetchedGuests.sorted { $0.firstName < $1.firstName }
 		} catch {
 			print("Error fetching user contacts: \(error)")
 			throw error
