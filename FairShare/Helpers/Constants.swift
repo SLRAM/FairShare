@@ -44,6 +44,7 @@ struct Images {
 		static let xMarkCircleFill = ImageAsset(name: "xmark.circle.fill", isSystem: true)
 		static let listBulletCircleFill = ImageAsset(name: "list.bullet.circle.fill", isSystem: true)
 		static let checkmarkCircle = ImageAsset(name: "checkmark.circle", isSystem: true)
+		static let arrowUpMessage = ImageAsset(name: "arrow.up.message", isSystem: true)
 	}
 }
 
@@ -104,6 +105,8 @@ struct Strings {
 		static let defaultToggleTitle = TextAsset(string: "Full Receipt")
 		static let onToggleTitle = TextAsset(string: "Self Only")
 		static let imagesSectionTitle = TextAsset(string: "Images")
+		static let guestListTitle = TextAsset(string: "Send Guest Copies")
+		static let receiptImage = TextAsset(string: "Receipt created on ")
 	}
 
 	struct ReceiptView {

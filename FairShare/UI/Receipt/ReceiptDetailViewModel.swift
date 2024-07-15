@@ -17,6 +17,9 @@ class ReceiptDetailViewModel: ObservableObject {
 	@Published private var groupedItems: [[ReceiptItem]] = []
 	@Published private var filteredGroupedItems: [[ReceiptItem]] = []
 
+	@Published var showMessageComposeView = false
+	@Published var selectedGuest: ContactModel?
+
 	init(receipt: ReceiptModel, userID: String) {
 		self.receipt = receipt
 		self.userID = userID
