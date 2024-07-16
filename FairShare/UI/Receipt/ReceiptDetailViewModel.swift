@@ -38,6 +38,10 @@ class ReceiptDetailViewModel: ObservableObject {
 		receipt.userTotal(userID: userID)
 	}
 
+	private var currentUserServiceTotal: Double {
+		receipt.userServiceTotal(userID: userID)
+	}
+
 	private var guestCount: Int {
 		receipt.guestIDs.count
 	}
@@ -78,6 +82,11 @@ class ReceiptDetailViewModel: ObservableObject {
 			return item.cost.currencyFormat()
 		case .total:
 			return isEnabled ? currentUserTotal.currencyFormat() : item.cost.currencyFormat()
+		case .service:
+			return isEnabled ? currentUserServiceTotal.currencyFormat() : item.cost.currencyFormat()
+
+		}
+	}
 
 	func guestReceiptImages() -> [UIImage]? {
 		if let guestReceiptDescription = guestReceiptDescription(), let receiptDescription = receiptDescription() {
