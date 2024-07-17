@@ -26,18 +26,16 @@ extension AuthService {
 		do {
 			let result = try await Authentication.signIn(withEmail: email, password: password)
 			return result.user
-		} catch let error as NSError {
-			print("Error signing in user: \(FirebaseAuthError(error).errorMessage)")
-			throw FirebaseAuthError(error)
+		} catch {
+			throw error
 		}
 	}
 
 	static func signOut() async throws {
 		do {
 			try Authentication.signOut()
-		} catch let error as NSError {
-			print("Error signing out user: \(FirebaseAuthError(error).errorMessage)")
-			throw FirebaseAuthError(error)
+		} catch {
+			throw error
 		}
 	}
 
@@ -46,7 +44,6 @@ extension AuthService {
 			let results = try await Authentication.createUser(withEmail: withEmail, password: password)
 			return results
 		} catch {
-			print("Error creating user: \(error)")
 			throw error
 		}
 	}
