@@ -17,6 +17,7 @@ protocol ReceiptText: Identifiable, Comparable {
 enum ReceiptItemType: String, CaseIterable, Decodable {
 	case item
 	case subTotal
+	case service
 	case tax
 	case tip
 	case total

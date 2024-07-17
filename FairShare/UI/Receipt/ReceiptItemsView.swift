@@ -15,6 +15,13 @@ struct ReceiptItemsView: View {
 	let itemTapped: (ReceiptItem) -> Void
 
 	let imageToDisplay: Image?
+	private func deleteItems(at offsets: IndexSet, from itemInType: [ReceiptItem]) {
+		for index in offsets {
+			if let globalIndex = receiptTexts.firstIndex(where: { $0.id == itemInType[index].id }) {
+				receiptTexts.remove(at: globalIndex)
+			}
+		}
+	}
 
 	var body: some View {
 		GeometryReader { geometry in
@@ -42,8 +49,12 @@ struct ReceiptItemsView: View {
 								}
 							}
 						}
+						.onDelete { indexSet in
+							deleteItems(at: indexSet, from: itemInType)
+						}
 					}
 				}
+
 				if let currentImage = imageToDisplay {
 					Section(header: Strings.ReceiptDetailView.imagesSectionTitle.text) {
 						HStack {

@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import MessageUI
 
 struct ReceiptDetailView: View {
 	@ObservedObject var viewModel: ReceiptDetailViewModel
+	@Binding var guests: [ContactModel]
 
 	var body: some View {
 		VStack(spacing: 0) {
@@ -54,11 +56,26 @@ struct ReceiptDetailView: View {
 									EmptyView()
 								}
 							}
-
 							Spacer()
 						}
 						.frame(height: geometry.size.height * 0.5)
 						.background(Color(.systemGray5))
+					}
+
+					Section(header: Strings.ReceiptDetailView.guestListTitle.text) {
+						ForEach(guests, id: \.self) { guest in
+							Button {
+								viewModel.selectedGuest = guest
+								viewModel.showMessageComposeView = true
+							} label: {
+								HStack {
+									Text(guest.abbreviatedName)
+										.foregroundStyle(.black)
+									Spacer()
+									Images.System.arrowUpMessage.image
+								}
+							}
+						}
 					}
 				}
 				.listSectionSpacing(0)
@@ -66,10 +83,15 @@ struct ReceiptDetailView: View {
 				.navigationBarTitleDisplayMode(.inline)
 			}
 		}
+		.sheet(isPresented: $viewModel.showMessageComposeView) {
+			if let phoneNumber = viewModel.selectedGuest?.phoneNumber, MessageComposeView.canSendText() {
+				MessageComposeView(recipients: [phoneNumber], body: Strings.ReceiptDetailView.receiptImage.string + viewModel.receipt.date.toString(), images: viewModel.guestReceiptImages())
+				}
+		}
 	}
 }
 
 
 #Preview {
-	ReceiptDetailView(viewModel: ReceiptDetailViewModel(receipt: ReceiptModel.dummyData, userID: UserModel.dummyData.id))
+	ReceiptDetailView(viewModel: ReceiptDetailViewModel(receipt: ReceiptModel.dummyData, userID: UserModel.dummyData.id), guests: .constant(ContactModel.dummyArrayData))
 }

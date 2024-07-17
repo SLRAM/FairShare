@@ -43,7 +43,7 @@ extension ReceiptModel {
 					return true
 				}
 				return payerIDs.contains(userID) || payerIDs.isEmpty
-			case .subTotal, .tax, .tip, .total:
+			case .subTotal, .tax, .tip, .total, .service:
 				return true
 			}
 		}
@@ -52,6 +52,7 @@ extension ReceiptModel {
 	}
 
 	func userSubtotal(userID: String) -> Double {
+		//TODO: account for multiple subtotals (ex. bar subtotal and food subtotal)
 		let filteredItems = items.filter { item in
 			guard let payerIDs = item.payerIDs else {
 				return true
@@ -65,6 +66,7 @@ extension ReceiptModel {
 			return result + item.costPerPayer(guestCount: guestIDs.count)
 		}
 
+
 		return totalItemsCost.roundToDecimal(2)
 	}
 
@@ -73,15 +75,28 @@ extension ReceiptModel {
 		return value.roundToDecimal(2)
 	}
 
+	func userServiceTotal(userID: String) -> Double {
+		let filteredItems = items.filter { $0.type == .service }
+
+		let totalItemsCost = filteredItems.reduce(0.0) { (result, item) -> Double in
+			return result + item.costPerPayer(guestCount: guestIDs.count)
+		}
+
+		return totalItemsCost.roundToDecimal(2)
+	}
+
 	func userTotal(userID: String) -> Double {
-		return userSubtotal(userID: userID) + userTaxTotal(userID: userID)
+		return userSubtotal(userID: userID) + userTaxTotal(userID: userID) + userServiceTotal(userID: userID)
 	}
 
 	func calculatedTaxPercentage() -> Double {
-		let subtotal = items.first(where: { $0.type == .subTotal })?.cost
+		let subTotal = items.filter { $0.type == .subTotal }.reduce(0) { (result, item) -> Double in
+			return result + item.cost
+		}
+
 		let tax = items.first(where: { $0.type == .tax })?.cost
 
-		guard let subtotal = subtotal, subtotal > 0 else {
+		guard subTotal > 0 else {
 			print("Error: Subtotal must be greater than zero.")
 			return 0.0
 		}
@@ -91,7 +106,7 @@ extension ReceiptModel {
 			return 0.0
 		}
 
-		let taxPercentage = (tax / subtotal) * 100
+		let taxPercentage = (tax / subTotal) * 100
 		return taxPercentage
 	}
 }

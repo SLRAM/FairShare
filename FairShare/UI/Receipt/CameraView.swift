@@ -163,7 +163,7 @@ enum Processor {
 
 	static func sortObservations(from observations: [VNRecognizedTextObservation]) -> [VNRecognizedTextObservation] {
 		let yRange: CGFloat = 0.02
-		return observations.sorted {
+		let sorted = observations.sorted {
 			let midYFirst = $0.boundingBox.midY
 			let midYSecond = $1.boundingBox.midY
 
@@ -173,6 +173,8 @@ enum Processor {
 				return $0.boundingBox.minX < $1.boundingBox.minX
 			}
 		}
+
+		return sorted
 	}
 
 	static func makeReceiptText(from observations: [VNRecognizedTextObservation]) -> [any ReceiptText] {
@@ -184,6 +186,7 @@ enum Processor {
 		let maximumRecognitionCandidates = 1
 
 		var index = 0
+
 		while index < sortedObservations.count - 1 {
 			let current = sortedObservations[index]
 			let next = sortedObservations[index + 1]
@@ -202,17 +205,22 @@ enum Processor {
 
 			if abs(midYCurrent - midYNext) <= yRange {
 				let key = current.boundingBox.minX < next.boundingBox.minX ? candidateOne.string : candidateTwo.string
-				let valueString = current.boundingBox.minX < next.boundingBox.minX ? candidateTwo.string : candidateOne.string
+				var valueString = current.boundingBox.minX < next.boundingBox.minX ? candidateTwo.string : candidateOne.string
+				if valueString.contains("$") {
+					valueString = valueString.replacingOccurrences(of: "$", with: "")
+				}
 
 				if let value = Double(valueString) {
 					let type: ReceiptItemType = {
-						if key.lowercased() == "tax" {
+						if key.lowercased().contains("tax") {
 							return .tax
-						} else if key.lowercased() == "tip" {
+						} else if key.lowercased().contains("tip") {
 							return .tip
-						} else if key.lowercased() == "sub total" {
+						} else if key.lowercased().contains("sub") && key.lowercased().contains("total"){
 							return .subTotal
-						} else if key.lowercased() == "total" {
+						} else if key.lowercased().contains("service") {
+							return .service
+						} else if key.lowercased().contains("total") {
 							return .total
 						} else {
 							return .item

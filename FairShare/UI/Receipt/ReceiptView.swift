@@ -61,8 +61,14 @@ struct ReceiptView: View {
 						ReceiptDetailViewModel(
 							receipt: receipt,
 							userID: authViewModel.currentUserID()
-						)
+						),
+					guests: $authViewModel.fetchedReceiptGuests
 				)
+				.onAppear {
+					Task {
+						try await authViewModel.fetchCurrentReceiptGuests(for: receipt)
+					}
+				}
 			}
 		}
 	}

@@ -31,6 +31,7 @@ extension DBService {
 			let encodedUser = try Firestore.Encoder().encode(userModel)
 			try await firestoreDB.collection(Constants.UserCollectionKeys.CollectionKey).document(userModel.id).setData(encodedUser)
 		} catch let error {
+		
 			print("Error creating user: \(error)")
 			throw error
 		}
@@ -91,6 +92,8 @@ extension DBService {
 		}
 	}
 
+	//TODO: refactor to eliminate redundate code between fetchReceiptGuests and fetchUserContacts
+
 	static func fetchUserContacts(userID: String) async throws -> [ContactModel] {
 		var contacts: [ContactModel] = []
 
@@ -132,6 +135,34 @@ extension DBService {
 
 		return contacts
 	}
+
+	static func fetchReceiptGuests(userID: String, contactIDs: [String]) async throws -> [ContactModel] {
+			var contacts: [ContactModel] = []
+
+			do {
+				for contactID in contactIDs {
+					let contactDocRef = firestoreDB.collection(Constants.ContactCollectionKeys.CollectionKey).document(contactID)
+					let contactSnapshot = try await contactDocRef.getDocument()
+
+					if let contactData = contactSnapshot.data(),
+					   let id = contactData[Constants.ContactCollectionKeys.DocumentIdKey] as? String,
+					   let firstName = contactData[Constants.ContactCollectionKeys.FirstNameKey] as? String,
+					   let lastName = contactData[Constants.ContactCollectionKeys.LastNameKey] as? String,
+					   let phoneNumber = contactData[Constants.ContactCollectionKeys.PhoneNumberKey] as? String {
+
+						let contact = ContactModel(id: id, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber)
+						contacts.append(contact)
+					} else {
+						print("Error: Required fields are missing for contact \(contactID)")
+					}
+				}
+			} catch {
+				print("Error fetching user contacts: \(error)")
+				throw error
+			}
+
+			return contacts
+		}
 
 }
 
