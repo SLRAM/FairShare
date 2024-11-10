@@ -52,9 +52,9 @@
 		909E699C2C02C820009D00D6 /* Image+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E699B2C02C820009D00D6 /* Image+Helper.swift */; };
 		909E699E2C02C82A009D00D6 /* Color+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E699D2C02C82A009D00D6 /* Color+Helper.swift */; };
 		909E69A02C02C865009D00D6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E699F2C02C865009D00D6 /* Constants.swift */; };
+		90B98CC12C434443006B6B83 /* NSError+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B98CC02C434443006B6B83 /* NSError+Helper.swift */; };
 		90B98CC32C437B94006B6B83 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B98CC22C437B94006B6B83 /* MessageView.swift */; };
 		90B98CC52C439451006B6B83 /* String+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B98CC42C439451006B6B83 /* String+Helper.swift */; };
-		90B98CC12C434443006B6B83 /* NSError+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B98CC02C434443006B6B83 /* NSError+Helper.swift */; };
 		90BD783A2C0AEEB300C6A889 /* ReceiptItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD78392C0AEEB300C6A889 /* ReceiptItemsView.swift */; };
 		90BD783C2C0C051E00C6A889 /* EditableReceiptItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD783B2C0C051E00C6A889 /* EditableReceiptItemView.swift */; };
 		90CA9FB92C396E11009F1251 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CA9FB82C396E11009F1251 /* SideMenuView.swift */; };
@@ -120,9 +120,9 @@
 		909E699B2C02C820009D00D6 /* Image+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Helper.swift"; sourceTree = "<group>"; };
 		909E699D2C02C82A009D00D6 /* Color+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Helper.swift"; sourceTree = "<group>"; };
 		909E699F2C02C865009D00D6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		90B98CC02C434443006B6B83 /* NSError+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Helper.swift"; sourceTree = "<group>"; };
 		90B98CC22C437B94006B6B83 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		90B98CC42C439451006B6B83 /* String+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helper.swift"; sourceTree = "<group>"; };
-		90B98CC02C434443006B6B83 /* NSError+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Helper.swift"; sourceTree = "<group>"; };
 		90BD78392C0AEEB300C6A889 /* ReceiptItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptItemsView.swift; sourceTree = "<group>"; };
 		90BD783B2C0C051E00C6A889 /* EditableReceiptItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableReceiptItemView.swift; sourceTree = "<group>"; };
 		90CA9FB82C396E11009F1251 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
@@ -736,6 +736,7 @@
 				DEVELOPMENT_TEAM = FSUP887MQU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs to capture images of your receipt";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Allow Contact Access";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -768,6 +769,7 @@
 				DEVELOPMENT_TEAM = FSUP887MQU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs to capture images of your receipt";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Allow Contact Access";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
