@@ -11,6 +11,7 @@ import FirebaseFirestoreSwift
 
 @MainActor
 class AuthViewModel: ObservableObject {
+	//TODO: 1) Make sidebar contact reusable enum(3) profile(view, edit, delete), receipt items(select), new receipt guests(select). shared items are search bar and add new contact. 2) Make core data contact, 3) Remove contact info from firebase
 	@Published var userSession: FirebaseAuth.User?
 	@Published var currentUser: UserModel?
 	@Published var receipts: [ReceiptModel] = []
