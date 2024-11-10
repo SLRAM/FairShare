@@ -19,6 +19,14 @@ struct PersistenceController {
 			newItem.timestamp = Date()
 		}
 
+		for _ in 0..<10 {
+			let newContact = ContactData(context: viewContext)
+			newContact.id = ContactModel.dummyData.id
+			newContact.firstName = ContactModel.dummyData.firstName
+			newContact.lastName = ContactModel.dummyData.lastName
+			newContact.phoneNumber = ContactModel.dummyData.phoneNumber
+		}
+
 		do {
 			try viewContext.save()
 		} catch {
@@ -59,5 +67,34 @@ struct PersistenceController {
 				NSLog("Unresolved error saving context: \(error), \(error.userInfo)")
 			}
 		}
+	}
+}
+
+///Contacts
+extension PersistenceController {
+	func fetchAllContacts() -> [ContactData] {
+		let request = NSFetchRequest<ContactData>(entityName: "ContactData")
+
+		do {
+			return try context.fetch(request)
+		} catch {
+			return []
+		}
+	}
+
+	func addContact(contact: ContactModel) {
+		let newContact = ContactData(context: context)
+		newContact.id = contact.id
+		newContact.firstName = contact.firstName
+		newContact.lastName = contact.lastName
+		newContact.phoneNumber = contact.phoneNumber
+
+		saveContext()
+	}
+
+	func deleteContact(_ contactData: ContactData) {
+		context.delete(contactData)
+
+		saveContext()
 	}
 }

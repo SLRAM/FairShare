@@ -39,6 +39,8 @@
 		90676E962C3A5C2600828276 /* ReceiptDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90676E952C3A5C2600828276 /* ReceiptDetailViewModel.swift */; };
 		90676E982C3A5CDA00828276 /* Double+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90676E972C3A5CDA00828276 /* Double+Helper.swift */; };
 		90676E9A2C3A66ED00828276 /* ReceiptTextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90676E992C3A66ED00828276 /* ReceiptTextModel.swift */; };
+		906F97DC2CE0622B0023B7C1 /* ContactData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906F97DA2CE0622B0023B7C1 /* ContactData+CoreDataClass.swift */; };
+		906F97DD2CE0622B0023B7C1 /* ContactData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906F97DB2CE0622B0023B7C1 /* ContactData+CoreDataProperties.swift */; };
 		9072AFC52BE9C46E00DE6FEB /* FairShareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */; };
 		9072AFC72BE9C46E00DE6FEB /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFC62BE9C46E00DE6FEB /* EntryView.swift */; };
 		9072AFC92BE9C47000DE6FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9072AFC82BE9C47000DE6FEB /* Assets.xcassets */; };
@@ -104,6 +106,8 @@
 		90676E952C3A5C2600828276 /* ReceiptDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptDetailViewModel.swift; sourceTree = "<group>"; };
 		90676E972C3A5CDA00828276 /* Double+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Helper.swift"; sourceTree = "<group>"; };
 		90676E992C3A66ED00828276 /* ReceiptTextModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptTextModel.swift; sourceTree = "<group>"; };
+		906F97DA2CE0622B0023B7C1 /* ContactData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		906F97DB2CE0622B0023B7C1 /* ContactData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9072AFC12BE9C46E00DE6FEB /* FairShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FairShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairShareApp.swift; sourceTree = "<group>"; };
 		9072AFC62BE9C46E00DE6FEB /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
@@ -195,6 +199,16 @@
 			path = Elements;
 			sourceTree = "<group>";
 		};
+		906F97DE2CE063760023B7C1 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				906F97DA2CE0622B0023B7C1 /* ContactData+CoreDataClass.swift */,
+				906F97DB2CE0622B0023B7C1 /* ContactData+CoreDataProperties.swift */,
+				9072AFCD2BE9C47000DE6FEB /* Persistence.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		9072AFB82BE9C46E00DE6FEB = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				90FB96202BF02C880061E83D /* Application */,
+				906F97DE2CE063760023B7C1 /* CoreData */,
 				90FB96212BF02D010061E83D /* Networking */,
 				90FB961F2BF02C470061E83D /* Errors */,
 				90FB961E2BF02C120061E83D /* Helpers */,
@@ -226,7 +241,6 @@
 				90FB961D2BF02BF60061E83D /* Models */,
 				9072AFC82BE9C47000DE6FEB /* Assets.xcassets */,
 				902C01F52BF00B0E0004B01A /* GoogleService-Info.plist */,
-				9072AFCD2BE9C47000DE6FEB /* Persistence.swift */,
 				9072AFCF2BE9C47000DE6FEB /* FairShare.xcdatamodeld */,
 				9072AFCA2BE9C47000DE6FEB /* Preview Content */,
 			);
@@ -556,6 +570,8 @@
 				9072AFC72BE9C46E00DE6FEB /* EntryView.swift in Sources */,
 				90B98CC12C434443006B6B83 /* NSError+Helper.swift in Sources */,
 				90F4761F2C154FE20075B36B /* AuthService.swift in Sources */,
+				906F97DD2CE0622B0023B7C1 /* ContactData+CoreDataProperties.swift in Sources */,
+				906F97DC2CE0622B0023B7C1 /* ContactData+CoreDataClass.swift in Sources */,
 				90FB96172BF023340061E83D /* Date+Helper.swift in Sources */,
 				909E69942C02A5C7009D00D6 /* CameraView.swift in Sources */,
 				90B98CC52C439451006B6B83 /* String+Helper.swift in Sources */,
