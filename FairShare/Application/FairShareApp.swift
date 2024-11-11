@@ -22,9 +22,12 @@ struct FairShareApp: App {
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 	@StateObject var viewModel = AuthViewModel()
 
+	let persistenceController = PersistenceController.shared
+
 	var body: some Scene {
 		WindowGroup {
 			EntryView()
+				.environment(\.managedObjectContext, persistenceController.container.viewContext)
 				.environmentObject(viewModel)
 		}
 	}

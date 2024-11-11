@@ -39,6 +39,9 @@
 		90676E962C3A5C2600828276 /* ReceiptDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90676E952C3A5C2600828276 /* ReceiptDetailViewModel.swift */; };
 		90676E982C3A5CDA00828276 /* Double+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90676E972C3A5CDA00828276 /* Double+Helper.swift */; };
 		90676E9A2C3A66ED00828276 /* ReceiptTextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90676E992C3A66ED00828276 /* ReceiptTextModel.swift */; };
+		906F97DC2CE0622B0023B7C1 /* ContactData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906F97DA2CE0622B0023B7C1 /* ContactData+CoreDataClass.swift */; };
+		906F97DD2CE0622B0023B7C1 /* ContactData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906F97DB2CE0622B0023B7C1 /* ContactData+CoreDataProperties.swift */; };
+		906F97E02CE0695C0023B7C1 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906F97DF2CE0695C0023B7C1 /* ContactListView.swift */; };
 		9072AFC52BE9C46E00DE6FEB /* FairShareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */; };
 		9072AFC72BE9C46E00DE6FEB /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFC62BE9C46E00DE6FEB /* EntryView.swift */; };
 		9072AFC92BE9C47000DE6FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9072AFC82BE9C47000DE6FEB /* Assets.xcassets */; };
@@ -52,6 +55,7 @@
 		909E699C2C02C820009D00D6 /* Image+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E699B2C02C820009D00D6 /* Image+Helper.swift */; };
 		909E699E2C02C82A009D00D6 /* Color+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E699D2C02C82A009D00D6 /* Color+Helper.swift */; };
 		909E69A02C02C865009D00D6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909E699F2C02C865009D00D6 /* Constants.swift */; };
+		90B98CC12C434443006B6B83 /* NSError+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B98CC02C434443006B6B83 /* NSError+Helper.swift */; };
 		90B98CC32C437B94006B6B83 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B98CC22C437B94006B6B83 /* MessageView.swift */; };
 		90B98CC52C439451006B6B83 /* String+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B98CC42C439451006B6B83 /* String+Helper.swift */; };
 		90BD783A2C0AEEB300C6A889 /* ReceiptItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD78392C0AEEB300C6A889 /* ReceiptItemsView.swift */; };
@@ -103,6 +107,9 @@
 		90676E952C3A5C2600828276 /* ReceiptDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptDetailViewModel.swift; sourceTree = "<group>"; };
 		90676E972C3A5CDA00828276 /* Double+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Helper.swift"; sourceTree = "<group>"; };
 		90676E992C3A66ED00828276 /* ReceiptTextModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptTextModel.swift; sourceTree = "<group>"; };
+		906F97DA2CE0622B0023B7C1 /* ContactData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		906F97DB2CE0622B0023B7C1 /* ContactData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		906F97DF2CE0695C0023B7C1 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		9072AFC12BE9C46E00DE6FEB /* FairShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FairShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairShareApp.swift; sourceTree = "<group>"; };
 		9072AFC62BE9C46E00DE6FEB /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
@@ -119,6 +126,7 @@
 		909E699B2C02C820009D00D6 /* Image+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Helper.swift"; sourceTree = "<group>"; };
 		909E699D2C02C82A009D00D6 /* Color+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Helper.swift"; sourceTree = "<group>"; };
 		909E699F2C02C865009D00D6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		90B98CC02C434443006B6B83 /* NSError+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Helper.swift"; sourceTree = "<group>"; };
 		90B98CC22C437B94006B6B83 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		90B98CC42C439451006B6B83 /* String+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helper.swift"; sourceTree = "<group>"; };
 		90BD78392C0AEEB300C6A889 /* ReceiptItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptItemsView.swift; sourceTree = "<group>"; };
@@ -193,6 +201,16 @@
 			path = Elements;
 			sourceTree = "<group>";
 		};
+		906F97DE2CE063760023B7C1 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				906F97DA2CE0622B0023B7C1 /* ContactData+CoreDataClass.swift */,
+				906F97DB2CE0622B0023B7C1 /* ContactData+CoreDataProperties.swift */,
+				9072AFCD2BE9C47000DE6FEB /* Persistence.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		9072AFB82BE9C46E00DE6FEB = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				90FB96202BF02C880061E83D /* Application */,
+				906F97DE2CE063760023B7C1 /* CoreData */,
 				90FB96212BF02D010061E83D /* Networking */,
 				90FB961F2BF02C470061E83D /* Errors */,
 				90FB961E2BF02C120061E83D /* Helpers */,
@@ -224,7 +243,6 @@
 				90FB961D2BF02BF60061E83D /* Models */,
 				9072AFC82BE9C47000DE6FEB /* Assets.xcassets */,
 				902C01F52BF00B0E0004B01A /* GoogleService-Info.plist */,
-				9072AFCD2BE9C47000DE6FEB /* Persistence.swift */,
 				9072AFCF2BE9C47000DE6FEB /* FairShare.xcdatamodeld */,
 				9072AFCA2BE9C47000DE6FEB /* Preview Content */,
 			);
@@ -260,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				90FB962C2BF0753E0061E83D /* ProfileView.swift */,
+				906F97DF2CE0695C0023B7C1 /* ContactListView.swift */,
 				9029DF132C3140A2008586E6 /* ContactPickerView.swift */,
 				90FB962E2BF0779B0061E83D /* SettingsRowView.swift */,
 			);
@@ -552,11 +571,14 @@
 				90BD783C2C0C051E00C6A889 /* EditableReceiptItemView.swift in Sources */,
 				9072AFC72BE9C46E00DE6FEB /* EntryView.swift in Sources */,
 				90F4761F2C154FE20075B36B /* AuthService.swift in Sources */,
+				906F97DD2CE0622B0023B7C1 /* ContactData+CoreDataProperties.swift in Sources */,
+				906F97DC2CE0622B0023B7C1 /* ContactData+CoreDataClass.swift in Sources */,
 				90FB96172BF023340061E83D /* Date+Helper.swift in Sources */,
 				909E69942C02A5C7009D00D6 /* CameraView.swift in Sources */,
 				90B98CC52C439451006B6B83 /* String+Helper.swift in Sources */,
 				909E69A02C02C865009D00D6 /* Constants.swift in Sources */,
 				90676E982C3A5CDA00828276 /* Double+Helper.swift in Sources */,
+				906F97E02CE0695C0023B7C1 /* ContactListView.swift in Sources */,
 				9072AFC52BE9C46E00DE6FEB /* FairShareApp.swift in Sources */,
 				902C01FA2BF017660004B01A /* ReceiptView.swift in Sources */,
 				902D77022C27766800F7B462 /* ReceiptDetailView.swift in Sources */,
@@ -732,6 +754,7 @@
 				DEVELOPMENT_TEAM = FSUP887MQU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs to capture images of your receipt";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Allow Contact Access";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -764,6 +787,7 @@
 				DEVELOPMENT_TEAM = FSUP887MQU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs to capture images of your receipt";
 				INFOPLIST_KEY_NSContactsUsageDescription = "Allow Contact Access";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

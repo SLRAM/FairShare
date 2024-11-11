@@ -49,6 +49,11 @@ struct Images {
 }
 
 struct Strings {
+	struct ContactListView {
+		static let navigationTitle = TextAsset(string: "Contacts")
+		static let emptyState = TextAsset(string: "Click the + to add a new contact")
+	}
+	
 	struct LoginView {
 		static let confirmString = "OK"
 		static let welcome = "Welcome Back"

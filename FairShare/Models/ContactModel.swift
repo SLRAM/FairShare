@@ -20,7 +20,12 @@ struct ContactModel: PayerProtocol {
 		self.phoneNumber = phoneNumber
 	}
 
-	//TODO: active user can create "guest" contact by phone number. If this contact makes an account later, they can be linked to their guest account and updated via matching phone number.
+	init(_ contactData: ContactData) {
+		self.id = contactData.id
+		self.firstName = contactData.firstName
+		self.lastName = contactData.lastName
+		self.phoneNumber = contactData.phoneNumber ?? ""
+	}
 
 	static let dummyData: ContactModel = dummyArrayData[0]
 	static let dummyArrayData: [ContactModel] = [

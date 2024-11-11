@@ -11,6 +11,7 @@ import FirebaseFirestoreSwift
 
 @MainActor
 class AuthViewModel: ObservableObject {
+	//TODO: 1) Make sidebar contact reusable enum(3) profile(view, edit, delete- via swipe), receipt items(select), new receipt guests(select). shared items are search bar and add new contact. 2) Make core data contact, 3) Remove contact info from firebase and old model.
 	@Published var userSession: FirebaseAuth.User?
 	@Published var currentUser: UserModel?
 	@Published var receipts: [ReceiptModel] = []
@@ -144,14 +145,16 @@ extension AuthViewModel {
 ///Contacts
 extension AuthViewModel {
 	func addContacts(contacts: [ContactModel]) async throws {
-		do {
-			for contact in contacts {
-				try await DBService.addContact(contact: contact, creatorID: self.currentUser!.id)
-			}
-		} catch {
-			print("Error writing document: \(error)")
-			throw error
-		}
+//		do {
+//			for contact in contacts {
+//				try await DBService.addContact(contact: contact, creatorID: self.currentUser!.id)
+//			}
+//		} catch {
+//			print("Error writing document: \(error)")
+//			throw error
+//		}
+
+		
 	}
 
 	func fetchContacts() async throws {
