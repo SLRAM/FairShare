@@ -19,12 +19,12 @@ struct PersistenceController {
 			newItem.timestamp = Date()
 		}
 
-		for _ in 0..<10 {
+		for contact in ContactModel.dummyArrayData {
 			let newContact = ContactData(context: viewContext)
-			newContact.id = ContactModel.dummyData.id
-			newContact.firstName = ContactModel.dummyData.firstName
-			newContact.lastName = ContactModel.dummyData.lastName
-			newContact.phoneNumber = ContactModel.dummyData.phoneNumber
+			newContact.id = contact.id
+			newContact.firstName = contact.firstName
+			newContact.lastName = contact.lastName
+			newContact.phoneNumber = contact.phoneNumber
 		}
 
 		do {
