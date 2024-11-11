@@ -27,6 +27,10 @@ internal final class ImageAsset {
 	internal private(set) lazy var uiImage = UIImage(asset: self, isSystem: isSystem)
 
 	internal private(set) lazy var imageResource = ImageResource(asset: self)
+
+	internal private(set) lazy var label: Label = {
+		isSystem ? Label(self.name, systemImage: self.name) : Label(self.name, image: self.imageResource)
+	}()
 }
 
 extension Image {

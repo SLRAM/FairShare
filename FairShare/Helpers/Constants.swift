@@ -9,8 +9,6 @@ import Foundation
 import UIKit
 import SwiftUI
 
-///TODO convert to macro
-
 enum AssetType: String {
 	case Images
 	case Colors
@@ -18,18 +16,6 @@ enum AssetType: String {
 }
 
 final class BundleHelper { }
-
-internal final class TextAsset {
-	internal let type: AssetType = .Text
-	let string: String
-
-	internal init(string: String) {
-		self.string = string
-	}
-
-	internal private(set) lazy var text = Text(string)
-
-}
 
 struct Colors {
 }
@@ -45,6 +31,10 @@ struct Images {
 		static let listBulletCircleFill = ImageAsset(name: "list.bullet.circle.fill", isSystem: true)
 		static let checkmarkCircle = ImageAsset(name: "checkmark.circle", isSystem: true)
 		static let arrowUpMessage = ImageAsset(name: "arrow.up.message", isSystem: true)
+		static let trashFill = ImageAsset(name: "trash.fill", isSystem: true)
+	}
+
+	struct Assets {
 	}
 }
 
@@ -52,6 +42,7 @@ struct Strings {
 	struct ContactListView {
 		static let navigationTitle = TextAsset(string: "Contacts")
 		static let emptyState = TextAsset(string: "Click the + to add a new contact")
+		static let editButton = TextAsset(string: "Edit")
 	}
 	
 	struct LoginView {

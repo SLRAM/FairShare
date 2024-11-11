@@ -7,6 +7,21 @@
 
 import Foundation
 import UIKit
+import SwiftUI
+
+///TODO: convert to macro
+
+internal final class TextAsset {
+	internal let type: AssetType = .Text
+	let string: String
+
+	internal init(string: String) {
+		self.string = string
+	}
+
+	internal private(set) lazy var text = Text(string)
+
+}
 
 extension String {
 //https://stackoverflow.com/questions/51100121/how-to-generate-an-uiimage-from-custom-text-in-swift
