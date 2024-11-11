@@ -9,6 +9,7 @@ import Firebase
 import SwiftUI
 
 struct ReceiptView: View {
+//	@Environment(\.managedObjectContext) private var viewContext
 	@EnvironmentObject var authViewModel: AuthViewModel
 
 	@State private var isPresented = false

@@ -135,6 +135,7 @@ extension AuthViewModel {
 		do {
 			try await DBService.createReceipt(from: receiptTexts, image: image, creatorID: currentUserID(), guestIDs: filteredGuests)
 			try await self.fetchUserReceipts()
+			currentGuestIDs = Set<String>()
 		} catch {
 			print("Error writing document: \(error)")
 			throw error

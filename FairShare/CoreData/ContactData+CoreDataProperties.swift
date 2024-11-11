@@ -23,5 +23,13 @@ extension ContactData {
 }
 
 extension ContactData : Identifiable {
+	func convertToContactModel() -> ContactModel {
+		return ContactModel(self)
+	}
+}
 
+extension Array where Element == ContactData {
+	func convertToContactModels() -> [ContactModel] {
+		return self.map { $0.convertToContactModel() }
+	}
 }

@@ -9,8 +9,15 @@ import CoreData
 import SwiftUI
 
 struct ContactListView: View {
+//	enum ListType {
+//		case profile
+//		case newReceipt
+//	}
+//	@Binding var receiptTexts: [any ReceiptText]
+
 	@Environment(\.managedObjectContext) private var viewContext
 	@StateObject private var viewModel = ContactViewModel()
+//	let listType: ListType
 
 	var body: some View {
 		VStack(spacing: 0) {
@@ -86,6 +93,7 @@ struct ContactListView: View {
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
 		ContactListView()
+//		ContactListView(listType: .profile)
 			.environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 	}
 }

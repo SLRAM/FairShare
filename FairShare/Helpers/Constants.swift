@@ -40,7 +40,8 @@ struct Images {
 
 struct Strings {
 	struct ContactListView {
-		static let navigationTitle = TextAsset(string: "Contacts")
+		static let navigationTitleProfile = TextAsset(string: "Contacts")
+		static let navigationTitleReceipt = TextAsset(string: "Select Guests")
 		static let emptyState = TextAsset(string: "Click the + to add a new contact")
 		static let editButton = TextAsset(string: "Edit")
 	}
