@@ -102,90 +102,90 @@ class ContactViewModel: ObservableObject {
 }
 
 
-class MMM {
-	func setContext(_ context: NSManagedObjectContext) {
-		self.context = context
-	}
-
-	private func saveContext() {
-		guard let context = context else {
-			return
-		}
-
-		do {
-			try context.save()
-		} catch {
-			print("Failed to save context: \(error.localizedDescription)")
-		}
-	}
-
-	func fetchContacts() {
-		//TODO: This will deleted when a new SelectGuestsView is added. This new view will fetch and then pass to availablePayers. This allows users to choose who is with them currently.
-		guard let currentUser = self.currentUser else {
-			print("Error: Current user is nil.")
-			return
-		}
-
-		guard let context = context else {
-			print("Error: Context is nil.")
-			return
-		}
-
-		let fetchRequest: NSFetchRequest<ContactData> = ContactData.fetchRequest()
-
-		do {
-			var payerList: [any PayerProtocol] = []
-			let fetchedContacts = try context.fetch(fetchRequest)
-			payerList = fetchedContacts.convertToContactModels()
-			payerList.append(currentUser)
-			availablePayers = payerList.sorted { $0.firstName < $1.firstName }
-
-		} catch {
-			print("Failed to fetch contacts: \(error.localizedDescription)")
-		}
-	}
-
-	func addContacts(contacts: [ContactModel]) async throws {
-//		do {
-//			for contact in contacts {
-//				try await DBService.addContact(contact: contact, creatorID: self.currentUser!.id)
-//			}
-//		} catch {
-//			print("Error writing document: \(error)")
-//			throw error
+//class MMM {
+//	func setContext(_ context: NSManagedObjectContext) {
+//		self.context = context
+//	}
+//
+//	private func saveContext() {
+//		guard let context = context else {
+//			return
 //		}
-
-
-	}
-
-//	func fetchContacts() async throws {
+//
+//		do {
+//			try context.save()
+//		} catch {
+//			print("Failed to save context: \(error.localizedDescription)")
+//		}
+//	}
+//
+//	func fetchContacts() {
+//		//TODO: This will deleted when a new SelectGuestsView is added. This new view will fetch and then pass to availablePayers. This allows users to choose who is with them currently.
 //		guard let currentUser = self.currentUser else {
 //			print("Error: Current user is nil.")
 //			return
 //		}
 //
+//		guard let context = context else {
+//			print("Error: Context is nil.")
+//			return
+//		}
+//
+//		let fetchRequest: NSFetchRequest<ContactData> = ContactData.fetchRequest()
+//
 //		do {
 //			var payerList: [any PayerProtocol] = []
-//			let fetchedContacts = try await DBService.fetchUserContacts(userID: currentUser.id)
-//			payerList = fetchedContacts
+//			let fetchedContacts = try context.fetch(fetchRequest)
+//			payerList = fetchedContacts.convertToContactModels()
 //			payerList.append(currentUser)
-//
 //			availablePayers = payerList.sorted { $0.firstName < $1.firstName }
 //
+//		} catch {
+//			print("Failed to fetch contacts: \(error.localizedDescription)")
+//		}
+//	}
+//
+//	func addContacts(contacts: [ContactModel]) async throws {
+////		do {
+////			for contact in contacts {
+////				try await DBService.addContact(contact: contact, creatorID: self.currentUser!.id)
+////			}
+////		} catch {
+////			print("Error writing document: \(error)")
+////			throw error
+////		}
+//
+//
+//	}
+//
+////	func fetchContacts() async throws {
+////		guard let currentUser = self.currentUser else {
+////			print("Error: Current user is nil.")
+////			return
+////		}
+////
+////		do {
+////			var payerList: [any PayerProtocol] = []
+////			let fetchedContacts = try await DBService.fetchUserContacts(userID: currentUser.id)
+////			payerList = fetchedContacts
+////			payerList.append(currentUser)
+////
+////			availablePayers = payerList.sorted { $0.firstName < $1.firstName }
+////
+////		} catch {
+////			print("Error fetching user contacts: \(error)")
+////			throw error
+////		}
+////	}
+//
+//	func fetchCurrentReceiptGuests(for receipt: ReceiptModel) async throws {
+//		do {
+//			let fetchedGuests = try await DBService.fetchReceiptGuests(userID: currentUserID(), contactIDs: receipt.guestIDs)
+//
+//			fetchedReceiptGuests = fetchedGuests.sorted { $0.firstName < $1.firstName }
 //		} catch {
 //			print("Error fetching user contacts: \(error)")
 //			throw error
 //		}
 //	}
-
-	func fetchCurrentReceiptGuests(for receipt: ReceiptModel) async throws {
-		do {
-			let fetchedGuests = try await DBService.fetchReceiptGuests(userID: currentUserID(), contactIDs: receipt.guestIDs)
-
-			fetchedReceiptGuests = fetchedGuests.sorted { $0.firstName < $1.firstName }
-		} catch {
-			print("Error fetching user contacts: \(error)")
-			throw error
-		}
-	}
-}
+//}
