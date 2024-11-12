@@ -56,7 +56,7 @@ struct ProfileView: View {
 					}
 
 					Section(Strings.ProfileView.contacts) {
-						NavigationLink(destination: ContactListView(viewModel: ContactViewModel())
+						NavigationLink(destination: ContactListView(viewModel: ContactViewModel(availablePayers: []))
 							.environment(\.managedObjectContext, viewContext)) {
 								SettingsRowView(rowType: .contacts)
 							}

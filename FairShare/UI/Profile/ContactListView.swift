@@ -13,7 +13,7 @@ struct ContactListView: View {
 	@Environment(\.managedObjectContext) private var viewContext
 	@StateObject var viewModel: ContactViewModel
 //	let saveTapped: ([ContactModel]) -> Void
-	var saveTapped: (([ContactModel]) -> Void)?
+//	var saveTapped: (([ContactModel]) -> Void)?
 
 	var body: some View {
 		ZStack {
@@ -42,9 +42,8 @@ struct ContactListView: View {
 //							}
 //						}
 						//here I will prompt func that will check all saved ids and pull matching models from contactModels to pass to next view
-						if let saveTapped = saveTapped {
-							saveTapped(viewModel.filterGuests())
-						}
+						viewModel.filterGuests()
+
 
 //						dismiss()
 					} label: {
@@ -131,7 +130,7 @@ struct ContactRow: View {
 
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
-		ContactListView(viewModel: ContactViewModel(listType: .profile), saveTapped: { _ in })
+		ContactListView(viewModel: ContactViewModel(listType: .profile, availablePayers: []))
 			.environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 	}
 }

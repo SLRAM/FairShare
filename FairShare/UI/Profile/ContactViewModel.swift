@@ -7,6 +7,7 @@
 
 import CoreData
 import Foundation
+import SwiftUI
 
 class ContactViewModel: ObservableObject {
 	//TODO: Update error handling
@@ -20,6 +21,7 @@ class ContactViewModel: ObservableObject {
 	@Published var showContactPicker = false
 	@Published var selectedContacts: [ContactModel] = []
 	@Published var selectedContactIDs: Set<String> = []
+	@Binding var availablePayers: [any PayerProtocol]
 
 	//	@Published var fetchedContactss: [ContactData] = []
 
@@ -27,13 +29,15 @@ class ContactViewModel: ObservableObject {
 		 contacts: [ContactModel] = [],
 		 showContactPicker: Bool = false,
 		 selectedContacts: [ContactModel] = [],
-		 selectedContactIDs: Set<String> = []
+		 selectedContactIDs: Set<String> = [],
+		 availablePayers: Binding<[any PayerProtocol]>
 	){
 		self.listType = listType
 		self.contacts = contacts
 		self.showContactPicker = showContactPicker
 		self.selectedContacts = selectedContacts
 		self.selectedContactIDs = selectedContactIDs
+		self.availablePayers = availablePayers
 	}
 
 	private var context: NSManagedObjectContext?
@@ -125,11 +129,27 @@ class ContactViewModel: ObservableObject {
 		}
 	}
 
-	func filterGuests() -> [ContactModel] {
-		contacts.filter { contact in
+//	func filterGuests() -> [ContactModel] {
+//		contacts.filter { contact in
+//			selectedContactIDs.contains(contact.id)
+//		}
+//	}
+
+	func filterGuests() {
+		availablePayers = contacts.filter { contact in
 			selectedContactIDs.contains(contact.id)
 		}
 	}
+
+//	func addGuests(_ guests: [ContactModel]) {
+//		var payerList: [any PayerProtocol] = []
+//		payerList = guests
+////		payerList.append(currentUser)
+//
+//		availablePayers = payerList.sorted { $0.firstName < $1.firstName }
+//		contactsListIsPresented.toggle()
+//		newReceiptIsPresented.toggle()
+//	}
 
 	private func convertToContactModels(from contactDataArray: [ContactData]) -> [ContactModel] {
 		return contactDataArray.map { ContactModel($0) }

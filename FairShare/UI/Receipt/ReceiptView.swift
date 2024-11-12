@@ -60,12 +60,12 @@ struct ReceiptView: View {
 			.fullScreenCover(isPresented: $viewModel.contactsListIsPresented) {
 					ContactListView(
 						viewModel: ContactViewModel(
-							listType: .newReceipt
-						),
-						saveTapped: viewModel.addGuests
+							listType: .newReceipt, 
+							availablePayers: $authViewModel.availablePayers
+						)
 					)
 						.environment(\.managedObjectContext, viewContext)
-				
+
 			}
 			.fullScreenCover(isPresented: $viewModel.newReceiptIsPresented) {
 					NewReceiptView()
