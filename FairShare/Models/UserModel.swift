@@ -33,6 +33,19 @@ extension PayerProtocol {
 	}
 }
 
+extension PayerProtocol where Self: Hashable {
+	func hash(into hasher: inout Hasher) {
+		hasher.combine(id)
+		hasher.combine(firstName)
+		hasher.combine(lastName)
+	}
+
+	static func ==(lhs: Self, rhs: Self) -> Bool {
+		return lhs.id == rhs.id && lhs.firstName == rhs.firstName && lhs.lastName == rhs.lastName
+	}
+}
+
+
 struct UserModel: PayerProtocol {
 	var id: String
 	var firstName: String

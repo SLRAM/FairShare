@@ -10,10 +10,31 @@ import Foundation
 
 class ContactViewModel: ObservableObject {
 	//TODO: Update error handling
+	enum ListType {
+		case profile
+		case newReceipt
+	}
+	
+	@Published var listType: ListType
 	@Published var contacts: [ContactModel] = []
 	@Published var showContactPicker = false
 	@Published var selectedContacts: [ContactModel] = []
-//	@Published var fetchedContactss: [ContactData] = []
+	@Published var selectedContactIDs: Set<String> = []
+
+	//	@Published var fetchedContactss: [ContactData] = []
+
+	init(listType: ListType = .profile,
+		 contacts: [ContactModel] = [],
+		 showContactPicker: Bool = false,
+		 selectedContacts: [ContactModel] = [],
+		 selectedContactIDs: Set<String> = []
+	){
+		self.listType = listType
+		self.contacts = contacts
+		self.showContactPicker = showContactPicker
+		self.selectedContacts = selectedContacts
+		self.selectedContactIDs = selectedContactIDs
+	}
 
 	private var context: NSManagedObjectContext?
 
@@ -96,7 +117,15 @@ class ContactViewModel: ObservableObject {
 //		fetchContacts()
 //	}
 
-	func convertToContactModels(from contactDataArray: [ContactData]) -> [ContactModel] {
+	func didTap(_ contact: ContactModel) {
+		if selectedContactIDs.contains(contact.id) {
+			selectedContactIDs.remove(contact.id)
+		} else {
+			selectedContactIDs.insert(contact.id)
+		}
+	}
+
+	private func convertToContactModels(from contactDataArray: [ContactData]) -> [ContactModel] {
 		return contactDataArray.map { ContactModel($0) }
 	}
 }

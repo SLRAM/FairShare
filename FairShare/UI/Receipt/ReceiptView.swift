@@ -9,7 +9,7 @@ import Firebase
 import SwiftUI
 
 struct ReceiptView: View {
-//	@Environment(\.managedObjectContext) private var viewContext
+	@Environment(\.managedObjectContext) private var viewContext
 	@EnvironmentObject var authViewModel: AuthViewModel
 
 	@State private var isPresented = false
@@ -34,12 +34,6 @@ struct ReceiptView: View {
 						.padding()
 					}
 					.overlay(
-//						Group {
-//							if authViewModel.receipts.isEmpty {
-//								Strings.ReceiptView.emptyState.text
-//							}
-//						}
-
 						EmptyStateView(
 							isEmpty: authViewModel.receipts.isEmpty,
 							message: Strings.ReceiptView.emptyState.string
@@ -59,7 +53,13 @@ struct ReceiptView: View {
 				}
 			}
 			.fullScreenCover(isPresented: $isPresented) {
-				NewReceiptView()
+//				NewReceiptView()
+				ContactListView(
+					viewModel: ContactViewModel(
+						listType: .newReceipt
+					)
+				)
+					.environment(\.managedObjectContext, viewContext)
 			}
 			.navigationDestination(for: ReceiptModel.self) { receipt in
 				ReceiptDetailView(
@@ -81,5 +81,7 @@ struct ReceiptView: View {
 }
 
 #Preview {
-	ReceiptView().environmentObject(AuthViewModel())
+	ReceiptView()
+		.environmentObject(AuthViewModel())
+		.environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }

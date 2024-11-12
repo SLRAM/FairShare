@@ -44,6 +44,7 @@
 		906F97E02CE0695C0023B7C1 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906F97DF2CE0695C0023B7C1 /* ContactListView.swift */; };
 		906F97E42CE29EBE0023B7C1 /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906F97E32CE29EBE0023B7C1 /* ContactViewModel.swift */; };
 		906F97E62CE2D0440023B7C1 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906F97E52CE2D0440023B7C1 /* EmptyStateView.swift */; };
+		906F97E82CE2D8B00023B7C1 /* CustomList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906F97E72CE2D8B00023B7C1 /* CustomList.swift */; };
 		9072AFC52BE9C46E00DE6FEB /* FairShareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */; };
 		9072AFC72BE9C46E00DE6FEB /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072AFC62BE9C46E00DE6FEB /* EntryView.swift */; };
 		9072AFC92BE9C47000DE6FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9072AFC82BE9C47000DE6FEB /* Assets.xcassets */; };
@@ -113,6 +114,7 @@
 		906F97DF2CE0695C0023B7C1 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		906F97E32CE29EBE0023B7C1 /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
 		906F97E52CE2D0440023B7C1 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		906F97E72CE2D8B00023B7C1 /* CustomList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomList.swift; sourceTree = "<group>"; };
 		9072AFC12BE9C46E00DE6FEB /* FairShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FairShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9072AFC42BE9C46E00DE6FEB /* FairShareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairShareApp.swift; sourceTree = "<group>"; };
 		9072AFC62BE9C46E00DE6FEB /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				90CA9FB82C396E11009F1251 /* SideMenuView.swift */,
 				90B98CC22C437B94006B6B83 /* MessageView.swift */,
 				906F97E52CE2D0440023B7C1 /* EmptyStateView.swift */,
+				906F97E72CE2D8B00023B7C1 /* CustomList.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				90FB96272BF030B20061E83D /* LoginView.swift in Sources */,
 				9029DF162C31422B008586E6 /* NewReceiptViewModel.swift in Sources */,
 				9072AFD12BE9C47000DE6FEB /* FairShare.xcdatamodeld in Sources */,
+				906F97E82CE2D8B00023B7C1 /* CustomList.swift in Sources */,
 				9029DF182C314475008586E6 /* ContactModel.swift in Sources */,
 				90F4761D2C14F6510075B36B /* DBService.swift in Sources */,
 			);
