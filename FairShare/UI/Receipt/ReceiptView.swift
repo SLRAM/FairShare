@@ -34,11 +34,16 @@ struct ReceiptView: View {
 						.padding()
 					}
 					.overlay(
-						Group {
-							if authViewModel.receipts.isEmpty {
-								Strings.ReceiptView.emptyState.text
-							}
-						}
+//						Group {
+//							if authViewModel.receipts.isEmpty {
+//								Strings.ReceiptView.emptyState.text
+//							}
+//						}
+
+						EmptyStateView(
+							isEmpty: authViewModel.receipts.isEmpty,
+							message: Strings.ReceiptView.emptyState.string
+						)
 					)
 				}
 			}

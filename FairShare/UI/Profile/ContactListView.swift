@@ -9,14 +9,14 @@ import CoreData
 import SwiftUI
 
 //struct ContactListView: View {
-////	enum ListType {
-////		case profile
-////		case newReceipt
-////	}
+//	enum ListType {
+//		case profile
+//		case newReceipt
+//	}
 ////	@Binding var receiptTexts: [any ReceiptText]
 //	@Environment(\.managedObjectContext) private var viewContext
 //	@StateObject private var viewModel = ContactViewModel()
-////	let listType: ListType
+//	let listType: ListType
 //
 //	var body: some View {
 //		VStack(spacing: 0) {
@@ -34,7 +34,7 @@ import SwiftUI
 //							.padding(.vertical, 4)
 //							.swipeActions(allowsFullSwipe: false) {
 //								Button(role: .destructive) {
-////									viewModel.deleteContact()
+//									viewModel.deleteContact()
 //								} label: {
 //									Images.System.trashFill.image
 //								}
@@ -51,7 +51,7 @@ import SwiftUI
 //				}
 //			}
 //			.listSectionSpacing(0)
-//			.navigationTitle(Strings.ContactListView.navigationTitle.string)
+////			.navigationTitle(Strings.ContactListView.navigationTitle.string)
 //			.navigationBarTitleDisplayMode(.inline)
 //			.toolbar {
 //				ToolbarItem(placement: .navigationBarTrailing) {
@@ -100,8 +100,15 @@ import CoreData
 import SwiftUI
 
 struct ContactListView: View {
+	enum ListType {
+		case profile
+		case newReceipt
+	}
+//	@Binding var selectedGuests: [ContactModel]
 	@Environment(\.managedObjectContext) private var viewContext
 	@StateObject private var viewModel = ContactViewModel()
+
+	let listType: ListType
 
 	var body: some View {
 		VStack(spacing: 0) {
@@ -181,7 +188,7 @@ struct ContactRow: View {
 
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
-		ContactListView()
+		ContactListView(listType: .profile)
 			.environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 	}
 }
