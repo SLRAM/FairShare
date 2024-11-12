@@ -5,6 +5,7 @@
 //  Created by Stephanie Ramirez on 5/11/24.
 //
 
+import Combine
 import SwiftUI
 import Firebase
 import FirebaseFirestoreSwift
@@ -22,12 +23,27 @@ class AuthViewModel: ObservableObject {
 	@Published var currentGuestIDs: Set<String> = []
 	@Published var fetchedReceiptGuests: [ContactModel] = []
 
+	private var cancellable: AnyCancellable?
+
 	init() {
 		self.userSession = AuthService.CurrentUser
 
 		Task {
 			try await self.fetchUser()
 		}
+
+//		var test: [any PayerProtocol] = [self.currentUser!]
+//		var subscriber = $availablePayers
+//		.receive(on: DispatchQueue.main)
+//		.sink { values in
+//			print("CURRENT GUESTS: \(self.availablePayers) valuesCount: \(values.count)")
+//		}
+
+		cancellable = $availablePayers
+					.receive(on: DispatchQueue.main)
+					.sink { values in
+						print("CURRENT GUESTS: \(values) valuesCount: \(values.count)")
+					}
 	}
 
 	private func showError(for message: String) {
@@ -102,8 +118,9 @@ extension AuthViewModel {
 		do {
 			let fetchedUser = try await DBService.fetchUser(userId: userId)
 			self.currentUser = fetchedUser
+			self.availablePayers.append(fetchedUser)
 			try await self.fetchUserReceipts()
-			try await self.fetchContacts()
+//			try await self.fetchContacts()
 		} catch {
 			print("Error fetching user: \(error)")
 			throw error
@@ -144,48 +161,48 @@ extension AuthViewModel {
 }
 
 ///Contacts
-extension AuthViewModel {
-	func addContacts(contacts: [ContactModel]) async throws {
+//extension AuthViewModel {
+//	func addContacts(contacts: [ContactModel]) async throws {
+////		do {
+////			for contact in contacts {
+////				try await DBService.addContact(contact: contact, creatorID: self.currentUser!.id)
+////			}
+////		} catch {
+////			print("Error writing document: \(error)")
+////			throw error
+////		}
+//
+//		
+//	}
+//
+//	func fetchContacts() async throws {
+//		guard let currentUser = self.currentUser else {
+//			print("Error: Current user is nil.")
+//			return
+//		}
+//
 //		do {
-//			for contact in contacts {
-//				try await DBService.addContact(contact: contact, creatorID: self.currentUser!.id)
-//			}
+//			var payerList: [any PayerProtocol] = []
+//			let fetchedContacts = try await DBService.fetchUserContacts(userID: currentUser.id)
+//			payerList = fetchedContacts
+//			payerList.append(currentUser)
+//
+//			availablePayers = payerList.sorted { $0.firstName < $1.firstName }
+//
 //		} catch {
-//			print("Error writing document: \(error)")
+//			print("Error fetching user contacts: \(error)")
 //			throw error
 //		}
-
-		
-	}
-
-	func fetchContacts() async throws {
-		guard let currentUser = self.currentUser else {
-			print("Error: Current user is nil.")
-			return
-		}
-
-		do {
-			var payerList: [any PayerProtocol] = []
-			let fetchedContacts = try await DBService.fetchUserContacts(userID: currentUser.id)
-			payerList = fetchedContacts
-			payerList.append(currentUser)
-
-			availablePayers = payerList.sorted { $0.firstName < $1.firstName }
-
-		} catch {
-			print("Error fetching user contacts: \(error)")
-			throw error
-		}
-	}
-
-	func fetchCurrentReceiptGuests(for receipt: ReceiptModel) async throws {
-		do {
-			let fetchedGuests = try await DBService.fetchReceiptGuests(userID: currentUserID(), contactIDs: receipt.guestIDs)
-
-			fetchedReceiptGuests = fetchedGuests.sorted { $0.firstName < $1.firstName }
-		} catch {
-			print("Error fetching user contacts: \(error)")
-			throw error
-		}
-	}
-}
+//	}
+//
+//	func fetchCurrentReceiptGuests(for receipt: ReceiptModel) async throws {
+//		do {
+//			let fetchedGuests = try await DBService.fetchReceiptGuests(userID: currentUserID(), contactIDs: receipt.guestIDs)
+//
+//			fetchedReceiptGuests = fetchedGuests.sorted { $0.firstName < $1.firstName }
+//		} catch {
+//			print("Error fetching user contacts: \(error)")
+//			throw error
+//		}
+//	}
+//}

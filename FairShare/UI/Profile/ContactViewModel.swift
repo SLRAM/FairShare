@@ -125,6 +125,12 @@ class ContactViewModel: ObservableObject {
 		}
 	}
 
+	func filterGuests() -> [ContactModel] {
+		contacts.filter { contact in
+			selectedContactIDs.contains(contact.id)
+		}
+	}
+
 	private func convertToContactModels(from contactDataArray: [ContactData]) -> [ContactModel] {
 		return contactDataArray.map { ContactModel($0) }
 	}

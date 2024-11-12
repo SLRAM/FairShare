@@ -9,12 +9,11 @@ import CoreData
 import SwiftUI
 
 struct ContactListView: View {	
-//	@Binding var selectedGuests: [ContactModel]
-	@Environment(\.dismiss) var dismiss
+//	@Environment(\.dismiss) var dismiss
 	@Environment(\.managedObjectContext) private var viewContext
 	@StateObject var viewModel: ContactViewModel
-
-//	let listType: ContactViewModel.ListType
+//	let saveTapped: ([ContactModel]) -> Void
+	var saveTapped: (([ContactModel]) -> Void)?
 
 	var body: some View {
 		ZStack {
@@ -42,7 +41,12 @@ struct ContactListView: View {
 //								try await authViewModel.createReceipt(from: viewModel.receiptTexts, image: image)
 //							}
 //						}
-						dismiss()
+						//here I will prompt func that will check all saved ids and pull matching models from contactModels to pass to next view
+						if let saveTapped = saveTapped {
+							saveTapped(viewModel.filterGuests())
+						}
+
+//						dismiss()
 					} label: {
 						Strings.NewReceiptView.saveButton.text
 					}
@@ -83,19 +87,22 @@ struct ContactRow: View {
 	@ObservedObject var viewModel: ContactViewModel
 
 	var body: some View {
-		VStack(alignment: .leading) {
-			HStack {
+		HStack {
+			VStack(alignment: .leading) {
 				Text("\(contact.firstName) \(contact.lastName)")
 					.font(.headline)
-				Spacer()
-				if viewModel.selectedContactIDs.contains(contact.id) {
-					Images.System.checkmarkCircle.image
-						.foregroundColor(.green)
+				if viewModel.listType == .profile {
+					Text(contact.phoneNumber)
+						.font(.subheadline)
+						.foregroundColor(.gray)
 				}
 			}
-			Text(contact.phoneNumber)
-				.font(.subheadline)
-				.foregroundColor(.gray)
+
+			Spacer()
+			if viewModel.selectedContactIDs.contains(contact.id) {
+				Images.System.checkmarkCircle.image
+					.foregroundColor(.green)
+			}
 		}
 		.contentShape(Rectangle())
 		.onTapGesture {
@@ -104,45 +111,27 @@ struct ContactRow: View {
 			}
 		}
 		.swipeActions(allowsFullSwipe: false) {
-			Button(role: .destructive) {
-//				 viewModel.deleteContact()
-			} label: {
-				Images.System.trashFill.image
+			if viewModel.listType == .profile {
+				Button(role: .destructive) {
+//					 viewModel.deleteContact()
+				} label: {
+					Images.System.trashFill.image
+				}
+				Button {
+//					viewModel.editContact()
+				} label: {
+					Strings.ContactListView.editButton.text
+				}
+				.tint(.green)
 			}
-			Button {
-//				viewModel.editContact()
-			} label: {
-				Strings.ContactListView.editButton.text
-			}
-			.tint(.green)
+
 		}
 	}
-
-//	List {
-//		ForEach(availablePayers, id: \.id) { payer in
-//			HStack {
-//				Text(payer.abbreviatedName)
-//				Spacer()
-//				if selectedPayerIDs.contains(payer.id) {
-//					Images.System.checkmarkCircle.image
-//						.foregroundColor(.green)
-//				}
-//			}
-//			.contentShape(Rectangle())
-//			.onTapGesture {
-//				if selectedPayerIDs.contains(payer.id) {
-//					selectedPayerIDs.remove(payer.id)
-//				} else {
-//					selectedPayerIDs.insert(payer.id)
-//				}
-//			}
-//		}
-//	}
 }
 
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
-		ContactListView(viewModel: ContactViewModel(listType: .profile))
+		ContactListView(viewModel: ContactViewModel(listType: .profile), saveTapped: { _ in })
 			.environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 	}
 }

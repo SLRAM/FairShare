@@ -11,8 +11,13 @@ import SwiftUI
 struct ReceiptView: View {
 	@Environment(\.managedObjectContext) private var viewContext
 	@EnvironmentObject var authViewModel: AuthViewModel
+	@StateObject private var viewModel: ReceiptListViewModel
 
-	@State private var isPresented = false
+//	@State private var isPresented = false
+
+	init() {
+		_viewModel = StateObject(wrappedValue: ReceiptListViewModel(availablePayers: []))
+	}
 
 	var body: some View {
 		NavigationStack {
@@ -46,20 +51,25 @@ struct ReceiptView: View {
 			.toolbar {
 				ToolbarItem(placement: .topBarTrailing) {
 					Button {
-						isPresented.toggle()
+						viewModel.contactsListIsPresented.toggle()
 					} label: {
 						Images.System.plus.image
 					}
 				}
 			}
-			.fullScreenCover(isPresented: $isPresented) {
-//				NewReceiptView()
-				ContactListView(
-					viewModel: ContactViewModel(
-						listType: .newReceipt
+			.fullScreenCover(isPresented: $viewModel.contactsListIsPresented) {
+					ContactListView(
+						viewModel: ContactViewModel(
+							listType: .newReceipt
+						),
+						saveTapped: viewModel.addGuests
 					)
-				)
-					.environment(\.managedObjectContext, viewContext)
+						.environment(\.managedObjectContext, viewContext)
+				
+			}
+			.fullScreenCover(isPresented: $viewModel.newReceiptIsPresented) {
+					NewReceiptView()
+//						.environmentObject(AuthViewModel())
 			}
 			.navigationDestination(for: ReceiptModel.self) { receipt in
 				ReceiptDetailView(
@@ -71,11 +81,14 @@ struct ReceiptView: View {
 					guests: $authViewModel.fetchedReceiptGuests
 				)
 				.onAppear {
-					Task {
-						try await authViewModel.fetchCurrentReceiptGuests(for: receipt)
-					}
+//					Task {
+//						try await authViewModel.fetchCurrentReceiptGuests(for: receipt)
+//					}
 				}
 			}
+		}
+		.onAppear {
+			viewModel.availablePayers = authViewModel.availablePayers
 		}
 	}
 }
