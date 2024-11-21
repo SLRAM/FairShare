@@ -11,6 +11,7 @@ import FirebaseFirestoreSwift
 
 @MainActor
 class AuthViewModel: ObservableObject {
+	//TODO: 1) Make sidebar contact reusable enum(3) profile(view, edit, delete- via swipe), receipt items(select), new receipt guests(select). shared items are search bar and add new contact. 2) Make core data contact, 3) Remove contact info from firebase and old model.
 	@Published var userSession: FirebaseAuth.User?
 	@Published var currentUser: UserModel?
 	@Published var receipts: [ReceiptModel] = []
@@ -54,8 +55,10 @@ extension AuthViewModel {
 			let result = try await AuthService.signIn(with: email, password: password)
 			self.userSession = result
 			try await self.fetchUser()
-		} catch let error as FirebaseAuthError {
-			self.showError(for: error.errorMessage)
+		} catch {
+			let firebaseAuthError = FirebaseAuthError(error)
+			self.showError(for: firebaseAuthError.errorMessage)
+			print("Error signing in user: \(firebaseAuthError.errorMessage)")
 		}
 	}
 
@@ -64,8 +67,10 @@ extension AuthViewModel {
 			try await AuthService.signOut()
 			self.userSession = nil
 			self.currentUser = nil
-		} catch let error as FirebaseAuthError {
-			self.showError(for: error.errorMessage)
+		} catch {
+			let firebaseAuthError = FirebaseAuthError(error)
+			self.showError(for: firebaseAuthError.errorMessage)
+			print("Error signing out user: \(firebaseAuthError.errorMessage)")
 		}
 	}
 
@@ -81,8 +86,11 @@ extension AuthViewModel {
 			try await DBService.createUser(from: user)
 			try await self.fetchUser()
 		} catch {
-			print("Error creating user: \(error)")
-			throw error
+			let firebaseAuthError = FirebaseAuthError(error)
+			self.showError(for: firebaseAuthError.errorMessage)
+			print("Error creating user: \(firebaseAuthError.errorMessage)")
+
+			throw firebaseAuthError
 		}
 	}
 
@@ -92,26 +100,28 @@ extension AuthViewModel {
 
 	private func fetchUser() async throws {
 		guard let userId = AuthService.CurrentUser?.uid else {
-			print("Error: User ID is nil.")
-			return
+			throw FirebaseAuthError.userNotFound
 		}
 
 		self.isLoading = true
 
 		do {
-			let fetchedUser = try await DBService.fetchUser(userId: userId)
-			self.currentUser = fetchedUser
+			self.currentUser = try await DBService.fetchUser(userId: userId)
 			try await self.fetchUserReceipts()
 			try await self.fetchContacts()
 		} catch {
-			print("Error fetching user: \(error)")
-			throw error
+			let firebaseAuthError = FirebaseAuthError(error)
+			self.showError(for: firebaseAuthError.errorMessage)
+			print("Error fetching user: \(firebaseAuthError.errorMessage)")
+
+			throw firebaseAuthError
 		}
 	}
 }
 
 ///Receipt
 extension AuthViewModel {
+	//TODO: Update error handling
 	func fetchUserReceipts() async throws {
 		guard let userID = self.currentUser?.id else {
 			print("Error: Current user ID is nil.")
@@ -144,14 +154,16 @@ extension AuthViewModel {
 ///Contacts
 extension AuthViewModel {
 	func addContacts(contacts: [ContactModel]) async throws {
-		do {
-			for contact in contacts {
-				try await DBService.addContact(contact: contact, creatorID: self.currentUser!.id)
-			}
-		} catch {
-			print("Error writing document: \(error)")
-			throw error
-		}
+//		do {
+//			for contact in contacts {
+//				try await DBService.addContact(contact: contact, creatorID: self.currentUser!.id)
+//			}
+//		} catch {
+//			print("Error writing document: \(error)")
+//			throw error
+//		}
+
+		
 	}
 
 	func fetchContacts() async throws {
